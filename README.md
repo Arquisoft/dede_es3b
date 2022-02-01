@@ -53,4 +53,5 @@ You can get more information about the respository in the other README files:
 ## Development Team
 - Daniel Pascual López, Uo269728
 - Pablo Rodríguez Toraño, Uo277348
+- Martin Fernandez Gonzalez, UO277534
 - Tania Bajo García, Uo277084
