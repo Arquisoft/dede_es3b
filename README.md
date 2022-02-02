@@ -55,3 +55,4 @@ You can get more information about the respository in the other README files:
 - Pablo Rodríguez Toraño, Uo277348
 - Martin Fernandez Gonzalez, UO277534
 - Tania Bajo García, UO277084
+- José Rodríguez Rico, UO276922
