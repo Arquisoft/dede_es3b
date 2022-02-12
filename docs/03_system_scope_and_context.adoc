@@ -20,7 +20,9 @@ Various options:
 * Lists of communication partners and their interfaces.
 ****
 
-Falta intro
+The main objetive of DeDeportes is to create a sports store with products related to sports. The application that conatins the online store is going to be descentralized
+and also be based on Solid so each client will have its own POD. This POD stores the users information and it cannot be acceded unless the user authorized it. The most
+frequent user of this appplication is going to be the client interested in sport products.
 
 === Business Context
 
@@ -68,8 +70,10 @@ together with a mapping table showing the relationships between channels and inp
 
 ****
 
-**<Diagram or Table>**
-
-**<optionally: Explanation of technical interfaces>**
-
-**<Mapping Input/Output to Channels>**
+|===
+|Technology | Description of usage
+|SOLID architecture|Is used for the secure management of the user data furthermore this data is decentralized
+|POD| Where the application is going to take the user data, if he allows it. POD stores the user information.
+|TypeScript| Is the language used to generate the events of the store. It is a JavaScript versión with syntax control
+|React| Is an open-source library that helps the team to make the GUI with the help of TypeScript
+|===
