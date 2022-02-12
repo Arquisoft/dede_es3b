@@ -3,11 +3,11 @@
 
 [role="arc42help"]
 ****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
+Decentraliced Delivery or DeDe is a new, decentralized, and open-source delivery system. Based on the Solid Priciples for privacy and security. This application is designed for: 
 
-* underlying business goals, essential features and functional requirements for the system
-* quality goals for the architecture
-* relevant stakeholders and their expectations
+* Having a virtual shop that can be accessed by anyone
+* Delviering the products to the customers
+* Providing a secure and private data management system
 ****
 
 === Requirements Overview
