@@ -5,7 +5,7 @@
 
 [role="arc42help"]
 ****
-image::images/qualityTree.png[Quality Tree,250,350]
+image::images/qualityTree.png[Quality Tree]
 
 ****
 
