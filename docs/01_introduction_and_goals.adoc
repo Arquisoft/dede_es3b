@@ -3,73 +3,45 @@
 
 [role="arc42help"]
 ****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
+Decentraliced Delivery or DeDe is a new, decentralized, and open-source delivery system. Based on the Solid Priciples for privacy and security. This application is designed for: 
 
-* underlying business goals, essential features and functional requirements for the system
-* quality goals for the architecture
-* relevant stakeholders and their expectations
+* Having a virtual shop that can be accessed by anyone
+* Delviering the products to the customers
+* Providing a secure and private data management system
 ****
 
 === Requirements Overview
 
 [role="arc42help"]
 ****
-.Contents
-Short description of the functional requirements, driving forces, extract (or abstract)
-of requirements. Link to (hopefully existing) requirements documents
-(with version number and information where to find it).
+Here is a list of the functional and non-functional requirements that the application will support.
 
-.Motivation
-From the point of view of the end users a system is created or modified to
-improve support of a business activity and/or improve the quality.
+* Functional Requirements
+- The user can select the products he wants to order or buy
+- The system will calculate the shipping costs through the address stored in the user's pod
+- The application will calculate the final prices of the purchase and register the event to start shipping
+- The system will allow the user to check their orders placed
 
-.Form
-Short textual description, probably in tabular use-case format.
-If requirements documents exist this overview should refer to these documents.
-
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
+* Non-Functional Requirements
+- System must support SOLID
 ****
 
 === Quality Goals
-
-[role="arc42help"]
-****
-.Contents
-The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
-
-.Motivation
-You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged …
-
-.Form
-A table with quality goals and concrete scenarios, ordered by priorities
-****
+[options="header",cols="1,2,2"]
+|===
+|Objetive|Motivation|Priority
+| Privacity | The application will guarantee a high level of privacy and security, respecting the personal information of users| 1
+| Usabilty | The graphical interface of the application must not transmit doubts of use to the users. It should be easy to understand for novice users | 2
+| Efficiency | The charging times between windows should be as low as possible so as not to upset the user | 3 
+| Availability | The application has to be constantly running. If a problem occurs, maintenance times should be as short as possible | 4 
+| Testability | Failures during program execution will be minimized | 5
+|===
 
 === Stakeholders
-
-[role="arc42help"]
-****
-.Contents
-Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
-
-* should know the architecture
-* have to be convinced of the architecture
-* have to work with the architecture or with code
-* need the documentation of the architecture for their work
-* have to come up with decisions about the system or its development
-
-.Motivation
-You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.
-
-.Form
-Table with role names, person names, and their expectations with respect to the architecture and its documentation.
-****
-
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+| Client | Teachers. They evaluate the project | They check that the project meets the expectations of the subject in addition to its proper functioning
+| Users | They use the application | They are the users who are interested in using the application
+| Developers | Team in charge of developing and testing the project (dedeportes) | They create the project from the skeleton iteratively. They are responsible for making the application functional and secure
 |===
