@@ -12,12 +12,15 @@ image::images/qualityTree.png[Quality Tree,250,350]
 === Quality Scenarios
 
 [role="arc42help"]
-****
-.Security
+
+==== Security
 By saving on the SOLID PODs the information of the user and also by only having esential info on the database.
-.Testability / Coverage
+
+==== Testability / Coverage
+
 Using Cucumber for testing and Codecov for code coverge we ensure the quality of the aplication.
-.Eficency
+
+==== Eficency
 We need to ensure a fast conection and transaction between the user and the app.
 
-****
+
