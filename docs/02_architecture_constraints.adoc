@@ -29,7 +29,14 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 
 === Organizational Constraints
 
-
+|===
+| Constraint | Explanation
+| Time | The project will be finish until the 25th of april
+| Experience | 1 out of 5 has some experience on Solid and the development of this kind of projects
+| Team | The team is composed by 5 members. Each one has his own projects apart from this one so it could be hard to organize a meeting 
+| Data | The products and the orders will be stored in the Database. The users data will be stored in PODs that will be connected to the app to get the shipping address
+| Version Control | All changes are going to be commited in GitHub in different branches. The master branch is where the non-error application is going to be and the develop branch is where the team is going to work creating from it the different branches that will be needed
+|===
 
 === Conventions
 
