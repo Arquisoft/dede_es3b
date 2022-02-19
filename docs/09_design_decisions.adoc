@@ -24,3 +24,9 @@ Various options:
 * more detailed in form of separate sections per decision
 * ADR (architecture decision record) for every important decision
 ****
+=== Using a nonSQL database for saving data.
+.Problem
+Using normal SQL database like HSQLDB for this project is a good choice considering that we have knowledge and practice with this tipe, but in the face of pure documentation and examples MongoDb its a better alternative that fits in this project usisg a MERN frame. 
+
+.Decision
+Use MERN as teh project structure.
