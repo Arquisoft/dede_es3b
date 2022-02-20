@@ -22,3 +22,5 @@ Motivate what you have decided and why you decided that way,
 based upon your problem statement, the quality goals and key constraints.
 Refer to details in the following sections.
 ****
+
+In the future, here will be the technologies used, the top-level decomposition of the system, the quality goals and the organizational decisions
