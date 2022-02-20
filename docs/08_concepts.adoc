@@ -54,7 +54,9 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 
 image:UmlDiagram.png["Example UML Diagram"]
 
-
+* *User*: will represent the client that uses the application. His main information will be stored for buying in the store.
+* *Administrator*: could do changes in the application.
+* *POD*: will store the individual information of each user as a repository following the SOLID specifications.
 
 === _<Concept 2>_
 
