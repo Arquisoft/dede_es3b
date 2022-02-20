@@ -30,3 +30,10 @@ Using normal SQL database like HSQLDB for this project is a good choice consider
 
 .Decision
 Use MERN as teh project structure.
+
+=== Using POD
+.Problem
+We need that the users allow the application to access to their information.
+
+.Decision
+We will use the user´s PODs to access to their information.
