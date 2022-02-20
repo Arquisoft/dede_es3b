@@ -8,6 +8,7 @@ Decentraliced Delivery or DeDe is a new, decentralized, and open-source delivery
 * Delviering the products to the customers
 * Providing a secure and private data management system
 
+
 === Requirements Overview
 
 [role="arc42help"]
