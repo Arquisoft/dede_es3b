@@ -5,10 +5,10 @@
 
 [role="arc42help"]
 
+****
 .Content
 Decomposition of the code structured by levels, showing its internal dependencies.
 
-***
 This view is mandatory for every architecture documentation.
 In analogy to a house this is the _floor plan_.
 
@@ -32,6 +32,8 @@ Thus it contains the white box description of selected building blocks of level 
 
 *Level 3* zooms into selected building blocks of level 2, and so on.
 ****
+
+Decomposition of the code structured by levels, showing its internal dependencies.
 
 === Whitebox Overall System
 
