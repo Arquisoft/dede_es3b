@@ -3,9 +3,8 @@
 
 == Deployment View
 
-[role="arc42help"]
 
-image::images/DeploymentView.png[Deployment View]
+image:DeploymentView.png[Deployment View]
 
 === Elements
 [cols="1,1"]
@@ -14,6 +13,10 @@ image::images/DeploymentView.png[Deployment View]
 
 |DEDE development
 |Where DEDE development takes place, standard computer with REACT and Node.
+
+|DEDE database
+|A MONGO Database deployed on a docker container.
+
 
 |Device
 |A host to React, normally the same computer as development
