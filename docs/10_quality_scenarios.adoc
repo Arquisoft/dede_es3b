@@ -2,12 +2,8 @@
 == Quality Requirements
 
 === Quality Tree
+image:qualityTree.png[Quality Tree]
 
-[role="arc42help"]
-****
-image::images/qualityTree.png[Quality Tree]
-
-****
 
 === Quality Scenarios
 
