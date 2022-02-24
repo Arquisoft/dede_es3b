@@ -14,3 +14,13 @@ This table explains the main actors that will interact with the application.
 |Administrator| You will have access to the application, that is, you will be able to manage everything necessary for the proper functioning of the store.
 |===
 
+image:Section5Diagram.png["Whtite box diagram"]
+
+=== Blackbox descriptions of Overall System
+
+|===
+|Name| Description
+|MongoDB| Database manager that will be responsible for providing the information to the application
+|SOLID| The client will have a POD with his information and he´s going to allow the application to acced to his information 
+|DeDeportes user interface| User interface the client will interact with 
+|===
