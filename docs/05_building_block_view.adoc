@@ -3,7 +3,7 @@
 
 == Building Block View
 
-This section talks about decomposition of the code structured by levels, showing its internal dependencies.
+Decomposition of the code structured by levels, showing its internal dependencies.
 
 === Whitebox Overall System
 This table explains the main actors that will interact with the application.
