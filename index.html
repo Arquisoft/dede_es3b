@@ -493,6 +493,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_using_a_nonsql_database_for_saving_data">9.1. Using a nonSQL database for saving data.</a></li>
 <li><a href="#_using_pod">9.2. Using POD</a></li>
+<li><a href="#_using_a_local_database_at_the_beginning_and_then_insert_it_into_the_project">9.3. Using a local database at the beginning and then insert it into the project</a></li>
+<li><a href="#_choosing_the_language_well_use_in_the_documnetation">9.4. Choosing the language we´ll use in the documnetation</a></li>
 </ul>
 </li>
 <li><a href="#section-quality-scenarios">10. Quality Requirements</a>
@@ -1347,44 +1349,6 @@ on this list.</p>
 <div class="sect1">
 <h2 id="section-design-decisions">9. Design Decisions</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<div class="title">Contents</div>
-<p>Important, expensive, large scale or risky architecture decisions including rationals.
-With "decisions" we mean selecting one alternative based on given criteria.</p>
-</div>
-<div class="paragraph">
-<p>Please use your judgement to decide whether an architectural decision should be documented
-here in this central section or whether you better document it locally
-(e.g. within the white box template of one building block).</p>
-</div>
-<div class="paragraph">
-<p>Avoid redundancy. Refer to section 4, where you already captured the most important decisions of your architecture.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>Stakeholders of your system should be able to comprehend and retrace your decisions.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>Various options:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>List or table, ordered by importance and consequences or:</p>
-</li>
-<li>
-<p>more detailed in form of separate sections per decision</p>
-</li>
-<li>
-<p>ADR (architecture decision record) for every important decision</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
 <div class="sect2">
 <h3 id="_using_a_nonsql_database_for_saving_data">9.1. Using a nonSQL database for saving data.</h3>
 <div class="paragraph">
@@ -1393,18 +1357,57 @@ here in this central section or whether you better document it locally
 </div>
 <div class="paragraph">
 <div class="title">Decision</div>
-<p>Use MERN as teh project structure.</p>
+<p>Use MERN as teh project structure. MongoDB used as the project database.</p>
+</div>
+<div class="paragraph">
+<div class="title">Status</div>
+<p>Accepted</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_using_pod">9.2. Using POD</h3>
 <div class="paragraph">
 <div class="title">Problem</div>
-<p>We need that the users allow the application to access to their information.</p>
+<p>In the project, the application needs to access the client information so it would be a good option to use SOLID to satisfy that need.</p>
 </div>
 <div class="paragraph">
 <div class="title">Decision</div>
-<p>We will use the user´s PODs to access to their information.</p>
+<p>We will use the user´s PODs. The client will give access to the application and then the app will access the client information.</p>
+</div>
+<div class="paragraph">
+<div class="title">Status</div>
+<p>Accepted</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_a_local_database_at_the_beginning_and_then_insert_it_into_the_project">9.3. Using a local database at the beginning and then insert it into the project</h3>
+<div class="paragraph">
+<div class="title">Problem</div>
+<p>Having the database included in the project from the beginning will make it difficult for us to develop it.</p>
+</div>
+<div class="paragraph">
+<div class="title">Decision</div>
+<p>To simplify the beginning of the project we will use a local database at the start.
+When the project progresses we will change the dynamics and add the database to the project.</p>
+</div>
+<div class="paragraph">
+<div class="title">Status</div>
+<p>Accepted</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_choosing_the_language_well_use_in_the_documnetation">9.4. Choosing the language we´ll use in the documnetation</h3>
+<div class="paragraph">
+<div class="title">Problem</div>
+<p>Another design decission is the language used in the project. To develop the documentation we have two options, we can write it in English or in Spanish.</p>
+</div>
+<div class="paragraph">
+<div class="title">Decision</div>
+<p>We have decided to carry out the documentation in English since in this way more people will be able to take charge of the project in a hypothetical future and understand what the project is about.</p>
+</div>
+<div class="paragraph">
+<div class="title">Status</div>
+<p>Accepted</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1471,38 +1474,6 @@ here in this central section or whether you better document it locally
 <div class="sect1">
 <h2 id="section-glossary">12. Glossary</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<div class="title">Contents</div>
-<p>The most important domain and technical terms that your stakeholders use when discussing the system.</p>
-</div>
-<div class="paragraph">
-<p>You can also see the glossary as source for translations if you work in multi-language teams.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>You should clearly define your terms, so that all stakeholders</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>have an identical understanding of these terms</p>
-</li>
-<li>
-<p>do not use synonyms and homonyms</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>A table with columns &lt;Term&gt; and &lt;Definition&gt;.</p>
-</div>
-<div class="paragraph">
-<p>Potentially more columns in case you need translations.</p>
-</div>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1516,12 +1487,20 @@ here in this central section or whether you better document it locally
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;Term-1&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;definition-1&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solid is a specification that allows people to securely store their data in data stores called Pods.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;Term-2&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;definition-2&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Personal containers to store data used by solid</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NoSQL-type database management system to be used during the creation of the web page</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is a JavaScript library that helps you create interactive user interfaces. It allows to create views and generate components easily and simply</p></td>
 </tr>
 </tbody>
 </table>
@@ -1550,7 +1529,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-24 12:44:42 +0100
+Last updated 2022-02-24 15:10:22 +0100
 </div>
 </div>
 </body>
