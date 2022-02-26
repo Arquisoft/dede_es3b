@@ -45,24 +45,25 @@ A potential (but not mandatory) structure for this section could be:
 
 Note: it might be difficult to assign individual concepts to one specific topic
 on this list.
-
-image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
 ****
 
+image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
 
 === Domain model
 
-image:UmlDiagram.png["Example UML Diagram"]
+DeDeportes will be based in the sale of sport products.
 
-* *User*: will represent the client that uses the application. His main information will be stored for buying in the store.
-* *Administrator*: could do changes in the application.
-* *POD*: will store the individual information of each user as a repository following the SOLID specifications.
+image:08-domainModel.png["UML Diagram"]
 
-=== _<Concept 2>_
+* *User:* will represent the client that uses the application. His main information will be stored for buying in the store.
+* *POD:* will store the individual information of each user as a repository following the SOLID specifications.
+* *Order:* will be an order of products of the store done by the user.
+* *Shopping cart:* will actualize the different products that the user wants to order. The user can add or delete products in the shopping cart.
+* *Product:* will be all the sport materials available to buy by all the users in the store.
+* *Credit Card:* each user can have more than one credit cards associated t buy in the store.
+* *Administrator:* could do changes in the application.
 
-_<explanation>_
-
-...
+=== User experience concepts
 
 === _<Concept n>_
 
