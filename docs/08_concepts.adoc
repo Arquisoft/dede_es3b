@@ -58,12 +58,16 @@ image:UmlDiagram.png["Example UML Diagram"]
 * *Administrator*: could do changes in the application.
 * *POD*: will store the individual information of each user as a repository following the SOLID specifications.
 
-=== _<Concept 2>_
+=== User Interface
 
-_<explanation>_
+The default user interface for DeDeportes is a Multiple Page Application written in TypeScript using React together with default Bootstrap and MUI templates.
 
-...
+For the POD login we use Solid authentication and the POD API.
 
-=== _<Concept n>_
+=== Security
 
-_<explanation>_
+DEDE offers security for its API endpoints only via HTTP basic access authentication. Also by using the POD API we can check the user's permissions and access only the resources that the user has given permissions.
+
+=== Internationalization
+
+Only supported language is English. There is no hook for doing internationalization in the frontend and there are no plans for creating one for now.
