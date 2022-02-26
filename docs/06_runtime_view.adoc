@@ -30,28 +30,24 @@ There are many notations for describing scenarios, e.g.
 
 ****
 
-=== <Runtime Scenario 1>
+=== Login
 
-
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
-
-It is possible to use a sequence diagram:
+1. User will choose Login in the home page.
+2. The user will be redirect to the Login page, where he has to fill the gaps with his information.
+3. These information will be sent to the Pod.
+4. The Pod will accept or not the data provided.
+5. If the data is right the user will be redirect to the home page.
+6. If the data is wrong the user will be sent again to the Login page.
 
 [plantuml,"Sequence diagram",png]
 ----
-actor Alice
-actor Bob
-database Pod as "Bob's Pod"
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-Alice  --> Pod: Store route
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+actor User
+participant "Home"
+participant "Login"
+database Pod
+User --> "Home": Login
+"Home" --> "Login": insertar datos
+"Login" --> Pod : validar datos
+Pod --> "Login": datos incorrectos
+Pod --> "Home": datos correctos
 ----
-=== <Runtime Scenario 2>
-
-=== ...
-
-=== <Runtime Scenario n>
