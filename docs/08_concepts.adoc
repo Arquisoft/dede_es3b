@@ -49,11 +49,13 @@ on this list.
 
 image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
 
-=== Domain model
-
-DeDeportes will be based in the sale of sport products.
+=== 8.1 Domain model
 
 image:08-domainModel.png["UML Diagram"]
+
+=== 8.2 Domain concepts
+
+DeDeportes will be based in the sale of sport products.
 
 * *User:* will represent the client that uses the application. His main information will be stored for buying in the store.
 * *POD:* will store the individual information of each user as a repository following the SOLID specifications.
@@ -62,9 +64,3 @@ image:08-domainModel.png["UML Diagram"]
 * *Product:* will be all the sport materials available to buy by all the users in the store.
 * *Credit Card:* each user can have more than one credit cards associated t buy in the store.
 * *Administrator:* could do changes in the application.
-
-=== User experience concepts
-
-=== _<Concept n>_
-
-_<explanation>_
