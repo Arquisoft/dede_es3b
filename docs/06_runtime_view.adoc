@@ -34,7 +34,7 @@ There are many notations for describing scenarios, e.g.
 
 1. User will choose Login in the home page.
 2. The user will be redirect to the Login page, where he has to fill the gaps with his information.
-3. These information will be sent to the Pod.
+3. This information will be sent to the Pod.
 4. The Pod will accept or not the data provided.
 5. If the data is right the user will be redirect to the home page.
 6. If the data is wrong the user will be sent again to the Login page.
@@ -46,8 +46,31 @@ participant "Home"
 participant "Login"
 database Pod
 User --> "Home": Login
-"Home" --> "Login": insertar datos
-"Login" --> Pod : validar datos
-Pod --> "Login": datos incorrectos
-Pod --> "Home": datos correctos
+"Home" --> "Login": insert data
+"Login" --> Pod : validate data
+Pod --> "Login": wrong data
+Pod --> "Home": right data
+----
+
+
+=== Sign up
+
+1. User will choose Sign up in the home page.
+2. The user will be redirect to the Sign up page, where he has to fill the gaps with his information.
+3. This information will be sent to the DataBase.
+4. If the data of the user is already in the data base, the user will be redirect to the Sign up page.
+5. If there isn't any user with the same data in the data base, it will be added and the user will be redirect to the home page.
+
+[plantuml,"Sequence diagram",png]
+----
+actor User
+participant "Home"
+participant "Sign up"
+database DataBase
+User --> "Home": Sign up
+"Home" --> "Sign up": insert data
+"Sign up" --> DataBase : validate data in DB
+DataBase --> "Sign up": user exists
+DataBase --> DataBase: add user
+DataBase --> "Home": right data, user added
 ----
