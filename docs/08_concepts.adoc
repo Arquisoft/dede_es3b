@@ -57,6 +57,7 @@ image:08-domainModel.png["UML Diagram"]
 
 DeDeportes will be based in the sale of sport products.
 
+=== User Interface
 * *User:* will represent the client that uses the application. His main information will be stored for buying in the store.
 * *POD:* will store the individual information of each user as a repository following the SOLID specifications.
 * *Order:* will be an order of products of the store done by the user.
@@ -64,3 +65,15 @@ DeDeportes will be based in the sale of sport products.
 * *Product:* will be all the sport materials available to buy by all the users in the store.
 * *Credit Card:* each user can have more than one credit cards associated t buy in the store.
 * *Administrator:* could do changes in the application.
+
+The default user interface for DeDeportes is a Multiple Page Application written in TypeScript using React together with default Bootstrap and MUI templates.
+
+For the POD login we use Solid authentication and the POD API.
+
+=== Security
+
+DEDE offers security for its API endpoints only via HTTP basic access authentication. Also by using the POD API we can check the user's permissions and access only the resources that the user has given permissions.
+
+=== Internationalization
+
+Only supported language is English. There is no hook for doing internationalization in the frontend and there are no plans for creating one for now.
