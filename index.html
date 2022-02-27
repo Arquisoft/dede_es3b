@@ -462,7 +462,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_technical_context">3.2. Technical Context</a></li>
 </ul>
 </li>
-<li><a href="#section-solution-strategy">4. Solution Strategy</a></li>
+<li><a href="#section-solution-strategy">4. Solution Strategy</a>
+<ul class="sectlevel2">
+<li><a href="#_4_1_technology_desisions">4.1. 4.1 Technology Desisions</a></li>
+<li><a href="#_4_2_quality_objectives">4.2. 4.2 Quality objectives</a></li>
+<li><a href="#_4_3_development_tools">4.3. 4.3 Development tools</a></li>
+<li><a href="#_4_4_organization">4.4. 4.4 Organization</a></li>
+</ul>
+</li>
 <li><a href="#section-building-block-view">5. Building Block View</a>
 <ul class="sectlevel2">
 <li><a href="#_whitebox_overall_system">5.1. Whitebox Overall System</a></li>
@@ -471,10 +478,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#section-runtime-view">6. Runtime View</a>
 <ul class="sectlevel2">
-<li><a href="#_runtime_scenario_1">6.1. &lt;Runtime Scenario 1&gt;</a></li>
-<li><a href="#_runtime_scenario_2">6.2. &lt;Runtime Scenario 2&gt;</a></li>
-<li><a href="#">6.3. &#8230;&#8203;</a></li>
-<li><a href="#_runtime_scenario_n">6.4. &lt;Runtime Scenario n&gt;</a></li>
+<li><a href="#_login">6.1. Login</a></li>
+<li><a href="#_sign_up">6.2. Sign up</a></li>
+<li><a href="#_get_the_content_of_the_shopping_cart">6.3. Get the content of the shopping cart</a></li>
 </ul>
 </li>
 <li><a href="#section-deployment-view">7. Deployment View</a>
@@ -484,9 +490,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#section-concepts">8. Cross-cutting Concepts</a>
 <ul class="sectlevel2">
-<li><a href="#_domain_model">8.1. Domain model</a></li>
-<li><a href="#_concept_2">8.2. <em>&lt;Concept 2&gt;</em></a></li>
-<li><a href="#_concept_n">8.3. <em>&lt;Concept n&gt;</em></a></li>
+<li><a href="#_8_1_domain_model">8.1. 8.1 Domain model</a></li>
+<li><a href="#_8_2_domain_concepts">8.2. 8.2 Domain concepts</a></li>
+<li><a href="#_8_3_development_concepts">8.3. 8.3 Development concepts</a></li>
+<li><a href="#_8_4_user_interface">8.4. 8.4 User Interface</a></li>
+<li><a href="#_8_5_security">8.5. 8.5 Security</a></li>
+<li><a href="#_8_6_internationalization">8.6. 8.6 Internationalization</a></li>
 </ul>
 </li>
 <li><a href="#section-design-decisions">9. Design Decisions</a>
@@ -503,7 +512,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_quality_scenarios">10.2. Quality Scenarios</a></li>
 </ul>
 </li>
-<li><a href="#section-technical-risks">11. Risks and Technical Debts</a></li>
+<li><a href="#section-technical-risks">11. Risks and Technical Debts</a>
+<ul class="sectlevel2">
+<li><a href="#_risks">11.1. Risks</a></li>
+</ul>
+</li>
 <li><a href="#section-glossary">12. Glossary</a></li>
 </ul>
 </div>
@@ -996,10 +1009,123 @@ Refer to details in the following sections.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_4_1_technology_desisions">4.1. 4.1 Technology Desisions</h3>
+<div class="sect3">
+<h4 id="_4_1_1_back_end">4.1.1. 4.1.1 Back-end</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Solid:</strong> Gives the user the choice of the data that he wants to share with the application</p>
+</li>
+<li>
+<p><strong>MVC:</strong> The arquitecture that we will be using for the project structure</p>
+</li>
+<li>
+<p><strong>MongoDB:</strong> The type of data base that we will be using for the application</p>
+</li>
+<li>
+<p><strong>MongoDB Atlas:</strong> Is where the data base will be deployed</p>
+</li>
+<li>
+<p><strong>Docker:</strong> Will be used for the deployment of the application</p>
+</li>
+<li>
+<p><strong>Heroku:</strong> Will be used for the deployment of the application</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_4_1_2_front_end">4.1.2. 4.1.2 Front-end</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>React:</strong> It&#8217;s a JavaScript library used for doing interfaces. It&#8217;s based on components.</p>
+</li>
+<li>
+<p><strong>Bootstrap Studio:</strong> It&#8217;s an app for designing and prototyping websites.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_2_quality_objectives">4.2. 4.2 Quality objectives</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Quality objectives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>How to obtain them</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Privacy</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We only going to store the location of the users to calculate the shipping cost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Usability</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We are going to design easy-to-use user interfaces to help nobel and experimented users</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Testability</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We are going to do some test to be sure that the application works succcessfuly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Performance</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We are going to use technologies that helps the application performance</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_4_3_development_tools">4.3. 4.3 Development tools</h3>
 <div class="paragraph">
-<p>In the future, here will be the technologies used, the top-level decomposition of the system, the quality goals and the organizational decisions</p>
+<p>While we develop the proyect we will use the following tools:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>GitHub:</strong> This platform will help to follow a control of the different versions implemented by each member of the team. We can check as well the work pushed by other members using the pull request to master, to make sure that there are no errors.</p>
+</li>
+<li>
+<p><strong>Visual Studio Code:</strong> We will use this as our source code editor as it has some plugins available to download that will help us in our work of develop this proyect.</p>
+</li>
+<li>
+<p><strong>GitKraken:</strong> This app allows us to change between the different branches easily and shows the commits done in each branches by the members.</p>
+</li>
+<li>
+<p><strong>Docker:</strong> This app makes containers that allows our proyect to be deployed in any machine with Docker installed.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_4_organization">4.4. 4.4 Organization</h3>
+<div class="paragraph">
+<p>We will use different medias to get in touch and discuss decitions. We have choosen the following ones:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>WhatsApp:</strong> We can set up a meeting whith messages by this media.</p>
+</li>
+<li>
+<p><strong>Discord:</strong> Will let us to make weekly meetings.</p>
+</li>
+<li>
+<p><strong>Issues:</strong> Used to record the work that each memeber has to do.</p>
+</li>
+<li>
+<p><strong>Wikis:</strong> Used to record the decitions made in each meeting by the members.</p>
+</li>
+</ul>
 </div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1128,38 +1254,96 @@ You will mainly capture scenarios in your documentation to communicate your arch
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_runtime_scenario_1">6.1. &lt;Runtime Scenario 1&gt;</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><em>&lt;insert runtime diagram or textual description of the scenario&gt;</em></p>
-</li>
-<li>
-<p><em>&lt;insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.&gt;</em></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The runtime view describes the possible interactions of the different actors with the application.</p>
 </div>
 <div class="paragraph">
-<p>It is possible to use a sequence diagram:</p>
+<p>This will help us understand how the elements of the application interact at runtime.
+The next schemes are some scenarios of our sport online shop.</p>
+</div>
+<div class="sect2">
+<h3 id="_login">6.1. Login</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Client will choose Login in the home page.</p>
+</li>
+<li>
+<p>The client will be redirect to the Login page, where he has to fill the gaps with his information.</p>
+</li>
+<li>
+<p>This information will be sent to the Pod.</p>
+</li>
+<li>
+<p>The Pod will accept or not the data provided.</p>
+</li>
+<li>
+<p>If the data is right the client will be redirect to the home page.</p>
+</li>
+<li>
+<p>If the data is wrong the client will be sent again to the Login page.</p>
+</li>
+</ol>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Sequence%20diagram.png" alt="Sequence diagram" width="332" height="343">
+<img src="./images/Sequence%20diagram.png" alt="Sequence diagram" width="289" height="343">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_runtime_scenario_2">6.2. &lt;Runtime Scenario 2&gt;</h3>
-
+<h3 id="_sign_up">6.2. Sign up</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Client will choose Sign up in the home page.</p>
+</li>
+<li>
+<p>The client will be redirect to the Sign up page, where he has to fill the gaps with his information.</p>
+</li>
+<li>
+<p>This information will be sent to the DataBase.</p>
+</li>
+<li>
+<p>If the data of the client is already in the data base, the client will be redirect to the Sign up page.</p>
+</li>
+<li>
+<p>If there isn&#8217;t any client with the same data in the data base, it will be added and the client will be redirect to the home page.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Sequence%20diagram.png" alt="Sequence diagram" width="380" height="387">
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="">6.3. &#8230;&#8203;</h3>
-
+<h3 id="_get_the_content_of_the_shopping_cart">6.3. Get the content of the shopping cart</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Client will login in the application.</p>
+</li>
+<li>
+<p>The client will try to see the content of his shopping cart.</p>
+</li>
+<li>
+<p>The application is going to ask the database for that information.</p>
+</li>
+<li>
+<p>The database will return the list of products.</p>
+</li>
+<li>
+<p>Finally, the application will show the list to the client.</p>
+</li>
+</ol>
 </div>
-<div class="sect2">
-<h3 id="_runtime_scenario_n">6.4. &lt;Runtime Scenario n&gt;</h3>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Sequence%20diagram.png" alt="Sequence diagram" width="522" height="343">
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1304,43 +1488,82 @@ cohesive specification of such concepts.</p>
 <p>Note: it might be difficult to assign individual concepts to one specific topic
 on this list.</p>
 </div>
+</div>
+</div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/08-Crosscutting-Concepts-Structure-EN.png" alt="Possible topics for crosscutting concepts"></span></p>
 </div>
+<div class="sect2">
+<h3 id="_8_1_domain_model">8.1. 8.1 Domain model</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./images/08-domainModel.png" alt="UML Diagram"></span></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_domain_model">8.1. Domain model</h3>
+<h3 id="_8_2_domain_concepts">8.2. 8.2 Domain concepts</h3>
 <div class="paragraph">
-<p><span class="image"><img src="./images/UmlDiagram.png" alt="Example UML Diagram"></span></p>
+<p>DeDeportes will be based in the sale of sport products.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>User</strong>: will represent the client that uses the application. His main information will be stored for buying in the store.</p>
+<p><strong>User:</strong> will represent the client that uses the application. His main information will be stored for buying in the store.</p>
 </li>
 <li>
-<p><strong>Administrator</strong>: could do changes in the application.</p>
+<p><strong>POD:</strong> will store the individual information of each user as a repository following the SOLID specifications.</p>
 </li>
 <li>
-<p><strong>POD</strong>: will store the individual information of each user as a repository following the SOLID specifications.</p>
+<p><strong>Order:</strong> will be an order of products of the store done by the user.</p>
+</li>
+<li>
+<p><strong>Shopping cart:</strong> will actualize the different products that the user wants to order. The user can add or delete products in the shopping cart.</p>
+</li>
+<li>
+<p><strong>Product:</strong> will be all the sport materials available to buy by all the users in the store.</p>
+</li>
+<li>
+<p><strong>Credit Card:</strong> each user can have more than one credit cards associated t buy in the store.</p>
+</li>
+<li>
+<p><strong>Administrator:</strong> could do changes in the application.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_concept_2">8.2. <em>&lt;Concept 2&gt;</em></h3>
+<h3 id="_8_3_development_concepts">8.3. 8.3 Development concepts</h3>
 <div class="paragraph">
-<p><em>&lt;explanation&gt;</em></p>
+<p>React is a JavaScript-based library, used for doing user interfaces. Facebook and open-source developers run it.</p>
 </div>
 <div class="paragraph">
-<p>&#8230;&#8203;</p>
+<p>MongoDb will be used to store the products, the users, the users' orders and shopping carts.</p>
+</div>
+<div class="paragraph">
+<p>Node.js is the package manager choosen to build the application.</p>
+</div>
+<div class="paragraph">
+<p>For the time being we haven&#8217;t decided what are we using to make tests.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_concept_n">8.3. <em>&lt;Concept n&gt;</em></h3>
+<h3 id="_8_4_user_interface">8.4. 8.4 User Interface</h3>
 <div class="paragraph">
-<p><em>&lt;explanation&gt;</em></p>
+<p>The default user interface for DeDeportes is a Multiple Page Application written in TypeScript using React together with default Bootstrap and MUI templates.</p>
+</div>
+<div class="paragraph">
+<p>For the POD login we use Solid authentication and the POD API.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_8_5_security">8.5. 8.5 Security</h3>
+<div class="paragraph">
+<p>DEDE offers security for its API endpoints only via HTTP basic access authentication. Also by using the POD API we can check the user&#8217;s permissions and access only the resources that the user has given permissions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_8_6_internationalization">8.6. 8.6 Internationalization</h3>
+<div class="paragraph">
+<p>Only supported language is English. There is no hook for doing internationalization in the frontend and there are no plans for creating one for now.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1424,7 +1647,7 @@ When the project progresses we will change the dynamics and add the database to 
 </div>
 <div class="sect2">
 <h3 id="_quality_scenarios">10.2. Quality Scenarios</h3>
-<div class="sect3 arc42help">
+<div class="sect3">
 <h4 id="_security">10.2.1. Security</h4>
 <div class="paragraph">
 <p>By saving on the SOLID PODs the information of the user and also by only having esential info on the database.</p>
@@ -1449,26 +1672,48 @@ When the project progresses we will change the dynamics and add the database to 
 <div class="sect1">
 <h2 id="section-technical-risks">11. Risks and Technical Debts</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<div class="title">Contents</div>
-<p>A list of identified technical risks or technical debts, ordered by priority</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.)</p>
-</div>
-<div class="paragraph">
-<p>This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.</p>
-</div>
-</div>
-</div>
+<div class="sect2">
+<h3 id="_risks">11.1. Risks</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Risk</th>
+<th class="tableblock halign-left valign-top">Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GitHub</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Despite having already worked on several subjects with this tool, there is still a part of ignorance that can lead to conflict resolutions.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For many of the development team it will be their first time working with it. So we will have to spend time learning the basics concepts.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the first project where we have to introduce SOLID principles. So it will take time to get a good grasp of the technique.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Until now we have always used other types of database management systems. MongoDB is a new challenge that the team will face. In this case, having used databases in many other subjects, the learning time may be less</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Security</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keeping customer information secure is a vitally important activity. For this, we must find out how to make a security and authentication system as effective as possible.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Team</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Working in teams with a certain number of people is never a simple task. The best solution is to hold weekly meetings to get to know each other and have constant communication to solve any problem that arises together.</p></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 <div class="sect1">
