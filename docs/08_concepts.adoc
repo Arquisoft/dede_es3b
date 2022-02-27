@@ -45,25 +45,46 @@ A potential (but not mandatory) structure for this section could be:
 
 Note: it might be difficult to assign individual concepts to one specific topic
 on this list.
-
-image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
 ****
 
+image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
 
-=== Domain model
+=== 8.1 Domain model
 
-image:UmlDiagram.png["Example UML Diagram"]
+image:08-domainModel.png["UML Diagram"]
 
-* *User*: will represent the client that uses the application. His main information will be stored for buying in the store.
-* *Administrator*: could do changes in the application.
-* *POD*: will store the individual information of each user as a repository following the SOLID specifications.
+=== 8.2 Domain concepts
 
-=== _<Concept 2>_
+DeDeportes will be based in the sale of sport products.
 
-_<explanation>_
+* *User:* will represent the client that uses the application. His main information will be stored for buying in the store.
+* *POD:* will store the individual information of each user as a repository following the SOLID specifications.
+* *Order:* will be an order of products of the store done by the user.
+* *Shopping cart:* will actualize the different products that the user wants to order. The user can add or delete products in the shopping cart.
+* *Product:* will be all the sport materials available to buy by all the users in the store.
+* *Credit Card:* each user can have more than one credit cards associated t buy in the store.
+* *Administrator:* could do changes in the application.
 
-...
+=== 8.3 Development concepts
 
-=== _<Concept n>_
+React is a JavaScript-based library, used for doing user interfaces. Facebook and open-source developers run it.
 
-_<explanation>_
+MongoDb will be used to store the products, the users, the users' orders and shopping carts.
+
+Node.js is the package manager choosen to build the application.
+
+For the time being we haven't decided what are we using to make tests.
+
+=== 8.4 User Interface
+
+The default user interface for DeDeportes is a Multiple Page Application written in TypeScript using React together with default Bootstrap and MUI templates.
+
+For the POD login we use Solid authentication and the POD API.
+
+=== 8.5 Security
+
+DEDE offers security for its API endpoints only via HTTP basic access authentication. Also by using the POD API we can check the user's permissions and access only the resources that the user has given permissions.
+
+=== 8.6 Internationalization
+
+Only supported language is English. There is no hook for doing internationalization in the frontend and there are no plans for creating one for now.

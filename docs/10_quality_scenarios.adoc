@@ -7,7 +7,6 @@ image:qualityTree.png[Quality Tree]
 
 === Quality Scenarios
 
-[role="arc42help"]
 
 ==== Security
 By saving on the SOLID PODs the information of the user and also by only having esential info on the database.
