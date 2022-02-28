@@ -44,7 +44,7 @@ The next schemes are some scenarios of our sport online shop.
 5. If the data is right the client will be redirect to the home page.
 6. If the data is wrong the client will be sent again to the Login page.
 
-[plantuml,"Sequence diagram",png]
+[plantuml,"Sequence diagram-Login",png]
 ----
 actor Client
 participant "Home"
@@ -66,7 +66,7 @@ Pod --> "Home": right data
 4. If the data of the client is already in the data base, the client will be redirect to the Sign up page.
 5. If there isn't any client with the same data in the data base, it will be added and the client will be redirect to the home page.
 
-[plantuml,"Sequence diagram",png]
+[plantuml,"Sequence diagram-Sign up",png]
 ----
 actor Client
 participant "Home"
@@ -89,7 +89,7 @@ DataBase --> "Home": right data, client added
 4. The database will return the list of products.
 5. Finally, the application will show the list to the client.
 
-[plantuml,"Sequence diagram",png]
+[plantuml,"Sequence diagram-Shopping cart",png]
 ----
 actor Client
 participant "DeDeportes"
