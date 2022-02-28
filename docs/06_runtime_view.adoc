@@ -30,22 +30,27 @@ There are many notations for describing scenarios, e.g.
 
 ****
 
+The runtime view describes the possible interactions of the different actors with the application.
+
+This will help us understand how the elements of the application interact at runtime.
+The next schemes are some scenarios of our sport online shop.
+
 === Login
 
-1. User will choose Login in the home page.
-2. The user will be redirect to the Login page, where he has to fill the gaps with his information.
+1. Client will choose Login in the home page.
+2. The client will be redirect to the Login page, where he has to fill the gaps with his information.
 3. This information will be sent to the Pod.
 4. The Pod will accept or not the data provided.
-5. If the data is right the user will be redirect to the home page.
-6. If the data is wrong the user will be sent again to the Login page.
+5. If the data is right the client will be redirect to the home page.
+6. If the data is wrong the client will be sent again to the Login page.
 
 [plantuml,"Sequence diagram",png]
 ----
-actor User
+actor Client
 participant "Home"
 participant "Login"
 database Pod
-User --> "Home": Login
+Client --> "Home": Login
 "Home" --> "Login": insert data
 "Login" --> Pod : validate data
 Pod --> "Login": wrong data
@@ -55,22 +60,43 @@ Pod --> "Home": right data
 
 === Sign up
 
-1. User will choose Sign up in the home page.
-2. The user will be redirect to the Sign up page, where he has to fill the gaps with his information.
+1. Client will choose Sign up in the home page.
+2. The client will be redirect to the Sign up page, where he has to fill the gaps with his information.
 3. This information will be sent to the DataBase.
-4. If the data of the user is already in the data base, the user will be redirect to the Sign up page.
-5. If there isn't any user with the same data in the data base, it will be added and the user will be redirect to the home page.
+4. If the data of the client is already in the data base, the client will be redirect to the Sign up page.
+5. If there isn't any client with the same data in the data base, it will be added and the client will be redirect to the home page.
 
 [plantuml,"Sequence diagram",png]
 ----
-actor User
+actor Client
 participant "Home"
 participant "Sign up"
 database DataBase
-User --> "Home": Sign up
+Client --> "Home": Sign up
 "Home" --> "Sign up": insert data
 "Sign up" --> DataBase : validate data in DB
-DataBase --> "Sign up": user exists
-DataBase --> DataBase: add user
-DataBase --> "Home": right data, user added
+DataBase --> "Sign up": client exists
+DataBase --> DataBase: add client
+DataBase --> "Home": right data, client added
+----
+
+
+=== Get the content of the shopping cart
+
+1. Client will login in the application.
+2. The client will try to see the content of his shopping cart.
+3. The application is going to ask the database for that information.
+4. The database will return the list of products.
+5. Finally, the application will show the list to the client.
+
+[plantuml,"Sequence diagram",png]
+----
+actor Client
+participant "DeDeportes"
+database Database
+--> Client: login
+Client --> "DeDeportes": access to his shopping cart
+"DeDeportes" --> "Database": request the content of the shopping cart
+"Database" --> DeDeportes: returns the list of products
+"DeDeportes"--> Client: show the cart content
 ----
