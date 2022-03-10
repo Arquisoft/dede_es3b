@@ -48,15 +48,18 @@ const productos = [
     }
 ]
 
-function ProductList(): JSX.Element {
-    return (
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-            {productos.map((p, i) => (
-                <Grid item xs={4} sm={4} md={4} key={i}>
-                    <ProductItem id={p.id} category={p.category} name={p.name} description={p.description} price={p.price}></ProductItem>
-                </Grid>
-            ))}
-        </Grid>);
+type Cart = {
+    add: (clickedItem: Product)=>void;
 }
+
+const ProductList: React.FC<Cart> = ({add}) => (
+    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        {productos.map((p, i) => (
+            <Grid item xs={4} sm={4} md={4} key={i}>
+                <ProductItem id={p.id} category={p.category} name={p.name} description={p.description} price={p.price} add = {add}></ProductItem>
+            </Grid>
+        ))}
+    </Grid>);
+
 
 export default ProductList;
