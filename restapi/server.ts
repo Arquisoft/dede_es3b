@@ -3,10 +3,12 @@ import cors from 'cors';
 import bp from 'body-parser';
 import promBundle from 'express-prom-bundle';
 import api from "./api"; 
+//import db from "./db";
 
 const app: Application = express();
 const port: number = 5000;
 
+const db= require('./db/db')
 const options: cors.CorsOptions = {
   origin: ['http://localhost:3000']
 };
