@@ -49,11 +49,11 @@ on this list.
 
 image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
 
-=== 8.1 Domain model
+=== Domain model
 
 image:08-domainModel.png["UML Diagram"]
 
-=== 8.2 Domain concepts
+=== Domain concepts
 
 DeDeportes will be based in the sale of sport products.
 
@@ -65,7 +65,7 @@ DeDeportes will be based in the sale of sport products.
 * *Credit Card:* each user can have more than one credit cards associated t buy in the store.
 * *Administrator:* could do changes in the application.
 
-=== 8.3 Development concepts
+=== Development concepts
 
 React is a JavaScript-based library, used for doing user interfaces. Facebook and open-source developers run it.
 
@@ -75,16 +75,16 @@ Node.js is the package manager choosen to build the application.
 
 For the time being we haven't decided what are we using to make tests.
 
-=== 8.4 User Interface
+=== User Interface
 
 The default user interface for DeDeportes is a Multiple Page Application written in TypeScript using React together with default Bootstrap and MUI templates.
 
 For the POD login we use Solid authentication and the POD API.
 
-=== 8.5 Security
+=== Security
 
 DEDE offers security for its API endpoints only via HTTP basic access authentication. Also by using the POD API we can check the user's permissions and access only the resources that the user has given permissions.
 
-=== 8.6 Internationalization
+=== Internationalization
 
 Only supported language is English. There is no hook for doing internationalization in the frontend and there are no plans for creating one for now.
