@@ -14,6 +14,51 @@ import ProductCartList from './components/carrito/ProductCartList';
 import { Footer } from './components/generalComponents/Footer';
 import { Product } from './shared/shareddtypes'
 
+const productos = [
+  {
+      id: '1',
+      category: 'Ropa',
+      name: 'Chaqueta',
+      description: 'Para abrigarse',
+      price: 90
+  },
+  {
+      id: '2',
+      category: 'Material',
+      name: 'Pelota',
+      description: 'Para jugar',
+      price: 2
+  },
+  {
+      id: '3',
+      category: 'Material',
+      name: 'Pala de pádel',
+      description: 'Para jugar al pádel',
+      price: 265
+  },
+  {
+      id: '4',
+      category: 'Ropa',
+      name: 'Pantalón',
+      description: 'Para vestirse',
+      price: 45
+  },
+  {
+      id: '5',
+      category: 'Material',
+      name: 'Balón',
+      description: 'Para jugar al furbo',
+      price: 25
+  },
+  {
+      id: '6',
+      category: 'Material',
+      name: 'Guantes',
+      description: 'Para parar golitos',
+      price: 34
+  }
+]
+
 function App(): JSX.Element {
 
   const [users, setUsers] = useState<User[]>([]);
@@ -40,7 +85,7 @@ function App(): JSX.Element {
   return (
     <>
       <Container>
-        <ProductList add={addToCart}></ProductList>
+        <ProductList props={carrito} add={addToCart}></ProductList>
         <ProductCartList productos={carrito}></ProductCartList>
         <Footer></Footer>
       </Container>
