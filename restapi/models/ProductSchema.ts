@@ -1,5 +1,4 @@
 import { model, Schema} from 'mongoose'
-import { InterfaceProduct } from '../interfaces/InterfaceProduct';
 
 const productSchema = new Schema(
     {
@@ -24,5 +23,12 @@ const productSchema = new Schema(
     }
 )
 
-const Product = model<InterfaceProduct>("Product", productSchema);
+productSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id
+        delete returnedObject._id
+    }
+})
+
+const Product = model("Product", productSchema);
 export default Product;
