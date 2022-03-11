@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,6 +11,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Drawer } from '@material-ui/core';
+import { ProductCart } from '../../shared/shareddtypes';
+import ProductCartList from '../carrito/ProductCartList';
 
 const pages = ['Deportes', 'Material', 'Ropa'];
 
@@ -18,13 +21,18 @@ const optionsDeportes = ['Pádel', 'Fútbol', 'Baloncesto'];
 const optionsMaterial = ['Accesorios', 'Calzado', 'Pelotas'];
 const optionsRopa = ['Camisetas', 'Pantalones', 'Chaquetas'];
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+type Cart = {
+    props: ProductCart[];
+    remove: (id: string)=>void;
+}
 
-const NavBar = () => {
+const NavBar: React.FC<Cart> = ({props,remove}) => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElNavDeportes, setAnchorElNavDeportes] = React.useState<null | HTMLElement>(null);
     const [anchorElNavMaterial, setAnchorElNavMaterial] = React.useState<null | HTMLElement>(null);
     const [anchorElNavRopa, setAnchorElNavRopa] = React.useState<null | HTMLElement>(null);
+
+    const [isOpened, setIsOpened] = useState(false);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -207,11 +215,13 @@ const NavBar = () => {
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Ver carrito">
-                            <IconButton sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                            <IconButton sx={{ p: 0 }} onClick={() => setIsOpened(true)}>
                             </IconButton>
                         </Tooltip>
-
+                        
+                        <Drawer anchor='right' open={isOpened} onClose={() => setIsOpened(false)}>
+                            <ProductCartList productos={props} remove={remove}></ProductCartList>
+                        </Drawer>
                     </Box>
                 </Toolbar>
             </Container>

@@ -10,7 +10,6 @@ import { User } from './shared/shareddtypes';
 import './App.css';
 import Authenticator from './authentication/Authenticator';
 import ProductList from './components/products/ProductList';
-import ProductCartList from './components/carrito/ProductCartList';
 import { Footer } from './components/generalComponents/Footer';
 import { Product } from './shared/shareddtypes'
 import { ProductCart } from './shared/shareddtypes'
@@ -103,9 +102,8 @@ function App(): JSX.Element {
   return (
     <>
       <Container>
-        <NavBar></NavBar>
+        <NavBar props={carrito} remove={removeFromCart}></NavBar>
         <ProductList props={productos} add={addToCart}></ProductList>
-        <ProductCartList productos={carrito} remove={removeFromCart}></ProductCartList>
         <Footer></Footer>
       </Container>
     </>
