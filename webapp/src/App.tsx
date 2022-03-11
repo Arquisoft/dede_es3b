@@ -13,6 +13,7 @@ import ProductList from './components/products/ProductList';
 import ProductCartList from './components/carrito/ProductCartList';
 import { Footer } from './components/generalComponents/Footer';
 import { Product } from './shared/shareddtypes'
+import { ProductCart } from './shared/shareddtypes'
 
 const productos = [
   {
@@ -71,22 +72,38 @@ function App(): JSX.Element {
     refreshUserList();
   }, []);
 
-  const [carrito, setCarrito] = useState([] as Product[]);
+  const [carrito, setCarrito] = useState([] as ProductCart[]);
 
   const addToCart = (clickedItem: Product) => {
     setCarrito( estadoActual => {
       const estaEnElCarrito = estadoActual.find(i => i.id === clickedItem.id);
       if(!estaEnElCarrito)
-        return [...estadoActual,{...clickedItem}];
+        return [...estadoActual,{...clickedItem, quantity: 1}];
       return [...estadoActual];
     });
   }
 
+  const removeFromCart = (id: string) => {
+    setCarrito( estadoActual =>(
+        estadoActual.reduce(
+          (coleccion, p)=> {
+            if(p.id===id)
+              return coleccion;
+            return [...coleccion, p];
+          }
+          , [] as ProductCart[]
+        )
+      )
+    )
+  }
+
+  const getElementosCarrito = () => { return carrito.length; }
+
   return (
     <>
       <Container>
-        <ProductList props={carrito} add={addToCart}></ProductList>
-        <ProductCartList productos={carrito}></ProductCartList>
+        <ProductList props={productos} add={addToCart}></ProductList>
+        <ProductCartList productos={carrito} remove={removeFromCart}></ProductCartList>
         <Footer></Footer>
       </Container>
     </>

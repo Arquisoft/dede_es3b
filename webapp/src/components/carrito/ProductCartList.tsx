@@ -50,14 +50,14 @@ import ProductCartItem from './ProductCartItem';
 // ]
 
 type Cart = {
-    productos: Product[];
+    productos: ProductCart[];
+    remove: (id: string)=>void;
 }
 
-const ProductCartList: React.FC<Cart>= ({productos}) => (
+const ProductCartList: React.FC<Cart>= ({productos, remove}) => (
         <Grid container direction="column" justifyContent="flex-end" alignItems="center">
             {productos.map((p, i) => (
-                <ProductCartItem id={p.id} category={p.category} name={p.name} description={p.description} price={p.price} quantity={1}></ProductCartItem>
-                
+                <ProductCartItem props={p} remove={remove}></ProductCartItem>
             ))}
         </Grid>);
 

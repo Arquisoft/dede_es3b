@@ -3,11 +3,12 @@ import { Button, Card, CardActions, CardContent, CardMedia, Typography, Input } 
 import { Product, ProductCart } from '../../shared/shareddtypes';
 import Grid from '@mui/material/Grid';
 
+type Cart = {
+    props: ProductCart;
+    remove: (id: string)=>void;
+}
 
-
-function ProductCartItem(props: ProductCart) {
-    const { id, category, name, description, price, quantity } = props
-
+const ProductCartItem: React.FC<Cart> = ({props, remove}) => {
     return (
         <Card sx={{ maxWidth: 600 }}>
             <Grid container direction="row" justifyContent="space-between" alignItems="center">
@@ -39,7 +40,7 @@ function ProductCartItem(props: ProductCart) {
                             <div>{props.quantity}</div>
                         </div>
                         <Button size="small" onClick={()=>{props.quantity-=1}}>-</Button>
-                        <Button size="small">Remove</Button>
+                        <Button size="small" onClick={()=>{remove(props.id)}}>Remove</Button>
                     </CardActions>
                 </Grid>
             
