@@ -1,10 +1,7 @@
-import { useSession, CombinedDataProvider, Image, LogoutButton, Text,useThing  } from "@inrupt/solid-ui-react";
-import { Button, Card, CardActionArea, CardContent, Container, Typography } from "@material-ui/core";
-import { FOAF,RDF, VCARD } from "@inrupt/lit-generated-vocab-common";
-import * as url from "url";
-import {
-  getStringNoLocale,   
-} from "@inrupt/solid-client";
+import { useSession, CombinedDataProvider, LogoutButton, Text  } from "@inrupt/solid-ui-react";
+import { Button, Card, CardContent, Container, Typography } from "@material-ui/core";
+import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
+
 
 
 
@@ -12,10 +9,7 @@ import {
 const ProfileViewer = () => {
   const { session } = useSession();
 
-  const datasetIri = session.info.webId ;
-  const thingIri = VCARD.Address.iri.value;
-  
-  const { thing, error } = useThing(datasetIri, thingIri);
+
  
   
   return (
@@ -32,16 +26,9 @@ const ProfileViewer = () => {
             <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
               <Text property={VCARD.organization_name.iri.value} />
             </Typography>
-          </CardContent>
-
-          <CardActionArea style={{ justifyContent: "center", display: "flex" }}>
-            <Image property={VCARD.hasPhoto.iri.value} width={480} />
-          </CardActionArea>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+             <Typography gutterBottom variant="h5" component="h2">
               {/* get address */}
-              <Text property={VCARD.note.iri.value} />
-            
+              <Text id= "direction" property={VCARD.note.iri.value} />
             </Typography>
           </CardContent>
         </Card>
