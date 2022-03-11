@@ -11,6 +11,7 @@ import './App.css';
 import Authenticator from './authentication/Authenticator';
 import ProductList from './components/products/ProductList';
 import { Footer } from './components/generalComponents/Footer';
+import NavBar from './components/generalComponents/NavBar';
 
 function App(): JSX.Element {
 
@@ -27,6 +28,7 @@ function App(): JSX.Element {
   return (
     <>
       <Container>
+        <NavBar></NavBar>
         <ProductList></ProductList>
         <Footer></Footer>
       </Container>
