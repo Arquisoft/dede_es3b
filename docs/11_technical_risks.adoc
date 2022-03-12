@@ -1,7 +1,6 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 
-
 === Risks
 [options="header"]
 |===
@@ -13,3 +12,5 @@
 |Security|Keeping customer information secure is a vitally important activity. For this, we must find out how to make a security and authentication system as effective as possible.
 |Team|Working in teams with a certain number of people is never a simple task. The best solution is to hold weekly meetings to get to know each other and have constant communication to solve any problem that arises together.
 |===
+=== Tecnical Debts
+For the moment the retrieve of the address of the pod will be done by having a note in the pod.
