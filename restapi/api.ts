@@ -5,7 +5,7 @@ import {findAllUsers,findByDni,addUser} from './controllers/UserController';
 const bodyParser = require('body-parser')
 
 const api:Router = express.Router()
-
+//Mensaje
 api.use(bodyParser.urlencoded({extended:true}));
 
 api.get("/products/list", findAllProducts);
