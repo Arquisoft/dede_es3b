@@ -3,7 +3,6 @@ import cors from 'cors';
 import bp from 'body-parser';
 import promBundle from 'express-prom-bundle';
 import api from "./api"; 
-//import db from "./db";
 
 const app: Application = express();
 const port: number = 5000;
