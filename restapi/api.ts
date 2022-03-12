@@ -1,16 +1,33 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
+import {findAllProducts} from './controllers/ProductController';
+import {findAllUsers,findByDni,addUser} from './controllers/UserController';
+const bodyParser = require('body-parser')
 
 const api:Router = express.Router()
 
+api.use(bodyParser.urlencoded({extended:true}));
+
+api.get("/products/list", findAllProducts);
+
+api.get("/users/list",findAllUsers)
+api.get("/users/:dni",findByDni)
+api.post("/users/add",addUser)
+
+export default api;
+
+
+  /*
 interface User {
     name: string;
     email: string;
 }
 
+
+
 //This is not a restapi as it mantains state but it is here for
 //simplicity. A database should be used instead.
-let users: Array<User> = [];
+let users: Array<User> = [{name:"Martin", email:"Fernandez"}];
 
 api.get(
     "/users/list",
@@ -32,5 +49,5 @@ api.post(
     return res.sendStatus(200);
   }
 );
+*/
 
-export default api;

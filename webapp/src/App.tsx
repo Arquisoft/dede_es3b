@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
+
 import Container from '@mui/material/Container';
 import EmailForm from './components/EmailForm';
 import Welcome from './components/Welcome';
@@ -14,6 +12,7 @@ import { Footer } from './components/generalComponents/Footer';
 import { Product } from './shared/shareddtypes'
 import { ProductCart } from './shared/shareddtypes'
 import NavBar from './components/generalComponents/NavBar';
+import Checkout from './shippment/CheckOut';
 
 const productos = [
   {
@@ -67,13 +66,10 @@ function App(): JSX.Element {
   const refreshUserList = async () => {
     setUsers(await getUsers());
   }
-
   useEffect(() => {
     refreshUserList();
   }, []);
-
   const [carrito, setCarrito] = useState([] as ProductCart[]);
-
   const addToCart = (clickedItem: Product) => {
     setCarrito( estadoActual => {
       const estaEnElCarrito = estadoActual.find(i => i.id === clickedItem.id);
@@ -82,7 +78,6 @@ function App(): JSX.Element {
       return [...estadoActual];
     });
   }
-
   const removeFromCart = (id: string) => {
     setCarrito( estadoActual =>(
         estadoActual.reduce(
@@ -92,19 +87,18 @@ function App(): JSX.Element {
             return [...coleccion, p];
           }
           , [] as ProductCart[]
-        )
       )
+        )
     )
   }
-
   const getElementosCarrito = () => { return carrito.length; }
-
   return (
     <>
       <Container>
         <NavBar props={carrito} remove={removeFromCart}></NavBar>
         <ProductList props={productos} add={addToCart}></ProductList>
         <Footer></Footer>
+        <Checkout></Checkout>
       </Container>
     </>
   );
