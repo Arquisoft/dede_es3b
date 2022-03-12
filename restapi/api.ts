@@ -1,5 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
+import {findAll} from './controllers/ProductController';
 
 const api:Router = express.Router()
 
@@ -8,9 +9,12 @@ interface User {
     email: string;
 }
 
+api.get("/products/list", 
+  findAll);
+
 //This is not a restapi as it mantains state but it is here for
 //simplicity. A database should be used instead.
-let users: Array<User> = [];
+let users: Array<User> = [{name:"Martin", email:"Fernandez"}];
 
 api.get(
     "/users/list",
