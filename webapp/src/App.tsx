@@ -1,4 +1,4 @@
-
+import React, { Component,useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import EmailForm from './components/EmailForm';
 import Welcome from './components/Welcome';
@@ -95,10 +95,10 @@ function App(): JSX.Element {
   return (
     <>
       <Container>
+        <Checkout></Checkout>
         <NavBar props={carrito} remove={removeFromCart}></NavBar>
         <ProductList props={productos} add={addToCart}></ProductList>
         <Footer></Footer>
-        <Checkout></Checkout>
       </Container>
     </>
   );
