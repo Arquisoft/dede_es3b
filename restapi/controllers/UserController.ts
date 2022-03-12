@@ -38,7 +38,7 @@ export const addUser = async (req: Request, res: Response): Promise<Response> =>
     if(!userReq.dni){
         return res.status(400).json({ msg: "required dni is missing" });
 	}
-    let userExist = await User.findOne({ dni: userReq.dni });
+    let userExist = await User.findOne({ dni: userReq.dni.toString() });
     if (userExist){
         return res.status(400).json({ msg: "The user already exist" });
     }
