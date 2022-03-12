@@ -9,13 +9,15 @@ type Cart = {
 
 // const { id, category, name, description, price } = props;
 
-const ProductItem: React.FC<Cart> = ({props, add}) =>(
-    <Card sx={{ maxWidth: 600 }}>
+const ProductItem: React.FC<Cart> = ({props, add}) =>{
+    const url = "../../public/products/"+props.name+".jpg";
+    // const url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Portrait_of_an_Iguana.jpg/490px-Portrait_of_an_Iguana.jpg";
+    return <Card sx={{ maxWidth: 600 }}>
         <CardMedia
             component="img"
             height="200"
             width="400"
-            image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Portrait_of_an_Iguana.jpg/490px-Portrait_of_an_Iguana.jpg"
+            image= {url}
             alt="producto"
         />
         <CardContent>
@@ -34,7 +36,7 @@ const ProductItem: React.FC<Cart> = ({props, add}) =>(
             <Button size="small" onClick={() => add(props)}>Add to Cart</Button>
         </CardActions>
     </Card>
-);
+};
 
 
 export default ProductItem;

@@ -216,6 +216,7 @@ const NavBar: React.FC<Cart> = ({props,remove}) => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Ver carrito">
                             <IconButton sx={{ p: 0 }} onClick={() => setIsOpened(true)}>
+                                <img src="../../public/products/carrito.png" />
                             </IconButton>
                         </Tooltip>
                         
