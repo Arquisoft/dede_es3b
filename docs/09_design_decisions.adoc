@@ -1,32 +1,43 @@
 [[section-design-decisions]]
 == Design Decisions
 
-
-[role="arc42help"]
-****
-.Contents
-Important, expensive, large scale or risky architecture decisions including rationals.
-With "decisions" we mean selecting one alternative based on given criteria.
-
-Please use your judgement to decide whether an architectural decision should be documented
-here in this central section or whether you better document it locally
-(e.g. within the white box template of one building block).
-
-Avoid redundancy. Refer to section 4, where you already captured the most important decisions of your architecture.
-
-.Motivation
-Stakeholders of your system should be able to comprehend and retrace your decisions.
-
-.Form
-Various options:
-
-* List or table, ordered by importance and consequences or:
-* more detailed in form of separate sections per decision
-* ADR (architecture decision record) for every important decision
-****
 === Using a nonSQL database for saving data.
 .Problem
 Using normal SQL database like HSQLDB for this project is a good choice considering that we have knowledge and practice with this tipe, but in the face of pure documentation and examples MongoDb its a better alternative that fits in this project usisg a MERN frame. 
 
 .Decision
-Use MERN as teh project structure.
+Use MERN as teh project structure. MongoDB used as the project database.
+
+.Status
+Accepted
+
+=== Using POD
+.Problem
+In the project, the application needs to access the client information so it would be a good option to use SOLID to satisfy that need.
+
+.Decision
+We will use the user´s PODs. The client will give access to the application and then the app will access the client information.
+
+.Status
+Accepted
+
+=== Using a local database at the beginning and then insert it into the project
+.Problem
+Having the database included in the project from the beginning will make it difficult for us to develop it.
+
+.Decision
+To simplify the beginning of the project we will use a local database at the start.
+When the project progresses we will change the dynamics and add the database to the project.
+
+.Status
+Accepted
+
+=== Choosing the language we´ll use in the documnetation
+.Problem
+Another design decission is the language used in the project. To develop the documentation we have two options, we can write it in English or in Spanish.
+
+.Decision
+We have decided to carry out the documentation in English since in this way more people will be able to take charge of the project in a hypothetical future and understand what the project is about.
+
+.Status
+Accepted

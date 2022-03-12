@@ -2,16 +2,11 @@
 == Quality Requirements
 
 === Quality Tree
+image:qualityTree.png[Quality Tree]
 
-[role="arc42help"]
-****
-image::images/qualityTree.png[Quality Tree]
-
-****
 
 === Quality Scenarios
 
-[role="arc42help"]
 
 ==== Security
 By saving on the SOLID PODs the information of the user and also by only having esential info on the database.

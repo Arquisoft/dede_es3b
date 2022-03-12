@@ -1,17 +1,16 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 
-
-[role="arc42help"]
-****
-.Contents
-A list of identified technical risks or technical debts, ordered by priority
-
-.Motivation
-“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.) 
-
-This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.
-
-.Form
-List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
-****
+=== Risks
+[options="header"]
+|===
+| Risk | Explication
+|GitHub|Despite having already worked on several subjects with this tool, there is still a part of ignorance that can lead to conflict resolutions.
+|React|For many of the development team it will be their first time working with it. So we will have to spend time learning the basics concepts.
+|SOLID|This is the first project where we have to introduce SOLID principles. So it will take time to get a good grasp of the technique.
+|MongoDB|Until now we have always used other types of database management systems. MongoDB is a new challenge that the team will face. In this case, having used databases in many other subjects, the learning time may be less
+|Security|Keeping customer information secure is a vitally important activity. For this, we must find out how to make a security and authentication system as effective as possible.
+|Team|Working in teams with a certain number of people is never a simple task. The best solution is to hold weekly meetings to get to know each other and have constant communication to solve any problem that arises together.
+|===
+=== Tecnical Debts
+For the moment the retrieve of the address of the pod will be done by having a note in the pod.
