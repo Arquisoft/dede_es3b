@@ -8,4 +8,5 @@
 | Pod     | Personal containers to store data used by solid
 | MongoDB | NoSQL-type database management system to be used during the creation of the web page
 | React | It is a JavaScript library that helps you create interactive user interfaces. It allows to create views and generate components easily and simply
+| mongoose | Mongoose is a Node.js library that allows us to write queries against a MongooDB database, with features like validations
 |===
