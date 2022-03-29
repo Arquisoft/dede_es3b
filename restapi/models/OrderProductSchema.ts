@@ -2,9 +2,6 @@ import { model, Schema} from 'mongoose'
 
 const orderProductSchema = new Schema(
     {
-        _id: {
-            type: String
-        }, 
         quantity: {
             type: Number,
             required: true

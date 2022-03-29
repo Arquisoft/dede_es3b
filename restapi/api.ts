@@ -1,5 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
+import { addOrderProduct, findAllOrderProducts } from './controllers/OrderProductController';
 import {findAllProducts} from './controllers/ProductController';
 import {findAllUsers,findByDni,addUser} from './controllers/UserController';
 const bodyParser = require('body-parser')
@@ -13,6 +14,8 @@ api.get("/products/list", findAllProducts);
 api.get("/users/list",findAllUsers)
 api.get("/users/:dni",findByDni)
 api.post("/users/add",addUser)
+api.post("/orderProducts/add",addOrderProduct)
+api.get("/orderProducts/list",findAllOrderProducts)
 
 export default api;
 
