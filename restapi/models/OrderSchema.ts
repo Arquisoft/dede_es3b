@@ -4,9 +4,6 @@ import { model, Schema} from 'mongoose'
 const orderSchema = new Schema(
     {
 
-        _id: {
-            type: String
-        },
         dni: {
             type: String,
             required: true
@@ -18,7 +15,8 @@ const orderSchema = new Schema(
             type: String
         },
         email: {
-            type: String
+            type: String,
+            required: true
         },
         creditcard_number: {
             type: String,
@@ -29,7 +27,7 @@ const orderSchema = new Schema(
             required: true
         },
         price: {
-            type: Double,
+            type: Number,
             required: true
         },
         pod_direction: {
