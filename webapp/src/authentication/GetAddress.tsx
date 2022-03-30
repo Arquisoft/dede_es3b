@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 
 import {VCARD} from "@inrupt/vocab-common-rdf";
 import React, {ChangeEvent, useEffect} from "react";
-
+import {getShippingPrice} from "../shippment/CalculateShippment";
 
  async function retrievePODAddress(webID: string): Promise<string> {
     let profileDocumentURI = webID.split("#")[0]
@@ -30,6 +30,8 @@ function GetAddress(props: any): JSX.Element {
 
     const getPODAddress = async () => {setAddress(await retrievePODAddress(props.webID))
         props.setAddr(await retrievePODAddress(props.webID));
+
+        console.log(await getShippingPrice(await retrievePODAddress(props.webID)))
     }
     ;
 
