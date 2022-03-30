@@ -4,8 +4,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
-import { ProductCart } from '../shared/shareddtypes';
-
+import { ProductCart, Order } from '../shared/shareddtypes';
+import { addOrder, addOrderProducts } from '../api/api';
 // const products = [
 //   {
 //     name: 'Product 1',
@@ -41,10 +41,14 @@ type ReviewType = {
   productos: ProductCart[];
   precioCarrito: number;
   precioEnvio: number;
+  order: Order;
 }
 
-const Review: React.FC<ReviewType>= ({productos, precioCarrito, precioEnvio}) => {
+const Review: React.FC<ReviewType>= ({productos, precioCarrito, precioEnvio, order}) => {
   //crear pedido
+  order.price=precioCarrito+precioEnvio;
+  addOrder(order);
+  addOrderProducts(productos,order);
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>

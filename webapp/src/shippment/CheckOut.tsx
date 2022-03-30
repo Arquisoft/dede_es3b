@@ -14,10 +14,20 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddressForm from './PersonalDataForm';
 import PaymentForm from './Payment';
 import Review from './Review';
-import { ProductCart } from '../shared/shareddtypes';
+import { ProductCart, Order } from '../shared/shareddtypes';
 
 export default function Checkout( props: any) {
   const [precioEnvio, setPrecioEnvio] = useState<number>(0);
+  const [order, setOrder] = useState<Order>({
+                                              id: 'string',
+                                              dni: 'string',
+                                              name: 'string',
+                                              surname: 'string',
+                                              email: 'string',
+                                              cc_number: 'string',
+                                              expiration_date: 'string',
+                                              price: 90
+                                            });
 
   const steps = ['Shipping address', 'Payment details', 'Review your order'];
   
@@ -28,7 +38,7 @@ export default function Checkout( props: any) {
       case 1:
         return <PaymentForm precioCarrito={precio} precioEnvio={precioEnvio}/>;
       case 2:
-        return <Review productos={carrito} precioCarrito={precio} precioEnvio={precioEnvio}/>;
+        return <Review productos={carrito} precioCarrito={precio} precioEnvio={precioEnvio} order={order}/>;
       default:
         throw new Error('Unknown step');
     }
