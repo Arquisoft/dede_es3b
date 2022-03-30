@@ -5,9 +5,14 @@ import { SessionProvider, useSession } from "@inrupt/solid-ui-react";
 
 
 
+//function Authenticator(props: any): JSX.Element
+type ReviewType = {
+    setPrecio: (precio: number)=> void;
+  }
+  
+  const Authenticator: React.FC<ReviewType>= ({setPrecio}) =>
 
-
-function Authenticator(): JSX.Element {
+ {
     //We use this state variable
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -27,7 +32,7 @@ function Authenticator(): JSX.Element {
     return (
         <>
             <SessionProvider sessionId="log-in-example">
-                {(!isLoggedIn) ? <LoginForm /> : <ProfileViewer />}
+                {(!isLoggedIn) ? <LoginForm /> : <ProfileViewer setPrecio={setPrecio} />}
             </SessionProvider>
         </>
     );

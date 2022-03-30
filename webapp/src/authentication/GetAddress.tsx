@@ -22,16 +22,20 @@ import {getShippingPrice} from "../shippment/CalculateShippment";
     getStringNoLocale(addressProfile as Thing, VCARD.street_address) as string;
     return ret
   }
+//function GetAddress(props: any): JSX.Element 
+  type ReviewType = {
+    setPrecio: (precio: number)=> void;
+    webID: string;
 
-
-
-function GetAddress(props: any): JSX.Element {
+  }
+const GetAddress: React.FC<ReviewType>= ({webID,setPrecio}) => {
     const [address, setAddress] = React.useState("");
 
-    const getPODAddress = async () => {setAddress(await retrievePODAddress(props.webID))
-        props.setAddr(await retrievePODAddress(props.webID));
-
-        console.log(await getShippingPrice(await retrievePODAddress(props.webID)))
+    const getPODAddress = async () => {setAddress(await retrievePODAddress(webID))
+        //props.setAddr(await retrievePODAddress(props.webID));
+        
+        setPrecio(await getShippingPrice(await retrievePODAddress(webID)));
+        //console.log(await getShippingPrice(await retrievePODAddress(props.webID)))
     }
     ;
 
