@@ -33,7 +33,7 @@ function getStepContent(step: number) {
 
 const theme = createTheme();
 
-export default function Checkout() {
+export default function Checkout( props: any) {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {

@@ -17,7 +17,7 @@ const ProductCartList: React.FC<Cart>= ({productos, remove}) => {
                     productos.map((p, i) => (<ProductCartItem props={p} remove={remove}></ProductCartItem>)) :
                     <p>No hay productos en el carrito</p>
             }
-            <Checkout></Checkout>
+            <Checkout ></Checkout>
         </Grid>
     };
         
