@@ -5,7 +5,13 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-export default function PaymentForm() {
+
+type ReviewType = {
+  precioEnvio: number;
+  precioCarrito: number;
+}
+
+const PaymentForm: React.FC<ReviewType>= ({precioEnvio, precioCarrito}) => {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -63,3 +69,5 @@ export default function PaymentForm() {
     </React.Fragment>
   );
 }
+
+export default PaymentForm;

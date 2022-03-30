@@ -105,12 +105,17 @@ function App(): JSX.Element {
         )
     )
   }
+
+  const getPrecio = () => {
+    return carrito.reduce((acc: number, p) => acc+p.quantity*p.price,0);
+  }
+
   const getElementosCarrito = () => { return carrito.length; }
   return (
     <>
       <Container>
         
-        <NavBar props={carrito} remove={removeFromCart}></NavBar>
+        <NavBar props={carrito} remove={removeFromCart} precio={getPrecio}></NavBar>
         <ProductList props={productos} add={addToCart}></ProductList>
         <Footer></Footer>
       </Container>
