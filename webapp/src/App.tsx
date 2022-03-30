@@ -155,8 +155,7 @@ function App(): JSX.Element {
     <>
       <Container>
         
-        <NavBar props={carrito} remove={removeFromCart} precio={getPrecio}></NavBar>
-        <NavBar props={carrito} remove={removeFromCart} aumentar={increaseFromCart} reducir={reduceFromCart}></NavBar>
+        <NavBar props={carrito} remove={removeFromCart} precio={getPrecio} aumentar={increaseFromCart} reducir={reduceFromCart}></NavBar>
         <ProductList props={productos} add={addToCart}></ProductList>
         <Footer></Footer>
       </Container>

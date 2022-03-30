@@ -29,8 +29,7 @@ type Cart = {
     reducir:(id: string)=>void;
 }
 
-const NavBar: React.FC<Cart> = ({props,remove, precio}) => {
-const NavBar: React.FC<Cart> = ({props,remove, aumentar, reducir}) => {
+const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElNavDeportes, setAnchorElNavDeportes] = React.useState<null | HTMLElement>(null);
     const [anchorElNavMaterial, setAnchorElNavMaterial] = React.useState<null | HTMLElement>(null);
@@ -225,8 +224,7 @@ const NavBar: React.FC<Cart> = ({props,remove, aumentar, reducir}) => {
                         </Tooltip>
                         
                         <Drawer anchor='right' open={isOpened} onClose={() => setIsOpened(false)}>
-                            <ProductCartList productos={props} remove={remove} precio={precio}></ProductCartList>
-                            <ProductCartList productos={props} remove={remove} aumentar={aumentar} reducir={reducir}></ProductCartList>
+                            <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
                         </Drawer>
                     </Box>
                 </Toolbar>

@@ -13,8 +13,7 @@ type Cart = {
     reducir:(id: string)=>void;
 }
 
-const ProductCartList: React.FC<Cart>= ({productos, remove, precio}) => {
-const ProductCartList: React.FC<Cart>= ({productos, remove, aumentar, reducir}) => {
+const ProductCartList: React.FC<Cart>= ({productos, remove, precio, aumentar, reducir}) => {
         const precioCarrito = precio();
         return <Grid container direction="column" justifyContent="flex-end" alignItems="center">
             <h1>Carrito de la compra</h1>
