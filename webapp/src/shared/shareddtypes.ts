@@ -21,3 +21,14 @@ export type ProductCart = {
   img: string;
   quantity: number;
 }
+
+export type Order = {
+  id: string;
+  dni: string;
+  name: string;
+  surname: string;
+  email: string;
+  cc_number: string;
+  expiration_date: string;
+  price: number;
+}

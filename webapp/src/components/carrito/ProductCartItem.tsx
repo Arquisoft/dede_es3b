@@ -5,10 +5,12 @@ import Grid from '@mui/material/Grid';
 
 type Cart = {
     props: ProductCart;
-    remove: (id: string) => void;
+    remove: (id: string)=>void;
+    aumentar:(clickedItem: ProductCart)=>void;
+    reducir:(id: string)=>void;
 }
 
-const ProductCartItem: React.FC<Cart> = ({ props, remove }) => {
+const ProductCartItem: React.FC<Cart> = ({props, remove, aumentar, reducir}) => {
     const url = "https://res.cloudinary.com/asw2122/image/upload/" + props.img + ".png";
     return (
         <Card sx={{ maxWidth: 600 }}>
@@ -36,12 +38,12 @@ const ProductCartItem: React.FC<Cart> = ({ props, remove }) => {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small" onClick={() => { props.quantity += 1 }}>+</Button>
+                        <Button size="small" onClick={()=>{aumentar(props)}}>+</Button>
                         <div>
                             <div>{props.quantity}</div>
                         </div>
-                        <Button size="small" onClick={() => { props.quantity -= 1 }}>-</Button>
-                        <Button size="small" onClick={() => { remove(props.id) }}>Remove</Button>
+                        <Button size="small" onClick={()=>{reducir(props.id)}}>-</Button>
+                        <Button size="small" onClick={()=>{remove(props.id)}}>Remove</Button>
                     </CardActions>
                 </Grid>
 
