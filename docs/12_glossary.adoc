@@ -8,4 +8,7 @@
 | Pod     | Personal containers to store data used by solid
 | MongoDB | NoSQL-type database management system to be used during the creation of the web page
 | React | It is a JavaScript library that helps you create interactive user interfaces. It allows to create views and generate components easily and simply
+| mongoose | Mongoose is a Node.js library that allows us to write queries against a MongooDB database, with features like validations
+| Schema | A schema in Mongoose is a JSON structure that contains information about the properties of a document. It may also contain information about validation and default values, and whether a particular property is required.
+| Release or tag | A tag allows you to specify uncommit in git and store the current state of the project in .tar format.
 |===
