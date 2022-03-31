@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
-import { addOrder, findAllOrders } from './controllers/OrderController';
+import { addOrder, findAllOrders, findById } from './controllers/OrderController';
 import { addOrderProduct, findAllOrderProducts } from './controllers/OrderProductController';
 import {findAllProducts} from './controllers/ProductController';
 import {findAllUsers,findByDni,addUser} from './controllers/UserController';
@@ -19,6 +19,7 @@ api.post("/orders/add",addOrder)
 api.post("/users/add",addUser)
 api.post("/orderProducts/add",addOrderProduct)
 api.get("/orderProducts/list",findAllOrderProducts)
+api.get("/orders/:id",findById)
 
 export default api;
 
