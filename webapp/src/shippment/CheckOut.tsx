@@ -24,9 +24,10 @@ export default function Checkout( props: any) {
                                               name: 'string',
                                               surname: 'string',
                                               email: 'string',
-                                              cc_number: 'string',
+                                              creditcard_number: 'string',
                                               expiration_date: 'string',
-                                              price: 90
+                                              price: 90,
+                                              pod_direction:'string'
                                             });
 
   const steps = ['Shipping address', 'Payment details', 'Review your order'];
