@@ -1,4 +1,4 @@
-import React, { Component,useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -23,10 +23,10 @@ const optionsRopa = ['Camisetas', 'Pantalones', 'Chaquetas'];
 
 type Cart = {
     props: ProductCart[];
-    remove: (id: string)=>void;
+    remove: (id: string) => void;
 }
 
-const NavBar: React.FC<Cart> = ({props,remove}) => {
+const NavBar: React.FC<Cart> = ({ props, remove }) => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElNavDeportes, setAnchorElNavDeportes] = React.useState<null | HTMLElement>(null);
     const [anchorElNavMaterial, setAnchorElNavMaterial] = React.useState<null | HTMLElement>(null);
@@ -76,7 +76,7 @@ const NavBar: React.FC<Cart> = ({props,remove}) => {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        <img src='../../../public/images/logo-dedeportes.png' />
+                        <img src='https://res.cloudinary.com/asw2122/image/upload/v1648725943/logo-dedeportes.png' />
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -216,10 +216,10 @@ const NavBar: React.FC<Cart> = ({props,remove}) => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Ver carrito">
                             <IconButton sx={{ p: 0 }} onClick={() => setIsOpened(true)}>
-                                <img src="../../public/products/carrito.png" />
+                                <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" />
                             </IconButton>
                         </Tooltip>
-                        
+
                         <Drawer anchor='right' open={isOpened} onClose={() => setIsOpened(false)}>
                             <ProductCartList productos={props} remove={remove}></ProductCartList>
                         </Drawer>
