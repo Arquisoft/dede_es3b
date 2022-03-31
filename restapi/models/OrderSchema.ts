@@ -3,7 +3,10 @@ import { model, Schema} from 'mongoose'
 
 const orderSchema = new Schema(
     {
-
+        id:{
+            type: String,
+            required: true
+        },
         dni: {
             type: String,
             required: true
@@ -39,7 +42,7 @@ const orderSchema = new Schema(
 
 orderSchema.set('toJSON', {
     transform: (document, returnedObject) => {
-        returnedObject.id = returnedObject._id
+        
         delete returnedObject._id
     }
 })

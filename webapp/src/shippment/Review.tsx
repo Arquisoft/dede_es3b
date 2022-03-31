@@ -37,6 +37,9 @@ const payments = [
 ];
 
 export default function Review() {
+  //addOrder
+  //getOrder
+  //addOrderedPorduct
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
