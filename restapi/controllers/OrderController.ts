@@ -26,6 +26,7 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
 	}
 	
     const nOrder =  new Order({
+        id: orderReq.id,
 		dni: orderReq.dni,
 		name: orderReq.name,
 		surname: orderReq.surname,
@@ -35,8 +36,9 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
         price: orderReq.price,
         pod_direction: orderReq.pod_direction
 	})
-	nOrder.save()
-	
+    nOrder.id=nOrder._id
+	nOrder.save();
+    
     return res.status(200).json({ nOrder });
 };
 
