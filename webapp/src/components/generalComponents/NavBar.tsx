@@ -1,4 +1,4 @@
-import React, { Component,useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -79,7 +79,7 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        <img src='../../../public/images/logo-dedeportes.png' />
+                        <img src='https://res.cloudinary.com/asw2122/image/upload/v1648725943/logo-dedeportes.png' />
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -219,10 +219,10 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Ver carrito">
                             <IconButton sx={{ p: 0 }} onClick={() => setIsOpened(true)}>
-                                <img src="../../public/products/carrito.png" />
+                                <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" />
                             </IconButton>
                         </Tooltip>
-                        
+
                         <Drawer anchor='right' open={isOpened} onClose={() => setIsOpened(false)}>
                             <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
                         </Drawer>

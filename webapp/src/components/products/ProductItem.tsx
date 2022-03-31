@@ -4,20 +4,20 @@ import { Product } from '../../shared/shareddtypes'
 
 type Cart = {
     props: Product;
-    add: (clickedItem: Product)=>void;
+    add: (clickedItem: Product) => void;
 }
 
 // const { id, category, name, description, price } = props;
 
-const ProductItem: React.FC<Cart> = ({props, add}) =>{
-    const url = "../../public/products/"+props.name+".jpg";
+const ProductItem: React.FC<Cart> = ({ props, add }) => {
     // const url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Portrait_of_an_Iguana.jpg/490px-Portrait_of_an_Iguana.jpg";
+    const url = "https://res.cloudinary.com/asw2122/image/upload/" + props.img + ".png";
     return <Card sx={{ maxWidth: 600 }}>
         <CardMedia
             component="img"
             height="200"
             width="400"
-            image= {url}
+            image={url}
             alt="producto"
         />
         <CardContent>
