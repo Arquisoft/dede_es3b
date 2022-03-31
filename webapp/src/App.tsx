@@ -96,8 +96,9 @@ function App(): JSX.Element {
     setCarrito( estadoActual =>(
         estadoActual.reduce(
           (coleccion, p)=> {
-            if(p.id===id)
+            if(p.id===id){
               return coleccion;
+            }
             return [...coleccion, p];
           }
           , [] as ProductCart[]
@@ -105,12 +106,56 @@ function App(): JSX.Element {
         )
     )
   }
+
+  const increaseFromCart = (clickedItem: ProductCart) => {
+    setCarrito( estadoActual => {
+      const estaEnElCarrito = estadoActual.find(i => i.id === clickedItem.id);
+      if(estaEnElCarrito){
+        estadoActual.reduce(
+          (coleccion, p)=> {
+            if(p.id===clickedItem.id){
+              p.quantity++;
+              return [...coleccion, p];
+            }
+            return [...coleccion, p];
+          }
+          , [] as ProductCart[]
+        );
+      }
+      return [...estadoActual];
+    });
+  }
+
+  const reduceFromCart = (id: string) => {
+    setCarrito( estadoActual =>(
+        estadoActual.reduce(
+          (coleccion, p)=> {
+            if(p.id===id){
+              if(p.quantity>1){
+                p.quantity--;
+                return [...coleccion, p];
+              }
+              else
+                return coleccion;
+            }
+            return [...coleccion, p];
+          }
+          , [] as ProductCart[]
+      )
+        )
+    )
+  }
+
+  const getPrecio = () => {
+    return carrito.reduce((acc: number, p) => acc+p.quantity*p.price,0);
+  }
+
   const getElementosCarrito = () => { return carrito.length; }
   return (
     <>
       <Container>
         
-        <NavBar props={carrito} remove={removeFromCart}></NavBar>
+        <NavBar props={carrito} remove={removeFromCart} precio={getPrecio} aumentar={increaseFromCart} reducir={reduceFromCart}></NavBar>
         <ProductList props={productos} add={addToCart}></ProductList>
         <Footer></Footer>
       </Container>
