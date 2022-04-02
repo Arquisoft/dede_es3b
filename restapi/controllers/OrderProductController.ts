@@ -16,12 +16,12 @@ export const addOrderProduct = async (req: Request, res: Response): Promise<Resp
 
 	const orderProductReq = req.body
 	
-	let orderExist = await Order.findOne({ id:  orderProductReq.id_order});
+	let orderExist = await Order.findOne({ id:  orderProductReq.id_order.toString()});
     if (!orderExist){
         return res.status(400).json({ msg: "The order not exist" });
     }
 
-	let productExist = await Product.findOne({ id:  orderProductReq.id_product});
+	let productExist = await Product.findOne({ id:  orderProductReq.id_product.toString()});
     if (!productExist){
         return res.status(400).json({ msg: "The product not exist" });
     }
