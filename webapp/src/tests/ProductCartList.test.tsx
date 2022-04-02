@@ -123,3 +123,73 @@ test("A product is added to the cart", async () => {
     expect(components.container).toHaveTextContent('Remove');
     //console.log('Aquí acaba el segundo')
 });
+
+test("A product is removed to the cart", async () => {
+
+    //console.log('Aquí empieza el tercero')
+    const product: Product[] = [
+        {
+            id: '1',
+            category: 'Ropa',
+            name: 'Chaqueta',
+            description: 'Para abrigarse',
+            price: 90,
+            img: ""
+        }]
+
+    const carrito: ProductCart[] = [];
+    const addToCart = (p: Product) => { carrito.push({ ...p, quantity: 1 }) };
+    const remove = (id: string) => { carrito.pop() };
+
+    const components = render(
+        <Grid>
+            <ProductList props={product} add={addToCart}></ProductList>
+            <ProductCartList
+                productos={carrito}
+                remove={remove}
+                precio={() => 0}
+                aumentar={(clicked: ProductCart) => { }}
+                reducir={remove}>
+            </ProductCartList>
+        </Grid>
+    );
+
+    expect(components.container).toHaveTextContent('No hay productos en el carrito');
+    const button = components.getByTestId('add') as HTMLElement;
+    fireEvent.click(button);
+
+    components.rerender(
+        <Grid>
+            <ProductList props={product} add={addToCart}></ProductList>
+            <ProductCartList
+                productos={carrito}
+                remove={remove}
+                precio={() => 0}
+                aumentar={(clicked: ProductCart) => { }}
+                reducir={remove}>
+            </ProductCartList>
+        </Grid>
+    );
+
+    expect(components.container).toHaveTextContent('1');
+    expect(components.container).toHaveTextContent('Remove');
+
+    const button2 = components.getByTestId('remove') as HTMLElement;
+    fireEvent.click(button2);
+
+    components.rerender(
+        <Grid>
+            <ProductList props={product} add={addToCart}></ProductList>
+            <ProductCartList
+                productos={carrito}
+                remove={remove}
+                precio={() => 0}
+                aumentar={(clicked: ProductCart) => { }}
+                reducir={remove}>
+            </ProductCartList>
+        </Grid>
+    );
+
+    expect(components.container).toHaveTextContent('No hay productos en el carrito');
+    //console.log('Aquí acaba el tercero')
+});
