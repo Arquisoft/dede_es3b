@@ -109,3 +109,16 @@ describe('orderproducts ', () => {
 
 
 });
+
+describe('order ', () => {
+
+    /*
+     * Test that we can list all the orders without any error.
+     */
+     it('Can get all the orders',async () => {
+        const response:Response = await request(app).get("/api/orders/list");
+        expect(response.statusCode).toBe(200);
+    });
+
+
+});
