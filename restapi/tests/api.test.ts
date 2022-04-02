@@ -120,5 +120,26 @@ describe('order ', () => {
         expect(response.statusCode).toBe(200);
     });
 
+    /*
+     * Test that a order can be added without throwing any errors.
+     * We don´t have to prove that exists an user with that information because we get the information from the POD
+     */
+    it('Can insert a correct order correctly with a non existing order_id', async () => {
+        let id:string = uuidv4()
+        let dni:string = '11111111A'
+        let name:string = 'Martin'
+        let surname:string = 'Fernandez'
+        let email:string = 'martinfernandez@gmail.com'
+        let creditcard_number:string = '111-111-111-111'
+        let expiration_date:string = '28-12-2022'
+        let price:number = 15
+        let pod_direction:string = 'micasa'
+        const response:Response = await request(app).post('/api/orders/add')
+            .send({id: id, dni: dni, name: name, surname: surname, email: email, creditcard_number: creditcard_number, 
+                expiration_date: expiration_date, price: price, pod_direction: pod_direction})
+            .set('Accept', 'application/json')
+        expect(response.statusCode).toBe(200);
+    });
+
 
 });
