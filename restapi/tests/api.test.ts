@@ -66,6 +66,22 @@ describe('users ', () => {
         expect(response.statusCode).toBe(200);
     });
 
-    
+    /**
+     * Test that we can get a user from the database without error
+     */
+    it("Can get a user", async () => {
+        const response: Response = await request(app).get('/api/users/55555555E');
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toEqual(
+        expect.objectContaining({
+            "user":[{
+                dni: '55555555E',
+                name: 'Pepe',
+                surname: 'Gonzalez',
+                email: 'pepegonzalez@gmail.com'
+            }]
+        })
+        );
+    });
 
 });
