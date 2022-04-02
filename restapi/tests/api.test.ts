@@ -54,4 +54,18 @@ describe('users ', () => {
         expect(response.statusCode).toBe(200);
     });
 
+    /**
+     * Test that a user can be created through the productService without throwing any errors.
+     */
+    it('Can insert an user correctly', async () => {
+        let dni:string = await uuidv4()
+        let name:string = 'Pepe'
+        let surname:string = 'Gonzalez'
+        let email:string = 'pepegonzalez@gmail.com'
+        const response:Response = await request(app).post('/api/users/add').send({dni: dni, name: name, surname: surname, email: email}).set('Accept', 'application/json')
+        expect(response.statusCode).toBe(200);
+    });
+
+    
+
 });
