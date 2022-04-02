@@ -11,6 +11,7 @@ type Cart = {
 }
 
 const ProductCartItem: React.FC<Cart> = ({props, remove, aumentar, reducir}) => {
+    const url = "https://res.cloudinary.com/asw2122/image/upload/" + props.img + ".png";
     return (
         <Card sx={{ maxWidth: 600 }}>
             <Grid container direction="row" justifyContent="space-between" alignItems="center">
@@ -19,7 +20,7 @@ const ProductCartItem: React.FC<Cart> = ({props, remove, aumentar, reducir}) => 
                         component="img"
                         height="200"
                         width="400"
-                        image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Portrait_of_an_Iguana.jpg/490px-Portrait_of_an_Iguana.jpg"
+                        image={url}
                         alt="producto"
                     />
                 </Grid>
@@ -32,7 +33,7 @@ const ProductCartItem: React.FC<Cart> = ({props, remove, aumentar, reducir}) => 
                             {props.description}
                         </Typography>
                         <Typography variant="h6" component="div">
-                            
+
                             {props.price}€
                         </Typography>
                     </CardContent>
@@ -45,7 +46,7 @@ const ProductCartItem: React.FC<Cart> = ({props, remove, aumentar, reducir}) => 
                         <Button size="small" onClick={()=>{remove(props.id)}}>Remove</Button>
                     </CardActions>
                 </Grid>
-            
+
             </Grid>
         </Card>);
 }
