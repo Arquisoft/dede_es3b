@@ -16,9 +16,9 @@ async function calculateCoordinates(address: String) {
           address +
           ".json?access_token=" + process.env.REACT_APP_MAPBOX_KEY
       );
-    if (response.status===200)
-      return response.json();
-    else
+    //if (response.status===200)
+    //  return response.json();
+   // else
       return response.json();
     
   }
