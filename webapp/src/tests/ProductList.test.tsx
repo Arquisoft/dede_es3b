@@ -44,7 +44,7 @@ test("A list of products is rendered", async () => {
             name: 'Balón',
             description: 'Para jugar al fútbol',
             price: 25,
-            img: "Mundial"
+            img: ""
         },
         {
             id: '6',
@@ -63,18 +63,23 @@ test("A list of products is rendered", async () => {
     expect(components.container).toHaveTextContent('Chaqueta');
     expect(components.container).toHaveTextContent('Para abrigarse');
     expect(components.container).toHaveTextContent('90');
+
     expect(components.container).toHaveTextContent('Pelota');
     expect(components.container).toHaveTextContent('Para jugar');
     expect(components.container).toHaveTextContent('2');
+
     expect(components.container).toHaveTextContent('Pala de pádel');
     expect(components.container).toHaveTextContent('Para jugar al pádel');
     expect(components.container).toHaveTextContent('265');
+
     expect(components.container).toHaveTextContent('Pantalón');
     expect(components.container).toHaveTextContent('Para vestirse');
     expect(components.container).toHaveTextContent('45');
+
     expect(components.container).toHaveTextContent('Balón');
     expect(components.container).toHaveTextContent('Para jugar al fútbol');
     expect(components.container).toHaveTextContent('25');
+
     expect(components.container).toHaveTextContent('Guantes');
     expect(components.container).toHaveTextContent('Para parar golitos');
     expect(components.container).toHaveTextContent('34');
