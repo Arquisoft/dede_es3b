@@ -37,6 +37,7 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
         pod_direction: orderReq.pod_direction
 	})
     nOrder.id=nOrder._id
+    
 	nOrder.save();
     
     return res.status(200).json({ nOrder });
