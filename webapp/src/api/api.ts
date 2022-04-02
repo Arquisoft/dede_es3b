@@ -49,7 +49,7 @@ export async function addOrder(order:Order):Promise<boolean>{
 export async function addOrderProducts(products:ProductCart[], order:Order):Promise<boolean>{
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
   
-  products.map(p => {
+  products.forEach(p => {
       const getJSON = () => {
       return JSON.stringify({'quantity': p.quantity,'id_product':p.id, 'id_order':order.id});
     }
