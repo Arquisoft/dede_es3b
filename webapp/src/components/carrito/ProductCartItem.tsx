@@ -43,7 +43,7 @@ const ProductCartItem: React.FC<Cart> = ({props, remove, aumentar, reducir}) => 
                             <div>{props.quantity}</div>
                         </div>
                         <Button size="small" onClick={()=>{reducir(props.id)}}>-</Button>
-                        <Button size="small" onClick={()=>{remove(props.id)}}>Remove</Button>
+                        <Button component="button" data-testid="remove" size="small" onClick={()=>{remove(props.id)}}>Remove</Button>
                     </CardActions>
                 </Grid>
 

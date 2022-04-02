@@ -33,7 +33,7 @@ const ProductItem: React.FC<Cart> = ({ props, add }) => {
             </Typography>
         </CardContent>
         <CardActions>
-            <Button component="button" size="small" onClick={() => add(props)}>Add to Cart</Button>
+            <Button component="button" data-testid="add" size="small" onClick={() => add(props)}>Add to Cart</Button>
         </CardActions>
     </Card>
 };
