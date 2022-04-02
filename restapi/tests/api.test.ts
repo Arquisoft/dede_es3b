@@ -6,7 +6,7 @@ import * as http from 'http';
 import bp from 'body-parser';
 import cors from 'cors';
 import api from '../api';
-import { getMaxListeners } from 'process';
+
 
 const {v4: uuidv4} = require("uuid");
 let app:Application;
@@ -82,6 +82,18 @@ describe('users ', () => {
             }]
         })
         );
+    });
+
+});
+
+describe('orderproducts ', () => {
+
+    /*
+     * Test that we can list all the orderedProducts without any error.
+     */
+     it('Can get all the orderedProducts',async () => {
+        const response:Response = await request(app).get("/api/orderProducts/list");
+        expect(response.statusCode).toBe(200);
     });
 
 });
