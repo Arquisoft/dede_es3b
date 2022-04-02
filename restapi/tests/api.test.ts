@@ -6,7 +6,7 @@ import * as http from 'http';
 import bp from 'body-parser';
 import cors from 'cors';
 import api from '../api';
-import { getMaxListeners } from 'process';
+
 
 const {v4: uuidv4} = require("uuid");
 let app:Application;
@@ -83,5 +83,29 @@ describe('users ', () => {
         })
         );
     });
+
+});
+
+describe('orderproducts ', () => {
+
+    /*
+     * Test that we can list all the orderedProducts without any error.
+     */
+     it('Can get all the orderedProducts',async () => {
+        const response:Response = await request(app).get("/api/orderProducts/list");
+        expect(response.statusCode).toBe(200);
+    });
+
+    /*
+     * Test that a orderedProduct can be added without throwing any errors.
+     */
+     it('Can insert a correct orderedProduct correctly with existing order_id and product_id', async () => {
+        let quantity:number = 12
+        let id_order:string = '624819246fa3602e90668a9f'
+        let id_product:string = '6248170a6fa3602e90668a9c'
+        const response:Response = await request(app).post('/api/orderProducts/add').send({id_order: id_order, id_product: id_product, quantity: quantity}).set('Accept', 'application/json')
+        expect(response.statusCode).toBe(200);
+    });
+
 
 });
