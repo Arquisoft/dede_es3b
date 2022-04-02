@@ -47,3 +47,17 @@ export const findAllOrders = async (req: Request, res: Response): Promise<Respon
 
     return res.json(orders);
 };
+
+export const findById = async (req: Request, res: Response): Promise<Response> => {
+	
+    const order = await Order.find({
+		
+		_id: req.params.id 
+		
+	});
+	
+    if(order.length==0){
+        return res.status(400).json({ msg: "Order not found" });
+	}
+    return res.status(200).json({ order });
+};

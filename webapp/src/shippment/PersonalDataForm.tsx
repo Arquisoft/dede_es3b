@@ -4,7 +4,11 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Authenticator from '../authentication/Authenticator';
 
-export default function AddressForm() {
+type ReviewType = {
+  setPrecio: (precio: number)=> void;
+}
+
+const AddressForm: React.FC<ReviewType>= ({setPrecio}) => {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -38,3 +42,5 @@ export default function AddressForm() {
     </React.Fragment>
   );
 }
+
+export default AddressForm;

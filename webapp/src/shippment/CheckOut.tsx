@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component,useState, useEffect } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,26 +14,40 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddressForm from './PersonalDataForm';
 import PaymentForm from './Payment';
 import Review from './Review';
+import { ProductCart, Order } from '../shared/shareddtypes';
 
+export default function Checkout( props: any) {
+  const [precioEnvio, setPrecioEnvio] = useState<number>(0);
+  const [order, setOrder] = useState<Order>({
+                                              id: 'string',
+                                              dni: 'string',
+                                              name: 'string',
+                                              surname: 'string',
+                                              email: 'string',
+                                              creditcard_number: 'string',
+                                              expiration_date: 'string',
+                                              price: 90,
+                                              pod_direction:'string'
+                                            });
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
-
-function getStepContent(step: number) {
-  switch (step) {
-    case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error('Unknown step');
+  const steps = ['Shipping address', 'Payment details', 'Review your order'];
+  
+  function getStepContent(step: number,  carrito: ProductCart[], precio: number) {
+    switch (step) {
+      case 0:
+        return <AddressForm setPrecio={setPrecioEnvio}/>;
+      case 1:
+        return <PaymentForm precioCarrito={precio} precioEnvio={precioEnvio}/>;
+      case 2:
+        return <Review productos={carrito} precioCarrito={precio} precioEnvio={precioEnvio} order={order}/>;
+      default:
+        throw new Error('Unknown step');
+    }
   }
-}
+  
+  const theme = createTheme();
 
-const theme = createTheme();
 
-export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -88,7 +102,7 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
+                {getStepContent(activeStep, props.carrito, props.precio)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
