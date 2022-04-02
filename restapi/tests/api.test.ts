@@ -119,7 +119,16 @@ describe('orderproducts ', () => {
     });
 
 
-    
+    /*
+     * Test that a orderedProduct can´t be added with invalid product_id.
+     */
+    it('Can´t insert a correct orderedProduct because this product not exist', async () => {
+        let quantity:number = 12
+        let id_order:string = '624819246fa3602e90668a9f'
+        let id_product:string = 'hola'
+        const response:Response = await request(app).post('/api/orderProducts/add').send({id_order: id_order, id_product: id_product, quantity: quantity}).set('Accept', 'application/json')
+        expect(response.statusCode).toBe(400);
+    });
 });
 
 describe('order ', () => {
