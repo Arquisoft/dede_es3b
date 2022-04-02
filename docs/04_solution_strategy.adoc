@@ -42,9 +42,9 @@ Refer to details in the following sections.
 
 |===
 |**Quality objectives**| **How to obtain them**
-|**Privacy**| We only going to store the location of the users to calculate the shipping cost
+|**Privacy**| We are going to store the location of the users to calculate the shipping cost and also the client credit card´s information to carry out the payment of the order
 |**Usability**| We are going to design easy-to-use user interfaces to help nobel and experimented users
-|**Testability**| We are going to do some test to be sure that the application works succcessfuly
+|**Testability**| We are going to do some tests, both frontend and backend, to guarantee the correct and succesfully functioning of the application
 |**Performance**| We are going to use technologies that helps the application performance
 |===
 
