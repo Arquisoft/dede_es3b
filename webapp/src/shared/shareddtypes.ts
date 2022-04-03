@@ -21,6 +21,7 @@ export type Product = {
   name: string;
   description: string;
   price: number;
+  img: string;
 }
 
 export type ProductCart = {
@@ -29,5 +30,6 @@ export type ProductCart = {
   name: string;
   description: string;
   price: number;
+  img: string;
   quantity: number;
 }
