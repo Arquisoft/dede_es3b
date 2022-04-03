@@ -23,8 +23,8 @@ based upon your problem statement, the quality goals and key constraints.
 Refer to details in the following sections.
 ****
 
-=== 4.1 Technology Desisions
-==== 4.1.1 Back-end
+=== Technology Decisions
+==== Back-end
 
 * **Solid:** Gives the user the choice of the data that he wants to share with the application
 * **MVC:** The arquitecture that we will be using for the project structure
@@ -33,12 +33,12 @@ Refer to details in the following sections.
 * **Docker:** Will be used for the deployment of the application
 * **Heroku:** Will be used for the deployment of the application
 
-==== 4.1.2 Front-end
+==== Front-end
 
 * **React:** It's a JavaScript library used for doing interfaces. It's based on components.
-* **Bootstrap Studio:** It's an app for designing and prototyping websites. 
+* **MUI library:** It's a react user interface library that help us on the front-end. 
 
-=== 4.2 Quality objectives
+=== Quality objectives
 
 |===
 |**Quality objectives**| **How to obtain them**
@@ -48,7 +48,7 @@ Refer to details in the following sections.
 |**Performance**| We are going to use technologies that helps the application performance
 |===
 
-=== 4.3 Development tools
+=== Development tools
 
 While we develop the proyect we will use the following tools:
 
@@ -57,7 +57,7 @@ While we develop the proyect we will use the following tools:
 * **GitKraken:** This app allows us to change between the different branches easily and shows the commits done in each branches by the members.
 * **Docker:** This app makes containers that allows our proyect to be deployed in any machine with Docker installed.
 
-=== 4.4 Organization
+=== Organization
 
 We will use different medias to get in touch and discuss decitions. We have choosen the following ones:
 
@@ -65,3 +65,15 @@ We will use different medias to get in touch and discuss decitions. We have choo
 * **Discord:** Will let us to make weekly meetings.
 * **Issues:** Used to record the work that each memeber has to do.
 * **Wikis:** Used to record the decitions made in each meeting by the members.
+
+==== How we work
+
+We will divide the team into three groups:
+
+* 2 members dedicated to the front-end area
+* 2 members dedicated to the back-end area
+* 1 member dedicated to SOLID and PODs
+
+Regarding the contributions, front-end and back-end work at the same time and together, therefore, even if the commits are from one, the work has been carried out by the two members.
+
+Lastly, pull requests are accepted by the person who does not commit. Only in the case of the person dedicated to PODs is it reviewed. In the other cases, since it is carried out by two people simultaneously, it is not necessary
