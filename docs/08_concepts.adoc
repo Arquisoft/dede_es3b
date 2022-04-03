@@ -57,19 +57,18 @@ image:08-domainModel.png["UML Diagram"]
 
 DeDeportes will be based in the sale of sport products.
 
-* *User:* will represent the client that uses the application. His main information will be stored for buying in the store.
 * *POD:* will store the individual information of each user as a repository following the SOLID specifications.
 * *Order:* will be an order of products of the store done by the user.
-* *Shopping cart:* will actualize the different products that the user wants to order. The user can add or delete products in the shopping cart.
 * *Product:* will be all the sport materials available to buy by all the users in the store.
-* *Credit Card:* each user can have more than one credit cards associated t buy in the store.
+* *OrderedProduct* will store the products of the multiple orders. Each one will have the product´s id and the order´s id.
+* *Credit Card:* each user can have more than one credit cards associated t buy in the store. Will be inside the order entity.
 * *Administrator:* could do changes in the application.
 
 === Development concepts
 
 React is a JavaScript-based library, used for doing user interfaces. Facebook and open-source developers run it.
 
-MongoDb will be used to store the products, the users, the users' orders and shopping carts.
+MongoDb will be used to store the products, the users, the users' orders and the ordered products.
 
 Node.js is the package manager choosen to build the application.
 
