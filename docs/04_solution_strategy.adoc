@@ -23,8 +23,8 @@ based upon your problem statement, the quality goals and key constraints.
 Refer to details in the following sections.
 ****
 
-=== 4.1 Technology Desisions
-==== 4.1.1 Back-end
+=== Technology Decisions
+==== Back-end
 
 * **Solid:** Gives the user the choice of the data that he wants to share with the application
 * **MVC:** The arquitecture that we will be using for the project structure
@@ -33,22 +33,22 @@ Refer to details in the following sections.
 * **Docker:** Will be used for the deployment of the application
 * **Heroku:** Will be used for the deployment of the application
 
-==== 4.1.2 Front-end
+==== Front-end
 
 * **React:** It's a JavaScript library used for doing interfaces. It's based on components.
-* **Bootstrap Studio:** It's an app for designing and prototyping websites. 
+* **MUI library:** It's a react user interface library that help us on the front-end. 
 
-=== 4.2 Quality objectives
+=== Quality objectives
 
 |===
 |**Quality objectives**| **How to obtain them**
-|**Privacy**| We only going to store the location of the users to calculate the shipping cost
+|**Privacy**| We are going to store the location of the users to calculate the shipping cost and also the client credit card´s information to carry out the payment of the order
 |**Usability**| We are going to design easy-to-use user interfaces to help nobel and experimented users
-|**Testability**| We are going to do some test to be sure that the application works succcessfuly
+|**Testability**| We are going to do some tests, both frontend and backend, to guarantee the correct and succesfully functioning of the application
 |**Performance**| We are going to use technologies that helps the application performance
 |===
 
-=== 4.3 Development tools
+=== Development tools
 
 While we develop the proyect we will use the following tools:
 
@@ -57,7 +57,7 @@ While we develop the proyect we will use the following tools:
 * **GitKraken:** This app allows us to change between the different branches easily and shows the commits done in each branches by the members.
 * **Docker:** This app makes containers that allows our proyect to be deployed in any machine with Docker installed.
 
-=== 4.4 Organization
+=== Organization
 
 We will use different medias to get in touch and discuss decitions. We have choosen the following ones:
 
@@ -65,3 +65,11 @@ We will use different medias to get in touch and discuss decitions. We have choo
 * **Discord:** Will let us to make weekly meetings.
 * **Issues:** Used to record the work that each memeber has to do.
 * **Wikis:** Used to record the decitions made in each meeting by the members.
+
+==== How we work
+
+We will divide the team into three groups:
+
+* 2 members dedicated to the front-end area
+* 2 members dedicated to the back-end area
+* 1 member dedicated to SOLID and PODs
