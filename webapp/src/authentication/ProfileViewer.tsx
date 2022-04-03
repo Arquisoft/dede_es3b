@@ -8,11 +8,15 @@ import GetAddress from "./GetAddress";
 
 import { ChangeEvent } from 'react';
 
+type ReviewType = {
+  setPrecio: (precio: number)=> void;
+}
+//const ProfileViewer = (props:any) => 
 
-const ProfileViewer = () => {
+const ProfileViewer: React.FC<ReviewType>= ({setPrecio}) =>{
   const { session } = useSession();
   const [addr, setAddr] = React.useState("");
-  
+
 
 
   return (
@@ -27,7 +31,7 @@ const ProfileViewer = () => {
               <Text property={FOAF.name.iri.value} />
             </Typography>
              <Typography gutterBottom variant="h5" component="h2">  
-              <GetAddress webID={session.info.webId} addr={addr} setAddr ={setAddr}  />
+              <GetAddress webID={session.info.webId} setPrecio ={setPrecio}  />
               
 
             </Typography>

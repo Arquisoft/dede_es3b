@@ -7,24 +7,25 @@ let page: puppeteer.Page;
 let browser: puppeteer.Browser;
 
 defineFeature(feature, test => {
-  
-  beforeAll(async () => {
+
+  beforeAll(async () => { //befaoreAll como un who
     browser = process.env.GITHUB_ACTIONS
       ? await puppeteer.launch()
-      : await puppeteer.launch({ headless: true });
+      //: await puppeteer.launch({ headless: true });
+      : await puppeteer.launch({ headless: false, slowMo: 50 });  //Para verlo en cámara lenta
     page = await browser.newPage();
 
     await page
       .goto("http://localhost:3000", {
         waitUntil: "networkidle0",
       })
-      .catch(() => {});
+      .catch(() => { });
   });
 
-  test('The user is not registered in the site', ({given,when,then}) => {
-    
-    let email:string;
-    let username:string;
+  test('The user is not registered in the site', ({ given, when, then }) => {
+
+    let email: string;
+    let username: string;
 
     given('An unregistered user', () => {
       email = "newuser@test.com"
@@ -45,7 +46,7 @@ defineFeature(feature, test => {
     });
   })
 
-  afterAll(async ()=>{
+  afterAll(async () => {
     browser.close()
   })
 

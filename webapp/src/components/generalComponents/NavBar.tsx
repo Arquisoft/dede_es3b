@@ -1,4 +1,4 @@
-import React, { Component,useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Drawer } from '@material-ui/core';
 import { ProductCart } from '../../shared/shareddtypes';
 import ProductCartList from '../carrito/ProductCartList';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 const pages = ['Deportes', 'Material', 'Ropa'];
 
@@ -30,19 +31,17 @@ type Cart = {
 }
 
 const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    const [anchorElNavCart, setAnchorElNavCart] = React.useState<null | HTMLElement>(null);
     const [anchorElNavDeportes, setAnchorElNavDeportes] = React.useState<null | HTMLElement>(null);
     const [anchorElNavMaterial, setAnchorElNavMaterial] = React.useState<null | HTMLElement>(null);
     const [anchorElNavRopa, setAnchorElNavRopa] = React.useState<null | HTMLElement>(null);
 
-    const [isOpened, setIsOpened] = useState(false);
-
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNav(event.currentTarget);
+    const handleOpenCart = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElNavCart(event.currentTarget);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
+    const handleCloseCart = () => {
+        setAnchorElNavCart(null);
     };
 
     const handleOpenDeportesMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -79,53 +78,9 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        <img src='../../../public/images/logo-dedeportes.png' />
+                        <img src='https://res.cloudinary.com/asw2122/image/upload/v1648725943/logo-dedeportes.png' />
                     </Typography>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                            }}
-                        >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-                    >
-                        LOGO
-                    </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             key={pages[0]}
@@ -136,13 +91,12 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                         </Button>
                         <Menu
                             sx={{ mt: '45px' }}
-                            id="menu-appbar"
                             anchorEl={anchorElNavDeportes}
                             anchorOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            keepMounted
+                            
                             transformOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
@@ -165,13 +119,12 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                         </Button>
                         <Menu
                             sx={{ mt: '45px' }}
-                            id="menu-appbar"
                             anchorEl={anchorElNavMaterial}
                             anchorOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            keepMounted
+                            
                             transformOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
@@ -194,13 +147,12 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                         </Button>
                         <Menu
                             sx={{ mt: '45px' }}
-                            id="menu-appbar"
                             anchorEl={anchorElNavRopa}
                             anchorOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            keepMounted
+                            
                             transformOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
@@ -216,19 +168,20 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                         </Menu>
                     </Box>
 
-                    <Box sx={{ flexGrow: 0 }}>
+                    <Box sx={{ flexGrow: 0 , display: { xs: 'none', md: 'flex' } }}>
                         <Tooltip title="Ver carrito">
-                            <IconButton sx={{ p: 0 }} onClick={() => setIsOpened(true)}>
-                                <img src="../../public/products/carrito.png" />
+                            <IconButton sx={{ p: 0 }} onClick={handleOpenCart}>
+                                <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" />
                             </IconButton>
                         </Tooltip>
-                        
-                        <Drawer anchor='right' open={isOpened} onClose={() => setIsOpened(false)}>
-                            <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
-                        </Drawer>
                     </Box>
                 </Toolbar>
             </Container>
+
+            <SwipeableDrawer  anchor='right' open={Boolean(anchorElNavCart)} onOpen={handleCloseCart} onClose={handleCloseCart}>
+                <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
+            </SwipeableDrawer >
+
         </AppBar>
     );
 };
