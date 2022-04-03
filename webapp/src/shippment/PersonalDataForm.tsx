@@ -37,7 +37,7 @@ const AddressForm: React.FC<ReviewType>= ({setPrecio}) => {
             variant="standard"
           />
         </Grid>
-        <Authenticator></Authenticator>
+        <Authenticator setPrecio={setPrecio}></Authenticator>
       </Grid>
     </React.Fragment>
   );

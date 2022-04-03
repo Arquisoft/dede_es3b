@@ -27,12 +27,12 @@ Having the database included in the project from the beginning will make it diff
 
 .Decision
 To simplify the beginning of the project we will use a local database at the start.
-When the project progresses we will change the dynamics and add the database to the project.
+When the project progresses, after the second project´s review we will use Mongo Atlas to deploy the database in the cloud.
 
 .Status
 Accepted
 
-=== Choosing the language we´ll use in the documnetation
+=== Choosing the language we´ll use in the documentation
 .Problem
 Another design decission is the language used in the project. To develop the documentation we have two options, we can write it in English or in Spanish.
 

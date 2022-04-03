@@ -68,7 +68,7 @@ DeDeportes will be based in the sale of sport products.
 
 React is a JavaScript-based library, used for doing user interfaces. Facebook and open-source developers run it.
 
-MongoDb will be used to store the products, the users, the users' orders and shopping carts.
+MongoDb will be used to store the products, the users, the users' orders and the ordered products.
 
 Node.js is the package manager choosen to build the application.
 
