@@ -73,3 +73,7 @@ We will divide the team into three groups:
 * 2 members dedicated to the front-end area
 * 2 members dedicated to the back-end area
 * 1 member dedicated to SOLID and PODs
+
+Regarding the contributions, front-end and back-end work at the same time and together, therefore, even if the commits are from one, the work has been carried out by the two members.
+
+Lastly, pull requests are accepted by the person who does not commit. Only in the case of the person dedicated to PODs is it reviewed. In the other cases, since it is carried out by two people simultaneously, it is not necessary
