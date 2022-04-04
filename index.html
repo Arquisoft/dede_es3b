@@ -464,10 +464,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#section-solution-strategy">4. Solution Strategy</a>
 <ul class="sectlevel2">
-<li><a href="#_4_1_technology_desisions">4.1. 4.1 Technology Desisions</a></li>
-<li><a href="#_4_2_quality_objectives">4.2. 4.2 Quality objectives</a></li>
-<li><a href="#_4_3_development_tools">4.3. 4.3 Development tools</a></li>
-<li><a href="#_4_4_organization">4.4. 4.4 Organization</a></li>
+<li><a href="#_technology_decisions">4.1. Technology Decisions</a></li>
+<li><a href="#_quality_objectives">4.2. Quality objectives</a></li>
+<li><a href="#_development_tools">4.3. Development tools</a></li>
+<li><a href="#_organization">4.4. Organization</a></li>
 </ul>
 </li>
 <li><a href="#section-building-block-view">5. Building Block View</a>
@@ -490,12 +490,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#section-concepts">8. Cross-cutting Concepts</a>
 <ul class="sectlevel2">
-<li><a href="#_8_1_domain_model">8.1. 8.1 Domain model</a></li>
-<li><a href="#_8_2_domain_concepts">8.2. 8.2 Domain concepts</a></li>
-<li><a href="#_8_3_development_concepts">8.3. 8.3 Development concepts</a></li>
-<li><a href="#_8_4_user_interface">8.4. 8.4 User Interface</a></li>
-<li><a href="#_8_5_security">8.5. 8.5 Security</a></li>
-<li><a href="#_8_6_internationalization">8.6. 8.6 Internationalization</a></li>
+<li><a href="#_domain_model">8.1. Domain model</a></li>
+<li><a href="#_domain_concepts">8.2. Domain concepts</a></li>
+<li><a href="#_development_concepts">8.3. Development concepts</a></li>
+<li><a href="#_user_interface">8.4. User Interface</a></li>
+<li><a href="#_security">8.5. Security</a></li>
+<li><a href="#_internationalization">8.6. Internationalization</a></li>
 </ul>
 </li>
 <li><a href="#section-design-decisions">9. Design Decisions</a>
@@ -503,7 +503,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_using_a_nonsql_database_for_saving_data">9.1. Using a nonSQL database for saving data.</a></li>
 <li><a href="#_using_pod">9.2. Using POD</a></li>
 <li><a href="#_using_a_local_database_at_the_beginning_and_then_insert_it_into_the_project">9.3. Using a local database at the beginning and then insert it into the project</a></li>
-<li><a href="#_choosing_the_language_well_use_in_the_documnetation">9.4. Choosing the language we´ll use in the documnetation</a></li>
+<li><a href="#_choosing_the_language_well_use_in_the_documentation">9.4. Choosing the language we´ll use in the documentation</a></li>
 </ul>
 </li>
 <li><a href="#section-quality-scenarios">10. Quality Requirements</a>
@@ -515,6 +515,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#section-technical-risks">11. Risks and Technical Debts</a>
 <ul class="sectlevel2">
 <li><a href="#_risks">11.1. Risks</a></li>
+<li><a href="#_tecnical_debts">11.2. Tecnical Debts</a></li>
 </ul>
 </li>
 <li><a href="#section-glossary">12. Glossary</a></li>
@@ -776,7 +777,7 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The products and the orders will be stored in the Database. The users data will be stored in PODs that will be connected to the app to get the shipping address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The products of the catalogue and the orders will be stored in the Database. There will also be a collection that will relate products to orders. The users data will be stored in PODs that will be connected to the app to get the shipping address</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Version Control</p></td>
@@ -849,7 +850,7 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 </div>
 </div>
 <div class="paragraph">
-<p>The main objetive of DeDeportes is to create a sports store with products related to sports. The application that conatins the online store is going to be descentralized
+<p>The main objetive of DeDeportes is to create a sports store with products related to sports. The application that contains the online store is going to be descentralized
 and also be based on Solid so each client will have its own POD. This POD stores the users information and it cannot be acceded unless the user authorized it. The most
 frequent user of this appplication is going to be the client interested in sport products.</p>
 </div>
@@ -915,7 +916,7 @@ The title of the table is the name of your system, the three columns contain the
 </div>
 <div class="paragraph">
 <p>First of all the client should sign in the POD sending his information. Then he can pick up products to make the order, once he ended the POD send the shipping address to make the full order and it´s send to the database for a future send.
-The product info are given to the application by the database.</p>
+The product´s info are given to the application by the database.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1010,9 +1011,9 @@ Refer to details in the following sections.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_4_1_technology_desisions">4.1. 4.1 Technology Desisions</h3>
+<h3 id="_technology_decisions">4.1. Technology Decisions</h3>
 <div class="sect3">
-<h4 id="_4_1_1_back_end">4.1.1. 4.1.1 Back-end</h4>
+<h4 id="_back_end">4.1.1. Back-end</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1037,21 +1038,21 @@ Refer to details in the following sections.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_4_1_2_front_end">4.1.2. 4.1.2 Front-end</h4>
+<h4 id="_front_end">4.1.2. Front-end</h4>
 <div class="ulist">
 <ul>
 <li>
 <p><strong>React:</strong> It&#8217;s a JavaScript library used for doing interfaces. It&#8217;s based on components.</p>
 </li>
 <li>
-<p><strong>Bootstrap Studio:</strong> It&#8217;s an app for designing and prototyping websites.</p>
+<p><strong>MUI library:</strong> It&#8217;s a react user interface library that help us on the front-end.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_4_2_quality_objectives">4.2. 4.2 Quality objectives</h3>
+<h3 id="_quality_objectives">4.2. Quality objectives</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1064,7 +1065,7 @@ Refer to details in the following sections.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Privacy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">We only going to store the location of the users to calculate the shipping cost</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We are going to store the location of the users to calculate the shipping cost and also the client credit card´s information to carry out the payment of the order</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Usability</strong></p></td>
@@ -1072,7 +1073,7 @@ Refer to details in the following sections.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Testability</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">We are going to do some test to be sure that the application works succcessfuly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We are going to do some tests, both frontend and backend, to guarantee the correct and succesfully functioning of the application</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Performance</strong></p></td>
@@ -1082,7 +1083,7 @@ Refer to details in the following sections.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_4_3_development_tools">4.3. 4.3 Development tools</h3>
+<h3 id="_development_tools">4.3. Development tools</h3>
 <div class="paragraph">
 <p>While we develop the proyect we will use the following tools:</p>
 </div>
@@ -1104,7 +1105,7 @@ Refer to details in the following sections.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_4_4_organization">4.4. 4.4 Organization</h3>
+<h3 id="_organization">4.4. Organization</h3>
 <div class="paragraph">
 <p>We will use different medias to get in touch and discuss decitions. We have choosen the following ones:</p>
 </div>
@@ -1124,7 +1125,32 @@ Refer to details in the following sections.</p>
 </li>
 </ul>
 </div>
+<div class="sect3">
+<h4 id="_how_we_work">4.4.1. How we work</h4>
+<div class="paragraph">
+<p>We will divide the team into three groups:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2 members dedicated to the front-end area</p>
+</li>
+<li>
+<p>2 members dedicated to the back-end area</p>
+</li>
+<li>
+<p>1 member dedicated to SOLID and PODs</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Regarding the contributions, front-end and back-end work at the same time and together, therefore, even if the commits are from one, the work has been carried out by the two members.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, pull requests are accepted by the person who does not commit. Only in the case of the person dedicated to PODs is it reviewed. In the other cases, since it is carried out by two people simultaneously, it is not necessary</p>
+</div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 </div>
@@ -1287,7 +1313,7 @@ The next schemes are some scenarios of our sport online shop.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Sequence%20diagram.png" alt="Sequence diagram" width="289" height="343">
+<img src="./images/Sequence%20diagram-Login.png" alt="Sequence diagram Login" width="289" height="343">
 </div>
 </div>
 </div>
@@ -1314,7 +1340,7 @@ The next schemes are some scenarios of our sport online shop.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Sequence%20diagram.png" alt="Sequence diagram" width="380" height="387">
+<img src="./images/Sequence%20diagram-Sign%20up.png" alt="Sequence diagram Sign up" width="380" height="387">
 </div>
 </div>
 </div>
@@ -1341,7 +1367,7 @@ The next schemes are some scenarios of our sport online shop.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Sequence%20diagram.png" alt="Sequence diagram" width="522" height="343">
+<img src="./images/Sequence%20diagram-Shopping%20cart.png" alt="Sequence diagram Shopping cart" width="522" height="343">
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -1494,21 +1520,18 @@ on this list.</p>
 <p><span class="image"><img src="./images/08-Crosscutting-Concepts-Structure-EN.png" alt="Possible topics for crosscutting concepts"></span></p>
 </div>
 <div class="sect2">
-<h3 id="_8_1_domain_model">8.1. 8.1 Domain model</h3>
+<h3 id="_domain_model">8.1. Domain model</h3>
 <div class="paragraph">
 <p><span class="image"><img src="./images/08-domainModel.png" alt="UML Diagram"></span></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_8_2_domain_concepts">8.2. 8.2 Domain concepts</h3>
+<h3 id="_domain_concepts">8.2. Domain concepts</h3>
 <div class="paragraph">
 <p>DeDeportes will be based in the sale of sport products.</p>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p><strong>User:</strong> will represent the client that uses the application. His main information will be stored for buying in the store.</p>
-</li>
 <li>
 <p><strong>POD:</strong> will store the individual information of each user as a repository following the SOLID specifications.</p>
 </li>
@@ -1516,13 +1539,13 @@ on this list.</p>
 <p><strong>Order:</strong> will be an order of products of the store done by the user.</p>
 </li>
 <li>
-<p><strong>Shopping cart:</strong> will actualize the different products that the user wants to order. The user can add or delete products in the shopping cart.</p>
-</li>
-<li>
 <p><strong>Product:</strong> will be all the sport materials available to buy by all the users in the store.</p>
 </li>
 <li>
-<p><strong>Credit Card:</strong> each user can have more than one credit cards associated t buy in the store.</p>
+<p><strong>OrderedProduct</strong> will store the products of the multiple orders. Each one will have the product´s id and the order´s id.</p>
+</li>
+<li>
+<p><strong>Credit Card:</strong> each user can have more than one credit cards associated t buy in the store. Will be inside the order entity.</p>
 </li>
 <li>
 <p><strong>Administrator:</strong> could do changes in the application.</p>
@@ -1531,12 +1554,12 @@ on this list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_8_3_development_concepts">8.3. 8.3 Development concepts</h3>
+<h3 id="_development_concepts">8.3. Development concepts</h3>
 <div class="paragraph">
 <p>React is a JavaScript-based library, used for doing user interfaces. Facebook and open-source developers run it.</p>
 </div>
 <div class="paragraph">
-<p>MongoDb will be used to store the products, the users, the users' orders and shopping carts.</p>
+<p>MongoDb will be used to store the products, the users, the users' orders and the ordered products.</p>
 </div>
 <div class="paragraph">
 <p>Node.js is the package manager choosen to build the application.</p>
@@ -1546,7 +1569,7 @@ on this list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_8_4_user_interface">8.4. 8.4 User Interface</h3>
+<h3 id="_user_interface">8.4. User Interface</h3>
 <div class="paragraph">
 <p>The default user interface for DeDeportes is a Multiple Page Application written in TypeScript using React together with default Bootstrap and MUI templates.</p>
 </div>
@@ -1555,13 +1578,13 @@ on this list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_8_5_security">8.5. 8.5 Security</h3>
+<h3 id="_security">8.5. Security</h3>
 <div class="paragraph">
 <p>DEDE offers security for its API endpoints only via HTTP basic access authentication. Also by using the POD API we can check the user&#8217;s permissions and access only the resources that the user has given permissions.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_8_6_internationalization">8.6. 8.6 Internationalization</h3>
+<h3 id="_internationalization">8.6. Internationalization</h3>
 <div class="paragraph">
 <p>Only supported language is English. There is no hook for doing internationalization in the frontend and there are no plans for creating one for now.</p>
 </div>
@@ -1611,7 +1634,7 @@ on this list.</p>
 <div class="paragraph">
 <div class="title">Decision</div>
 <p>To simplify the beginning of the project we will use a local database at the start.
-When the project progresses we will change the dynamics and add the database to the project.</p>
+When the project progresses, after the second project´s review we will use Mongo Atlas to deploy the database in the cloud.</p>
 </div>
 <div class="paragraph">
 <div class="title">Status</div>
@@ -1619,7 +1642,7 @@ When the project progresses we will change the dynamics and add the database to 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_choosing_the_language_well_use_in_the_documnetation">9.4. Choosing the language we´ll use in the documnetation</h3>
+<h3 id="_choosing_the_language_well_use_in_the_documentation">9.4. Choosing the language we´ll use in the documentation</h3>
 <div class="paragraph">
 <div class="title">Problem</div>
 <p>Another design decission is the language used in the project. To develop the documentation we have two options, we can write it in English or in Spanish.</p>
@@ -1648,7 +1671,7 @@ When the project progresses we will change the dynamics and add the database to 
 <div class="sect2">
 <h3 id="_quality_scenarios">10.2. Quality Scenarios</h3>
 <div class="sect3">
-<h4 id="_security">10.2.1. Security</h4>
+<h4 id="_security_2">10.2.1. Security</h4>
 <div class="paragraph">
 <p>By saving on the SOLID PODs the information of the user and also by only having esential info on the database.</p>
 </div>
@@ -1712,6 +1735,12 @@ When the project progresses we will change the dynamics and add the database to 
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="_tecnical_debts">11.2. Tecnical Debts</h3>
+<div class="paragraph">
+<p>For the moment the retrieve of the address of the pod will be done by having a note in the pod.</p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1747,6 +1776,18 @@ When the project progresses we will change the dynamics and add the database to 
 <td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">It is a JavaScript library that helps you create interactive user interfaces. It allows to create views and generate components easily and simply</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mongoose</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mongoose is a Node.js library that allows us to write queries against a MongooDB database, with features like validations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Schema</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A schema in Mongoose is a JSON structure that contains information about the properties of a document. It may also contain information about validation and default values, and whether a particular property is required.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Release or tag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A tag allows you to specify uncommit in git and store the current state of the project in .tar format.</p></td>
+</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
@@ -1774,7 +1815,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-24 15:10:22 +0100
+Last updated 2022-04-04 08:47:22 +0200
 </div>
 </div>
 </body>
