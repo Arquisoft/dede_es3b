@@ -12,7 +12,7 @@ import { Footer } from './components/generalComponents/Footer';
 import { Product } from './shared/shareddtypes'
 import { ProductCart } from './shared/shareddtypes'
 import NavBar from './components/generalComponents/NavBar';
-
+import toast, { Toaster } from 'react-hot-toast';
 // const productos = [
 //   {
 //       id: '1',
@@ -86,8 +86,10 @@ function App(): JSX.Element {
   const addToCart = (clickedItem: Product) => {
     setCarrito( estadoActual => {
       const estaEnElCarrito = estadoActual.find(i => i.id === clickedItem.id);
-      if(!estaEnElCarrito)
+      if(!estaEnElCarrito){
+        toast.success('Añadido'); 
         return [...estadoActual,{...clickedItem, quantity: 1}];
+      }
       return [...estadoActual];
     });
   }
@@ -156,6 +158,7 @@ function App(): JSX.Element {
       <Container>
         
         <NavBar props={carrito} remove={removeFromCart} precio={getPrecio} aumentar={increaseFromCart} reducir={reduceFromCart}></NavBar>
+        <Toaster />
         <ProductList props={productos} add={addToCart}></ProductList>
         <Footer></Footer>
       </Container>

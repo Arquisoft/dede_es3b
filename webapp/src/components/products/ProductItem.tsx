@@ -1,4 +1,3 @@
-import toast, { Toaster } from 'react-hot-toast';
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import { Product } from '../../shared/shareddtypes'
 
@@ -33,8 +32,7 @@ const ProductItem: React.FC<Cart> = ({ props, add }) => {
             </Typography>
         </CardContent>
         <CardActions>
-            <Button component="button" data-testid="add" size="small" onClick={() => { toast.success('Añadido'); add(props); }}>Add to Cart</Button>
-            <Toaster />
+            <Button component="button" data-testid="add" size="small" onClick={() => { add(props); }}>Add to Cart</Button>
         </CardActions>
     </Card>
 };
