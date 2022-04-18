@@ -79,6 +79,21 @@ describe('users ', () => {
 
     });
 
+    /**
+     * Test that we can get a single user
+     */
+     it("Can get a single user", async () => {
+        const response: Response = await request(app).get('/api/users/1745423e-f726-490f-a85f-596c912dc161');
+        const pass = crypto.createHmac('sha256','h0l4').digest('hex');
+        expect(response.statusCode).toBe(200);
+        expect.objectContaining({
+            "user":[{
+                email: '1745423e-f726-490f-a85f-596c912dc161',
+                password: pass
+            }]
+        })
+
+    });
     
 
 });
