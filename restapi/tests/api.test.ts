@@ -6,8 +6,9 @@ import * as http from 'http';
 import bp from 'body-parser';
 import cors from 'cors';
 import api from '../api';
+import { callbackify } from 'util';
 
-const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
 
 const {v4: uuidv4} = require("uuid");
@@ -60,31 +61,24 @@ describe('users ', () => {
      * Test that a user can be created through the productService without throwing any errors.
      */
     it('Can insert an user correctly', async () => {
-        let dni:string = await uuidv4()
-        let name:string = 'Pepe'
-        let surname:string = 'Gonzalez'
-        let email:string = 'pepegonzalez@gmail.com'
-        const response:Response = await request(app).post('/api/users/add').send({dni: dni, name: name, surname: surname, email: email}).set('Accept', 'application/json')
+        let email:string = await uuidv4()
+        let password:string = 'h0l4'
+        const response:Response = await request(app).post('/api/users/add').send({email: email, password: password}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
     });
 
     /**
-     * Test that we can get a user from the database without error
+     * Test that we can´t insert a repeated user
      */
-    it("Can get a user", async () => {
-        const response: Response = await request(app).get('/api/users/55555555E');
-        expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(
-        expect.objectContaining({
-            "user":[{
-                dni: '55555555E',
-                name: 'Pepe',
-                surname: 'Gonzalez',
-                email: 'pepegonzalez@gmail.com'
-            }]
-        })
-        );
+     it("Can´t insert a repeated user", async () => {
+        let email:string = '1745423e-f726-490f-a85f-596c912dc161'
+        let password:string = 'h0l4'
+        const response: Response = await request(app).get('/api/users/add').send({email: email, password: password}).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(400);
+
     });
+
+    
 
 });
 
