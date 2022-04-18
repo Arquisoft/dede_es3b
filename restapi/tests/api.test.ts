@@ -7,6 +7,8 @@ import bp from 'body-parser';
 import cors from 'cors';
 import api from '../api';
 
+const bcrypt = require("bcrypt");
+
 
 const {v4: uuidv4} = require("uuid");
 let app:Application;
@@ -173,6 +175,28 @@ describe('products ', () => {
      it('Can get all the products',async () => {
         const response:Response = await request(app).get("/api/products/list");
         expect(response.statusCode).toBe(200);
+    });
+
+
+
+});
+
+describe('admin ', () => {
+
+    /*
+     * Test that we can list the admin.
+     */
+    it("Can get the admin", async () => {
+        const response: Response = await request(app).get('/api/admin/admin');
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toEqual(
+        expect.objectContaining({
+            "admin":[{
+                username: 'admin',
+                password: '$2b$10$1I.7CDCPu9pkNtes9VOK3OJrEBhGb1My72mFujmw9irtZuY1nQOOq'
+            }]
+        })
+        );
     });
 
 
