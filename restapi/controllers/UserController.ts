@@ -32,8 +32,6 @@ export const findByEmail = async (req: Request, res: Response): Promise<Response
 
 export const addUser = async (req: Request, res: Response): Promise<Response> => {
 	
-    console.log("POST");
-    console.log(req.body);
 
 	const userReq = req.body
 	
