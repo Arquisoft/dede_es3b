@@ -3,7 +3,7 @@ require("../db/db")
 import { Request, Response } from 'express';
 import User from '../models/UserSchema';
 
-const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
 export const findAllUsers = async (req: Request, res: Response): Promise<Response> => {
     const users = await User.find({});
@@ -11,7 +11,7 @@ export const findAllUsers = async (req: Request, res: Response): Promise<Respons
     return res.json(users);
 };
 
-export const findByDni = async (req: Request, res: Response): Promise<Response> => {
+export const findByEmail = async (req: Request, res: Response): Promise<Response> => {
 	
 	//const userReq = req.body
 	
@@ -48,7 +48,7 @@ export const addUser = async (req: Request, res: Response): Promise<Response> =>
         return res.status(400).json({ msg: "required password is missing" });
 	}
 
-	const pass = await bcrypt.hash(userReq.password,10)
+	const pass = crypto.createHmac('sha256',userReq.password).digest('hex');
     const nUser =  new User({
 		email: userReq.email,
         password: pass
