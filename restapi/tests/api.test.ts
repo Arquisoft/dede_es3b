@@ -1,12 +1,13 @@
-require('dotenv').config()
-
 import request, {Response} from 'supertest';
 import express, { Application,RequestHandler } from 'express';
 import * as http from 'http';
 import bp from 'body-parser';
 import cors from 'cors';
 import api from '../api';
-import { callbackify } from 'util';
+
+import path, { normalize } from 'path';
+var dotenvPath = path.resolve('../.env');
+require("dotenv").config({path: dotenvPath});
 
 const crypto = require("crypto");
 
@@ -16,7 +17,7 @@ let app:Application;
 let server:http.Server;
 
 const mongoose = require("mongoose");
-const uri = "mongodb+srv://DeDeportes3b:dedeportes2@aswdedeportes.9ukdb.mongodb.net/DatabaseTest?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI_TEST;
 
 beforeAll(async () => {
 
@@ -183,14 +184,6 @@ describe('admin ', () => {
     it("Can get the admin", async () => {
         const response: Response = await request(app).get('/api/admin/admin');
         expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(
-        expect.objectContaining({
-            "admin":[{
-                username: 'admin',
-                password: '$2b$10$1I.7CDCPu9pkNtes9VOK3OJrEBhGb1My72mFujmw9irtZuY1nQOOq'
-            }]
-        })
-        );
     });
 
 

@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "@emotion/react": "^11.8.1",
-    "@emotion/styled": "^11.8.1"
+    "@emotion/styled": "^11.8.1",
+    "dotenv": "^16.0.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.0.23"
