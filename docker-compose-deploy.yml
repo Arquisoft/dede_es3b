@@ -5,12 +5,12 @@ volumes:
 services:
   restapi:
   
-    image: ghcr.io/Arquisoft/dede_es3b/restapi:68ad0c7d677489f97c09631a0662a03c7b3bfd2c
+    image: ghcr.io/arquisoft/dede_es3b/restapi:68ad0c7d677489f97c09631a0662a03c7b3bfd2c
     ports:
       - "5000:5000"
   webapp:
   
-    image: ghcr.io/Arquisoft/dede_es3b/webapp:68ad0c7d677489f97c09631a0662a03c7b3bfd2c
+    image: ghcr.io/arquisoft/dede_es3b/webapp:68ad0c7d677489f97c09631a0662a03c7b3bfd2c
     ports:
       - "3000:3000"
     depends_on: 
