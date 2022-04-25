@@ -10,6 +10,10 @@ import { ProductCart } from './shared/shareddtypes'
 import NavBar from './components/generalComponents/NavBar';
 import toast, { Toaster } from 'react-hot-toast';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+import Checkout from './shippment/CheckOut';
+import Login from './components/login/Login';
+import Button from '@mui/material/Button';
+
 // const productos = [
 //   {
 //       id: '1',
@@ -172,7 +176,9 @@ function App(): JSX.Element {
         <Toaster />
         <Router>
           <Routes>
-            <Route path="/productList" element= {<ProductList props={productos} add={addToCart}></ProductList> } />
+            <Route path="/" element= {<ProductList props={productos} add={addToCart}></ProductList> } />
+            <Route path="/login" element= {<Login setPrecio={() => getPrecio()}/> } />
+            <Route path="/checkout" element= {<Checkout carrito={productos} precio={() => getPrecio()}></Checkout> } />
           </Routes>
         </Router>
         

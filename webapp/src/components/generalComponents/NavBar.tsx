@@ -46,9 +46,9 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             key={pages[0]}
-                            href="/productList"
+                            href="/"
                             onClick={() => {
-                                            window.location.assign('/poductList');
+                                            window.location.assign('/');
                                             window.location.reload();
                                         }}
                             sx={{ my: 2, color: 'white', display: 'block' }}

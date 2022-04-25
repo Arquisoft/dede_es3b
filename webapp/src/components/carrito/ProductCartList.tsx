@@ -24,7 +24,7 @@ const ProductCartList: React.FC<Cart> = ({ productos, remove, precio, aumentar, 
                 </Grid>)) :
             <p>No hay productos en el carrito</p>
         }
-        <Checkout carrito={productos} precio={precioCarrito}></Checkout>
+        
     </Grid>
 };
 
