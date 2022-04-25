@@ -168,6 +168,7 @@ function App(): JSX.Element {
   }
 
   const getElementosCarrito = () => { return carrito.length; }
+  const precioCarrito = getPrecio();
   return (
     <>
       <Container>
@@ -178,7 +179,7 @@ function App(): JSX.Element {
           <Routes>
             <Route path="/" element= {<ProductList props={productos} add={addToCart}></ProductList> } />
             <Route path="/login" element= {<Login setPrecio={() => getPrecio()}/> } />
-            <Route path="/checkout" element= {<Checkout carrito={productos} precio={() => getPrecio()}></Checkout> } />
+            <Route path="/checkout" element= {<Checkout carrito={carrito} precio={precioCarrito}></Checkout> } />
           </Routes>
         </Router>
         
