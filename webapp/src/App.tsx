@@ -68,6 +68,16 @@ function App(): JSX.Element {
     refreshUserList();
   }, []);
 
+  useEffect(() => {
+    const carritoPersistente = localStorage.getItem("carrito");
+    if(carritoPersistente){
+      let carrito: ProductCart[] = JSON.parse(carritoPersistente);
+      setCarrito(carrito);
+    }
+    else
+      localStorage.setItem("carrito", JSON.stringify([]));
+  }, []);
+
   const [productos, setProductos] = useState<Product[]>([]);
 
   const refreshProductList = async () => {
@@ -79,6 +89,10 @@ function App(): JSX.Element {
   }, []);
 
   const [carrito, setCarrito] = useState([] as ProductCart[]);
+
+  useEffect(() => {
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+  }, [carrito]);
 
   const addToCart = (clickedItem: Product) => {
     setCarrito(estadoActual => {
