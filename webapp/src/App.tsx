@@ -10,6 +10,10 @@ import { ProductCart } from './shared/shareddtypes'
 import NavBar from './components/generalComponents/NavBar';
 import toast, { Toaster } from 'react-hot-toast';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+import Checkout from './shippment/CheckOut';
+import Login from './components/login/Login';
+import Button from '@mui/material/Button';
+
 // const productos = [
 //   {
 //       id: '1',
@@ -68,6 +72,16 @@ function App(): JSX.Element {
     refreshUserList();
   }, []);
 
+  useEffect(() => {
+    const carritoPersistente = localStorage.getItem("carrito");
+    if(carritoPersistente){
+      let carrito: ProductCart[] = JSON.parse(carritoPersistente);
+      setCarrito(carrito);
+    }
+    else
+      localStorage.setItem("carrito", JSON.stringify([]));
+  }, []);
+
   const [productos, setProductos] = useState<Product[]>([]);
 
   const refreshProductList = async () => {
@@ -79,6 +93,10 @@ function App(): JSX.Element {
   }, []);
 
   const [carrito, setCarrito] = useState([] as ProductCart[]);
+
+  useEffect(() => {
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+  }, [carrito]);
 
   const addToCart = (clickedItem: Product) => {
     setCarrito(estadoActual => {
@@ -150,6 +168,7 @@ function App(): JSX.Element {
   }
 
   const getElementosCarrito = () => { return carrito.length; }
+  const precioCarrito = getPrecio();
   return (
     <>
       <Container>
@@ -158,7 +177,9 @@ function App(): JSX.Element {
         <Toaster />
         <Router>
           <Routes>
-            <Route path="/productList" element= {<ProductList props={productos} add={addToCart}></ProductList> } />
+            <Route path="/" element= {<ProductList props={productos} add={addToCart}></ProductList> } />
+            <Route path="/login" element= {<Login setPrecio={() => getPrecio()}/> } />
+            <Route path="/checkout" element= {<Checkout carrito={carrito} precio={precioCarrito}></Checkout> } />
           </Routes>
         </Router>
         
