@@ -11,10 +11,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Drawer } from '@material-ui/core';
 import { ProductCart } from '../../shared/shareddtypes';
 import ProductCartList from '../carrito/ProductCartList';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Drawer from '@mui/material/Drawer';
 
 const pages = ['Deportes', 'Material', 'Ropa'];
 
@@ -169,6 +168,9 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 , display: { xs: 'none', md: 'flex' } }}>
+                        <Drawer  anchor='right' open={Boolean(anchorElNavCart)} onClose={handleCloseCart}>
+                            <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
+                        </Drawer>
                         <Tooltip title="Ver carrito">
                             <IconButton sx={{ p: 0 }} onClick={handleOpenCart}>
                                 <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" />
@@ -177,10 +179,6 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                     </Box>
                 </Toolbar>
             </Container>
-
-            <SwipeableDrawer  anchor='right' open={Boolean(anchorElNavCart)} onOpen={handleCloseCart} onClose={handleCloseCart}>
-                <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
-            </SwipeableDrawer >
 
         </AppBar>
     );

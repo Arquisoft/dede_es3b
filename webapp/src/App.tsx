@@ -13,6 +13,7 @@ import { Product } from './shared/shareddtypes'
 import { ProductCart } from './shared/shareddtypes'
 import NavBar from './components/generalComponents/NavBar';
 import toast, { Toaster } from 'react-hot-toast';
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 // const productos = [
 //   {
 //       id: '1',
@@ -159,7 +160,12 @@ function App(): JSX.Element {
         
         <NavBar props={carrito} remove={removeFromCart} precio={getPrecio} aumentar={increaseFromCart} reducir={reduceFromCart}></NavBar>
         <Toaster />
-        <ProductList props={productos} add={addToCart}></ProductList>
+        <Router>
+          <Routes>
+            <Route path="/productList" element= {<ProductList props={productos} add={addToCart}></ProductList> } />
+          </Routes>
+        </Router>
+        
         <Footer></Footer>
       </Container>
     </>
