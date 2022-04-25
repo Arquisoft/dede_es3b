@@ -17,9 +17,6 @@ export const findAdmin = async (req: Request, res: Response): Promise<Response> 
 		username: req.params.username
 	});
 
-    console.log("Holaaaaaaa")
-    console.log(pass_admin)
-
     if (admin.password != pass_admin){
         return res.status(400).json({ msg: "Is not the user admin" });
     }
