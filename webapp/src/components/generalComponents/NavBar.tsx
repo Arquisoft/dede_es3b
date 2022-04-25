@@ -15,25 +15,27 @@ import { ProductCart } from '../../shared/shareddtypes';
 import ProductCartList from '../carrito/ProductCartList';
 import Drawer from '@mui/material/Drawer';
 
-const pages = ['Deportes', 'Material', 'Ropa'];
+const pages = ['Deportes', 'Material', 'Ropa', 'Mi perfil'];
 
 const optionsDeportes = ['Pádel', 'Fútbol', 'Baloncesto'];
 const optionsMaterial = ['Accesorios', 'Calzado', 'Pelotas'];
 const optionsRopa = ['Camisetas', 'Pantalones', 'Chaquetas'];
+const optionsMiPerfil = ['Iniciar sesión', 'Ver mis pedidos'];
 
 type Cart = {
     props: ProductCart[];
-    remove: (id: string)=>void;
+    remove: (id: string) => void;
     precio: () => number;
-    aumentar:(clickedItem: ProductCart)=>void;
-    reducir:(id: string)=>void;
+    aumentar: (clickedItem: ProductCart) => void;
+    reducir: (id: string) => void;
 }
 
-const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
+const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) => {
     const [anchorElNavCart, setAnchorElNavCart] = React.useState<null | HTMLElement>(null);
     const [anchorElNavDeportes, setAnchorElNavDeportes] = React.useState<null | HTMLElement>(null);
     const [anchorElNavMaterial, setAnchorElNavMaterial] = React.useState<null | HTMLElement>(null);
     const [anchorElNavRopa, setAnchorElNavRopa] = React.useState<null | HTMLElement>(null);
+    const [anchorElNavMiPerfil, setAnchorElNavMiPerfil] = React.useState<null | HTMLElement>(null);
 
     const handleOpenCart = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNavCart(event.currentTarget);
@@ -67,6 +69,14 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
         setAnchorElNavRopa(null);
     };
 
+    const handleOpenMiPerfilMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElNavMiPerfil(event.currentTarget);
+    };
+
+    const handleCloseMiPerfilMenu = () => {
+        setAnchorElNavMiPerfil(null);
+    };
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -81,6 +91,35 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Button
+                            key={pages[3]}
+                            onClick={handleOpenMiPerfilMenu}
+                            sx={{ my: 2, color: 'white', display: 'block' }}
+                        >
+                            {pages[3]}
+                        </Button>
+                        <Menu
+                            sx={{ mt: '45px' }}
+                            anchorEl={anchorElNavMiPerfil}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={Boolean(anchorElNavMiPerfil)}
+                            onClose={handleCloseMiPerfilMenu}
+                        >
+                            {optionsMiPerfil.map((option) => (
+                                <MenuItem key={option} onClick={handleCloseMiPerfilMenu}>
+                                    <Typography textAlign="center">{option}</Typography>
+                                </MenuItem>
+                            ))}
+                        </Menu>
+                        {/* 
                         <Button
                             key={pages[0]}
                             onClick={handleOpenDeportesMenu}
@@ -164,7 +203,7 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                                     <Typography textAlign="center">{option}</Typography>
                                 </MenuItem>
                             ))}
-                        </Menu>
+                        </Menu> */}
                     </Box>
 
                     <Box sx={{ flexGrow: 0 , display: { xs: 'none', md: 'flex' } }}>
@@ -179,6 +218,10 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                     </Box>
                 </Toolbar>
             </Container>
+
+            <SwipeableDrawer  anchor='right' open={Boolean(anchorElNavCart)} onOpen={handleCloseCart} onClose={handleCloseCart}>
+                <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
+            </SwipeableDrawer >
 
         </AppBar>
     );

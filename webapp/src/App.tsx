@@ -1,12 +1,8 @@
-import React, { Component,useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
-import EmailForm from './components/EmailForm';
-import Welcome from './components/Welcome';
-import UserList from './components/UserList';
 import { getProducts, getUsers } from './api/api';
 import { User } from './shared/shareddtypes';
 import './App.css';
-import Authenticator from './authentication/Authenticator';
 import ProductList from './components/products/ProductList';
 import { Footer } from './components/generalComponents/Footer';
 import { Product } from './shared/shareddtypes'
@@ -62,7 +58,7 @@ import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 function App(): JSX.Element {
 
   const [users, setUsers] = useState<User[]>([]);
-  
+
 
   const refreshUserList = async () => {
     setUsers(await getUsers());
@@ -85,38 +81,38 @@ function App(): JSX.Element {
   const [carrito, setCarrito] = useState([] as ProductCart[]);
 
   const addToCart = (clickedItem: Product) => {
-    setCarrito( estadoActual => {
+    setCarrito(estadoActual => {
       const estaEnElCarrito = estadoActual.find(i => i.id === clickedItem.id);
-      if(!estaEnElCarrito){
-        toast.success('Añadido'); 
-        return [...estadoActual,{...clickedItem, quantity: 1}];
+      if (!estaEnElCarrito) {
+        toast.success('Añadido');
+        return [...estadoActual, { ...clickedItem, quantity: 1 }];
       }
       return [...estadoActual];
     });
   }
 
   const removeFromCart = (id: string) => {
-    setCarrito( estadoActual =>(
-        estadoActual.reduce(
-          (coleccion, p)=> {
-            if(p.id===id){
-              return coleccion;
-            }
-            return [...coleccion, p];
+    setCarrito(estadoActual => (
+      estadoActual.reduce(
+        (coleccion, p) => {
+          if (p.id === id) {
+            return coleccion;
           }
-          , [] as ProductCart[]
+          return [...coleccion, p];
+        }
+        , [] as ProductCart[]
       )
-        )
+    )
     )
   }
 
   const increaseFromCart = (clickedItem: ProductCart) => {
-    setCarrito( estadoActual => {
+    setCarrito(estadoActual => {
       const estaEnElCarrito = estadoActual.find(i => i.id === clickedItem.id);
-      if(estaEnElCarrito){
+      if (estaEnElCarrito) {
         estadoActual.reduce(
-          (coleccion, p)=> {
-            if(p.id===clickedItem.id){
+          (coleccion, p) => {
+            if (p.id === clickedItem.id) {
               p.quantity++;
               return [...coleccion, p];
             }
@@ -130,34 +126,34 @@ function App(): JSX.Element {
   }
 
   const reduceFromCart = (id: string) => {
-    setCarrito( estadoActual =>(
-        estadoActual.reduce(
-          (coleccion, p)=> {
-            if(p.id===id){
-              if(p.quantity>1){
-                p.quantity--;
-                return [...coleccion, p];
-              }
-              else
-                return coleccion;
+    setCarrito(estadoActual => (
+      estadoActual.reduce(
+        (coleccion, p) => {
+          if (p.id === id) {
+            if (p.quantity > 1) {
+              p.quantity--;
+              return [...coleccion, p];
             }
-            return [...coleccion, p];
+            else
+              return coleccion;
           }
-          , [] as ProductCart[]
+          return [...coleccion, p];
+        }
+        , [] as ProductCart[]
       )
-        )
+    )
     )
   }
 
   const getPrecio = () => {
-    return carrito.reduce((acc: number, p) => acc+p.quantity*p.price,0);
+    return carrito.reduce((acc: number, p) => acc + p.quantity * p.price, 0);
   }
 
   const getElementosCarrito = () => { return carrito.length; }
   return (
     <>
       <Container>
-        
+
         <NavBar props={carrito} remove={removeFromCart} precio={getPrecio} aumentar={increaseFromCart} reducir={reduceFromCart}></NavBar>
         <Toaster />
         <Router>
