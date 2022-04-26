@@ -59,7 +59,7 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        <img src='https://res.cloudinary.com/asw2122/image/upload/v1648725943/logo-dedeportes.png' alt="dedeportes"/>
+                        <img src='https://res.cloudinary.com/asw2122/image/upload/v1648725943/logo-dedeportes.png' alt="dedeportes" />
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -67,13 +67,16 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                             key={pages[0]}
                             href="/"
                             onClick={() => {
-                                            window.location.assign('/');
-                                            window.location.reload();
-                                        }}
+                                window.location.assign('/');
+                                window.location.reload();
+                            }}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
                             {pages[0]}
                         </Button>
+                    </Box>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Button
                             key='Mi perfil'
                             onClick={handleOpenMiPerfilMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
@@ -103,13 +106,13 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                         </Menu>
                     </Box>
 
-                    <Box sx={{ flexGrow: 0 , display: { xs: 'none', md: 'flex' } }}>
-                        <Drawer  anchor='right' open={abrirCarrito} onClose={() => setAbrirCarrito(false)}>
+                    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+                        <Drawer anchor='right' open={abrirCarrito} onClose={() => setAbrirCarrito(false)}>
                             <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
                         </Drawer>
                         <Tooltip title="Ver carrito">
                             <IconButton sx={{ p: 0 }} onClick={() => setAbrirCarrito(true)}>
-                                <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" alt="Ver carrito"/>
+                                <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" alt="Ver carrito" />
                             </IconButton>
                         </Tooltip>
                     </Box>

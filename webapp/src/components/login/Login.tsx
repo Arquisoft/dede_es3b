@@ -4,12 +4,13 @@ import ProfileViewer from "../../shippment/PersonalDataForm";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import TextFiedldValidator from '../TextFieldValidator';
 
 type ReviewType = {
-  setPrecio: (precio: number)=> void;
+    setPrecio: (precio: number) => void;
 }
 
-const Login: React.FC<ReviewType>= ({setPrecio}) =>{
+const Login: React.FC<ReviewType> = ({ setPrecio }) => {
     const [abrirAdmin, setAdmin] = useState(false);
     const [abrirPod, setPod] = useState(false);
 
@@ -23,72 +24,42 @@ const Login: React.FC<ReviewType>= ({setPrecio}) =>{
         setPod(false);
     }
 
-  return (
-      <Container>
+    return (
+        <Container>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 <Button
                     key="Admin"
                     onClick={() => {
-                            admin();
-                        }}
+                        admin();
+                    }}
                 >
-                Login Admin
+                    Login Admin
                 </Button>
-                
                 <Button
                     key="POD"
                     onClick={() => {
-                            pod();
-                        }}
+                        pod();
+                    }}
                 >
-                Login POD
+                    Login POD
                 </Button>
             </Box>
-
-            
-
             <div>
-                {abrirAdmin ?  
+                {abrirAdmin ?
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="firstName"
-                                name="firstName"
-                                label="User name admin"
-                                fullWidth
-                                autoComplete="given-name"
-                                variant="standard"
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="lastName"
-                                name="lastName"
-                                label="Password admin"
-                                fullWidth
-                                autoComplete="family-name"
-                                variant="standard"
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <Button
-                                onClick={() => { }}
-                            >
-                            Login
-                            </Button>
+                            <TextFiedldValidator></TextFiedldValidator>
                         </Grid>
                     </Grid>
-                    : abrirAdmin }
+                    : abrirAdmin}
             </div>
 
             <div>
-                {abrirPod ? <ProfileViewer setPrecio={setPrecio}/> : abrirPod}
+                {abrirPod ? <ProfileViewer setPrecio={setPrecio} /> : abrirPod}
             </div>
-            
-      </Container>
-  );
+
+        </Container>
+    );
 }
 
 export default Login

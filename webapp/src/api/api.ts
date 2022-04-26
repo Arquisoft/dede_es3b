@@ -1,5 +1,6 @@
 import { TableBody } from '@mui/material';
 import { User, Product, ProductCart, Order } from '../shared/shareddtypes';
+
 export async function addUser(user: User): Promise<boolean> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/users/add', {
@@ -60,3 +61,20 @@ export async function addOrderProducts(products: ProductCart[], order: Order): P
       body: getJSON()
     });
   });
+
+  return true;
+}
+
+export async function findAdmin(email: String, password: String): Promise<boolean> {
+
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+  let response = await fetch(apiEndPoint + '/admin/' + email, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (response.status === 200) {
+    return true;
+  } else {
+    return false;
+  }
+}

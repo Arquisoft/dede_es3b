@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import { getProducts, getUsers } from './api/api';
 import { User } from './shared/shareddtypes';
@@ -9,10 +9,9 @@ import { Product } from './shared/shareddtypes'
 import { ProductCart } from './shared/shareddtypes'
 import NavBar from './components/generalComponents/NavBar';
 import toast, { Toaster } from 'react-hot-toast';
-import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Checkout from './shippment/CheckOut';
 import Login from './components/login/Login';
-import Button from '@mui/material/Button';
 
 // const productos = [
 //   {
@@ -74,7 +73,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     const carritoPersistente = localStorage.getItem("carrito");
-    if(carritoPersistente){
+    if (carritoPersistente) {
       let carrito: ProductCart[] = JSON.parse(carritoPersistente);
       setCarrito(carrito);
     }
@@ -167,7 +166,7 @@ function App(): JSX.Element {
     return carrito.reduce((acc: number, p) => acc + p.quantity * p.price, 0);
   }
 
-  const getElementosCarrito = () => { return carrito.length; }
+  //const getElementosCarrito = () => { return carrito.length; }
   const precioCarrito = getPrecio();
   return (
     <>
@@ -177,12 +176,12 @@ function App(): JSX.Element {
         <Toaster />
         <Router>
           <Routes>
-            <Route path="/" element= {<ProductList props={productos} add={addToCart}></ProductList> } />
-            <Route path="/login" element= {<Login setPrecio={() => getPrecio()}/> } />
-            <Route path="/checkout" element= {<Checkout carrito={carrito} precio={precioCarrito}></Checkout> } />
+            <Route path="/" element={<ProductList props={productos} add={addToCart}></ProductList>} />
+            <Route path="/login" element={<Login setPrecio={() => getPrecio()}></Login>} />
+            <Route path="/checkout" element={<Checkout carrito={carrito} precio={precioCarrito}></Checkout>} />
           </Routes>
         </Router>
-        
+
         <Footer></Footer>
       </Container>
     </>
