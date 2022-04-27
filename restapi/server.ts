@@ -14,7 +14,8 @@ const options: cors.CorsOptions = {
 
 const metricsMiddleware:RequestHandler = promBundle({includeMethod: true});
 app.use(metricsMiddleware);
-app.use(cors(options));
+//app.use(cors(options));
+app.use(cors());// NOSONAR
 app.use(bp.json());
 
 app.use("/api", api)
