@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
 import {VCARD} from "@inrupt/vocab-common-rdf";
-import React, {ChangeEvent, useEffect} from "react";
+import React, { useEffect} from "react";
 import {getShippingPrice} from "../shippment/CalculateShippment";
 
  async function retrievePODAddress(webID: string): Promise<string> {
