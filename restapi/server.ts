@@ -9,7 +9,7 @@ const port: number = 5000;
 
 const db= require('./db/db')
 const options: cors.CorsOptions = {
-  origin: ['http://localhost:3000',' http://*.compute-1.amazonaws.com']
+  origin: ['http://localhost:3000',' http://*.compute-1.amazonaws.com'] // NOSONAR
 };
 
 const metricsMiddleware:RequestHandler = promBundle({includeMethod: true});
