@@ -11,30 +11,27 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Drawer } from '@material-ui/core';
 import { ProductCart } from '../../shared/shareddtypes';
 import ProductCartList from '../carrito/ProductCartList';
+import Drawer from '@mui/material/Drawer';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
-const pages = ['Deportes', 'Material', 'Ropa'];
+const pages = ['Catalogo de Productos', 'Mi perfil'];
 
-const optionsDeportes = ['Pádel', 'Fútbol', 'Baloncesto'];
-const optionsMaterial = ['Accesorios', 'Calzado', 'Pelotas'];
-const optionsRopa = ['Camisetas', 'Pantalones', 'Chaquetas'];
+const optionsMiPerfil = ['Iniciar sesión', 'Ver mis pedidos'];
 
 type Cart = {
     props: ProductCart[];
-    remove: (id: string)=>void;
+    remove: (id: string) => void;
     precio: () => number;
-    aumentar:(clickedItem: ProductCart)=>void;
-    reducir:(id: string)=>void;
+    aumentar: (clickedItem: ProductCart) => void;
+    reducir: (id: string) => void;
 }
 
-const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
+const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) => {
+    const [abrirCarrito, setAbrirCarrito] = useState(false);
     const [anchorElNavCart, setAnchorElNavCart] = React.useState<null | HTMLElement>(null);
-    const [anchorElNavDeportes, setAnchorElNavDeportes] = React.useState<null | HTMLElement>(null);
-    const [anchorElNavMaterial, setAnchorElNavMaterial] = React.useState<null | HTMLElement>(null);
-    const [anchorElNavRopa, setAnchorElNavRopa] = React.useState<null | HTMLElement>(null);
+    const [anchorElNavMiPerfil, setAnchorElNavMiPerfil] = React.useState<null | HTMLElement>(null);
 
     const handleOpenCart = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNavCart(event.currentTarget);
@@ -44,28 +41,12 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
         setAnchorElNavCart(null);
     };
 
-    const handleOpenDeportesMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNavDeportes(event.currentTarget);
+    const handleOpenMiPerfilMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElNavMiPerfil(event.currentTarget);
     };
 
-    const handleCloseDeportesMenu = () => {
-        setAnchorElNavDeportes(null);
-    };
-
-    const handleOpenMaterialMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNavMaterial(event.currentTarget);
-    };
-
-    const handleCloseMaterialMenu = () => {
-        setAnchorElNavMaterial(null);
-    };
-
-    const handleOpenRopaMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNavRopa(event.currentTarget);
-    };
-
-    const handleCloseRopaMenu = () => {
-        setAnchorElNavRopa(null);
+    const handleCloseMiPerfilMenu = () => {
+        setAnchorElNavMiPerfil(null);
     };
 
     return (
@@ -78,110 +59,65 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        <img src='https://res.cloudinary.com/asw2122/image/upload/v1648725943/logo-dedeportes.png' />
+                        <img src='https://res.cloudinary.com/asw2122/image/upload/v1648725943/logo-dedeportes.png' alt="dedeportes" />
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             key={pages[0]}
-                            onClick={handleOpenDeportesMenu}
+                            href="/"
+                            onClick={() => {
+                                window.location.assign('/');
+                                window.location.reload();
+                            }}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
-                            Deportes
+                            {pages[0]}
                         </Button>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            anchorEl={anchorElNavDeportes}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElNavDeportes)}
-                            onClose={handleCloseDeportesMenu}
-                        >
-                            {optionsDeportes.map((option) => (
-                                <MenuItem key={option} onClick={handleCloseDeportesMenu}>
-                                    <Typography textAlign="center">{option}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
+                    </Box>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
-                            key={pages[1]}
-                            onClick={handleOpenMaterialMenu}
+                            key='Mi perfil'
+                            onClick={handleOpenMiPerfilMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
-                            Material
+                            Mi perfil
                         </Button>
                         <Menu
                             sx={{ mt: '45px' }}
-                            anchorEl={anchorElNavMaterial}
+                            anchorEl={anchorElNavMiPerfil}
                             anchorOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            
+
                             transformOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            open={Boolean(anchorElNavMaterial)}
-                            onClose={handleCloseMaterialMenu}
+                            open={Boolean(anchorElNavMiPerfil)}
+                            onClose={handleCloseMiPerfilMenu}
                         >
-                            {optionsMaterial.map((option) => (
-                                <MenuItem key={option} onClick={handleCloseMaterialMenu}>
-                                    <Typography textAlign="center">{option}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                        <Button
-                            key={pages[2]}
-                            onClick={handleOpenRopaMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
-                        >
-                            Ropa
-                        </Button>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            anchorEl={anchorElNavRopa}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElNavRopa)}
-                            onClose={handleCloseRopaMenu}
-                        >
-                            {optionsRopa.map((option) => (
-                                <MenuItem key={option} onClick={handleCloseRopaMenu}>
+                            {optionsMiPerfil.map((option) => (
+                                <MenuItem key={option} onClick={handleCloseMiPerfilMenu}>
                                     <Typography textAlign="center">{option}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
                     </Box>
 
-                    <Box sx={{ flexGrow: 0 , display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+                        <Drawer anchor='right' open={abrirCarrito} onClose={() => setAbrirCarrito(false)}>
+                            <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
+                        </Drawer>
                         <Tooltip title="Ver carrito">
-                            <IconButton sx={{ p: 0 }} onClick={handleOpenCart}>
-                                <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" />
+                            <IconButton sx={{ p: 0 }} onClick={() => setAbrirCarrito(true)}>
+                                <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" alt="Ver carrito" />
                             </IconButton>
                         </Tooltip>
                     </Box>
                 </Toolbar>
             </Container>
-
-            <SwipeableDrawer  anchor='right' open={Boolean(anchorElNavCart)} onOpen={handleCloseCart} onClose={handleCloseCart}>
-                <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
-            </SwipeableDrawer >
-
         </AppBar>
     );
 };
