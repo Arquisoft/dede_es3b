@@ -33,14 +33,6 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
     const [anchorElNavCart, setAnchorElNavCart] = React.useState<null | HTMLElement>(null);
     const [anchorElNavMiPerfil, setAnchorElNavMiPerfil] = React.useState<null | HTMLElement>(null);
 
-    const handleOpenCart = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNavCart(event.currentTarget);
-    };
-
-    const handleCloseCart = () => {
-        setAnchorElNavCart(null);
-    };
-
     const handleOpenMiPerfilMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNavMiPerfil(event.currentTarget);
     };
@@ -98,11 +90,12 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                             open={Boolean(anchorElNavMiPerfil)}
                             onClose={handleCloseMiPerfilMenu}
                         >
-                            {optionsMiPerfil.map((option) => (
-                                <MenuItem key={option} onClick={handleCloseMiPerfilMenu}>
-                                    <Typography textAlign="center">{option}</Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem key='Login' component='a' href='/login'>
+                                <Typography textAlign="center">Iniciar sesión</Typography>
+                            </MenuItem>
+                            <MenuItem key='Profile' component='a' href='/login'>
+                                <Typography textAlign="center">Mi perfil</Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
 
