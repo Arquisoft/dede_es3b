@@ -30,7 +30,6 @@ type Cart = {
 
 const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) => {
     const [abrirCarrito, setAbrirCarrito] = useState(false);
-    const [anchorElNavCart, setAnchorElNavCart] = React.useState<null | HTMLElement>(null);
     const [anchorElNavMiPerfil, setAnchorElNavMiPerfil] = React.useState<null | HTMLElement>(null);
 
     const handleOpenMiPerfilMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -42,7 +41,7 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" style={{ backgroundColor: "#008b8b", color: "white" }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
