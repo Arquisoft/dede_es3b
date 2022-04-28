@@ -187,6 +187,37 @@ describe('products ', () => {
         expect(response.statusCode).toBe(200);
     });
 
+    /*
+     * Test that we can list the products by an existing category without any error.
+     */
+    it('Can get all the products by category',async () => {
+        const response:Response = await request(app).get("/api/products/Raquetas");
+        expect(response.statusCode).toBe(200);
+    });
+
+    /*
+     * Test that we can´t list the products by a non existing category without any error.
+     */
+    it('Can´t get all the products by category if the category is wrong',async () => {
+        const response:Response = await request(app).get("/api/products/Playeros");
+        expect(response.statusCode).toBe(400);
+    });
+
+    /*
+     * Test that we can add a product.
+     */
+    it('Can add a product',async () => {
+        let id:string = uuidv4()
+        let description:string = 'Hola'
+        let name:string = 'Nombre'
+        let price:number = 30.5
+        let category:string = 'Raquetas'
+        const response:Response = await request(app).post('/api/products/add')
+            .send({id: id, description: description, name: name, price: price, category: category})
+            .set('Accept', 'application/json')
+        expect(response.statusCode).toBe(200);
+    });
+
 
 
 });
