@@ -17,7 +17,7 @@ let app:Application;
 let server:http.Server;
 
 const mongoose = require("mongoose");
-const uri = process.env.MONGODB_URI_TEST;
+const uri = 'mongodb+srv://DeDeportes3b:dedeportes2@aswdedeportes.9ukdb.mongodb.net/DatabaseTest?retryWrites=true&w=majority'; // NOSONAR
 
 beforeAll(async () => {
 
