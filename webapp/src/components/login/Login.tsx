@@ -3,8 +3,7 @@ import { Button, Card, CardContent, Container, Typography } from "@material-ui/c
 import ProfileViewer from "../../shippment/PersonalDataForm";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import TextFiedldValidator from '../TextFieldValidator';
+import TextFiedldValidator from './TextFieldValidator';
 
 type ReviewType = {
     setPrecio: (precio: number) => void;
@@ -32,6 +31,7 @@ const Login: React.FC<ReviewType> = ({ setPrecio }) => {
                     onClick={() => {
                         admin();
                     }}
+                    variant="contained"
                 >
                     Login Admin
                 </Button>
@@ -40,24 +40,26 @@ const Login: React.FC<ReviewType> = ({ setPrecio }) => {
                     onClick={() => {
                         pod();
                     }}
+                    variant="contained"
                 >
                     Login POD
                 </Button>
             </Box>
-            <div>
-                {abrirAdmin ?
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6}>
-                            <TextFiedldValidator></TextFiedldValidator>
+            <Box bgcolor="white">
+                <div>
+                    {abrirAdmin ?
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} sm={6}>
+                                <TextFiedldValidator></TextFiedldValidator>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    : abrirAdmin}
-            </div>
+                        : abrirAdmin}
+                </div>
 
-            <div>
-                {abrirPod ? <ProfileViewer setPrecio={setPrecio} /> : abrirPod}
-            </div>
-
+                <div>
+                    {abrirPod ? <ProfileViewer setPrecio={setPrecio} /> : abrirPod}
+                </div>
+            </Box>
         </Container>
     );
 }

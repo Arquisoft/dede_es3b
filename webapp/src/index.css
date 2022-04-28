@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: transparent;
+  background-image: url("https://e3.365dm.com/20/04/1600x900/2372004140035257207_4968553.jpg");
+  background-attachment: fixed;
 }
 
 code {
@@ -19,6 +22,6 @@ footer {
   color: white;
 }
 
-nav{
+nav {
   color: '068b8b';
 }

@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import toast from 'react-hot-toast';
-import { findByEmail } from '../api/api';
+import { findByEmail } from '../../api/api';
 
 interface State {
     email: string;
@@ -57,8 +57,6 @@ export default function TextFiedldValidator() {
         } else {
             setPasswordError(false)
         }
-
-        /*
         if (!(values.email === 'admin@admin.com') || !(values.password === 'admin')) {
             isAdmin = false;
             toast.error("No eres admin")
@@ -68,12 +66,12 @@ export default function TextFiedldValidator() {
             isAdmin = true;
             toast.success("Eres admin");
         }
-        /*/
+        /*
         checkIfIsAdmin();
         if (isAdmin) {
             toast.success("Eres admin");
         }
-
+        */
     }
 
     return (
@@ -105,7 +103,8 @@ export default function TextFiedldValidator() {
                 />
             </div>
             <Button onClick={(e) => handleSubmit(e)}
-                type="submit">
+                type="submit"
+                variant='contained'>
                 Login
             </Button>
         </Box>
