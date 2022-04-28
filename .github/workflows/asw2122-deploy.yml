@@ -69,6 +69,7 @@ jobs:
     # needs: [e2e-tests]
     env:
       MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      MONGODB_URI_TEST: ${{ secrets.MONGODB_URI_TEST }}
     steps:
     - uses: actions/checkout@v2
     - name: Publish to Registry
