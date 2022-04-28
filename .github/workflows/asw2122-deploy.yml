@@ -23,8 +23,6 @@ jobs:
     - uses: codecov/codecov-action@v2
   unit-test-restapi:
     runs-on: ubuntu-latest
-    env:
-      MONGODB_URI_TEST: ${{ secrets.MONGODB_URI_TEST }}
     defaults:
       run:
         working-directory: restapi
@@ -33,6 +31,7 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 16
+        MONGODB_URI_TEST: ${{ secrets.MONGODB_URI_TEST }}
     - run: npm ci
     - run: npm test
     - uses: codecov/codecov-action@v2
