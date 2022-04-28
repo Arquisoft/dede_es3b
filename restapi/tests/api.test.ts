@@ -63,7 +63,7 @@ describe('users ', () => {
      */
     it('Can insert an user correctly', async () => {
         let email:string = await uuidv4()
-        let password:string = 'h0l4'
+        let password:string = 'h0l4' // NOSONAR
         const response:Response = await request(app).post('/api/users/add').send({email: email, password: password}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
     });
@@ -73,7 +73,7 @@ describe('users ', () => {
      */
      it("Can´t insert a repeated user", async () => {
         let email:string = '1745423e-f726-490f-a85f-596c912dc161'
-        let password:string = 'h0l4'
+        let password:string = 'h0l4' // NOSONAR
         const response: Response = await request(app).get('/api/users/add').send({email: email, password: password}).set('Accept', 'application/json');
         expect(response.statusCode).toBe(400);
 
