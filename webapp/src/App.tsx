@@ -132,6 +132,18 @@ function App(): JSX.Element {
 
   //const getElementosCarrito = () => { return carrito.length; }
   const precioCarrito = getPrecio();
+
+  const [loggedAsAdmin, setLoggedAsAdmin] = useState(false);
+  const [loggedAsUser, setLoggedAsUser] = useState(false);
+
+  // useEffect(() => {
+  //   localStorage.setItem("loggedAsAdmin", loggedAsAdmin)
+  // }, [loggedAsAdmin]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("loggedAsUser", loggedAsUser)
+  // }, [loggedAsUser]);
+
   return (
     <>
       <Container>

@@ -27,7 +27,7 @@ export const findByEmail = async (req: Request, res: Response): Promise<Response
     if(user.length==0){
         return res.status(400).json({ msg: "User not found, you may introduce any valid email" });
 	}
-    return res.status(200).json({ user });
+    return res.status(200).json(user);
 };
 
 export const addUser = async (req: Request, res: Response): Promise<Response> => {

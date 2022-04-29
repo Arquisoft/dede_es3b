@@ -24,7 +24,7 @@ export default function TextFiedldValidator() {
 
     const checkIfIsAdmin = async () => {
         let admin = findByEmail("admin@admin.com");
-        const pass = crypto.createHmac('sha256', values.password).digest('hex');
+        const pass = values.password//crypto.createHmac('sha256', values.password).digest('hex');
 
         if (pass === (await admin).password) {
             isAdmin = true;
@@ -52,21 +52,20 @@ export default function TextFiedldValidator() {
         } else {
             setPasswordError(false)
         }
-        if (!(values.email === 'admin@admin.com') || !(values.password === 'admin')) {
-            isAdmin = false;
-            toast.error("No eres admin")
-        }
-        //checkIfIsAdmin();
-        if (values.email === 'admin@admin.com' && values.password === 'admin') {
-            isAdmin = true;
-            toast.success("Eres admin");
-        }
-        /*
+        // if (!(values.email === 'admin@admin.com') || !(values.password === 'admin')) {
+        //     isAdmin = false;
+        //     toast.error("No eres admin")
+        // }
+        // if (values.email === 'admin@admin.com' && values.password === 'admin') {
+        //     isAdmin = true;
+        //     toast.success("Eres admin");
+        // }
+        
         checkIfIsAdmin();
         if (isAdmin) {
             toast.success("Eres admin");
         }
-        */
+        
     }
 
     return (
