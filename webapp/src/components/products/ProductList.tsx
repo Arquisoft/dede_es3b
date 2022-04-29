@@ -7,14 +7,17 @@ type Cart = {
     add: (clickedItem: Product) => void;
 }
 
-const ProductList: React.FC<Cart> = ({ props, add }) => (
-    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+const ProductList: React.FC<Cart> = ({ props, add }) => {
+    console.log("Productos: ")
+    console.log(props)
+    return <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         {props.map((p, i) => (
             <Grid item xs={4} sm={4} md={4} key={i}>
                 <ProductItem props={p} add={add}></ProductItem>
             </Grid>
         ))}
-    </Grid>);
+    </Grid>
+    };
 
 
 export default ProductList;

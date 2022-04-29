@@ -13,63 +13,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Checkout from './shippment/CheckOut';
 import Login from './components/login/Login';
 
-// const productos = [
-//   {
-//       id: '1',
-//       category: 'Ropa',
-//       name: 'Chaqueta',
-//       description: 'Para abrigarse',
-//       price: 90
-//   },
-//   {
-//       id: '2',
-//       category: 'Material',
-//       name: 'Pelota',
-//       description: 'Para jugar',
-//       price: 2
-//   },
-//   {
-//       id: '3',
-//       category: 'Material',
-//       name: 'Pala de pádel',
-//       description: 'Para jugar al pádel',
-//       price: 265
-//   },
-//   {
-//       id: '4',
-//       category: 'Ropa',
-//       name: 'Pantalón',
-//       description: 'Para vestirse',
-//       price: 45
-//   },
-//   {
-//       id: '5',
-//       category: 'Material',
-//       name: 'Balón',
-//       description: 'Para jugar al furbo',
-//       price: 25
-//   },
-//   {
-//       id: '6',
-//       category: 'Material',
-//       name: 'Guantes',
-//       description: 'Para parar golitos',
-//       price: 34
-//   }
-// ]
-
 function App(): JSX.Element {
-
-  const [users, setUsers] = useState<User[]>([]);
-
-
-  const refreshUserList = async () => {
-    setUsers(await getUsers());
-  }
-
-  useEffect(() => {
-    refreshUserList();
-  }, []);
 
   useEffect(() => {
     const carritoPersistente = localStorage.getItem("carrito");
