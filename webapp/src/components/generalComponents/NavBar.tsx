@@ -5,16 +5,13 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { ProductCart } from '../../shared/shareddtypes';
 import ProductCartList from '../carrito/ProductCartList';
 import Drawer from '@mui/material/Drawer';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 const pages = ['Productos', 'Mi perfil'];
 
@@ -89,10 +86,10 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                             <MenuItem key={optionsProductos[0]} component='a' href='/'>
                                 <Typography textAlign="center">{optionsProductos[0]}</Typography>
                             </MenuItem>
-                            <MenuItem key={optionsProductos[1]} component='a' href='/login'>
+                            <MenuItem key={optionsProductos[1]} component='a' href='/raquets'>
                                 <Typography textAlign="center">{optionsProductos[1]}</Typography>
                             </MenuItem>
-                            <MenuItem key={optionsProductos[2]} component='a' href='/login'>
+                            <MenuItem key={optionsProductos[2]} component='a' href='/balls'>
                                 <Typography textAlign="center">{optionsProductos[2]}</Typography>
                             </MenuItem>
                         </Menu>

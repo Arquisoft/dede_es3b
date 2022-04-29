@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
-import { getProducts, getUsers } from './api/api';
+import { findByCategory, getProducts, getUsers } from './api/api';
 import { User } from './shared/shareddtypes';
 import './App.css';
 import ProductList from './components/products/ProductList';
@@ -91,6 +91,26 @@ function App(): JSX.Element {
     refreshProductList();
   }, []);
 
+  const [productosRaquetas, setProductosRaquetas] = useState<Product[]>([]);
+
+  const refreshProductRaquetsList = async () => {
+    setProductosRaquetas(await findByCategory("Raquetas"));
+  }
+
+  useEffect(() => {
+    refreshProductRaquetsList();
+  }, []);
+
+  const [productosPelotas, setProductosPelotas] = useState<Product[]>([]);
+
+  const refreshProductBallsList = async () => {
+    setProductosPelotas(await findByCategory("Pelotas"));
+  }
+
+  useEffect(() => {
+    refreshProductBallsList();
+  }, []);
+
   const [carrito, setCarrito] = useState([] as ProductCart[]);
 
   useEffect(() => {
@@ -177,6 +197,8 @@ function App(): JSX.Element {
         <Router>
           <Routes>
             <Route path="/" element={<ProductList props={productos} add={addToCart}></ProductList>} />
+            <Route path="/raquets" element={<ProductList props={productosRaquetas} add={addToCart}></ProductList>} />
+            <Route path="/balls" element={<ProductList props={productosPelotas} add={addToCart}></ProductList>} />
             <Route path="/login" element={<Login setPrecio={() => getPrecio()}></Login>} />
             <Route path="/checkout" element={<Checkout carrito={carrito} precio={precioCarrito}></Checkout>} />
           </Routes>

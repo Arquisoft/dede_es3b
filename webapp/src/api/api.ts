@@ -65,9 +65,16 @@ export async function addOrderProducts(products: ProductCart[], order: Order): P
   return true;
 }
 
-export async function findByEmail(email: string): Promise<User> {
+export async function findByEmail(email: String): Promise<User> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/users/' + email);
+  //The objects returned by the api are directly convertible to User objects
+  return response.json()
+}
+
+export async function findByCategory(category: String): Promise<Product[]> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/products/' + category);
   //The objects returned by the api are directly convertible to User objects
   return response.json()
 }
