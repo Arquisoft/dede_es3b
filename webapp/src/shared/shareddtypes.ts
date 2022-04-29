@@ -16,6 +16,12 @@ export type Order = {
   pod_direction: String
 }
 
+export type OrderProduct = {
+  quantity: number,
+  id_order: string,
+  id_product: string
+}
+
 export type Product = {
   id: string;
   category: string;

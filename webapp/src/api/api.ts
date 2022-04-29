@@ -1,5 +1,4 @@
-import { TableBody } from '@mui/material';
-import { User, Product, ProductCart, Order } from '../shared/shareddtypes';
+import { User, Product, ProductCart, Order, OrderProduct } from '../shared/shareddtypes';
 
 export async function addUser(user: User): Promise<boolean> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -25,6 +24,14 @@ export async function getProducts(): Promise<Product[]> {
 
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/products/list');
+  //The objects returned by the api are directly convertible to User objects
+  return response.json()
+}
+
+export async function getOrders(): Promise<Order[]> {
+
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/orders/list');
   //The objects returned by the api are directly convertible to User objects
   return response.json()
 }
@@ -75,6 +82,27 @@ export async function findByEmail(email: String): Promise<User> {
 export async function findByCategory(category: String): Promise<Product[]> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint + '/products/' + category);
+  //The objects returned by the api are directly convertible to User objects
+  return response.json()
+}
+
+export async function findOrderById(orderId: String): Promise<Order> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/orders/' + orderId);
+  //The objects returned by the api are directly convertible to User objects
+  return response.json()
+}
+
+export async function findOrderProductById(orderId: String): Promise<OrderProduct[]> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/orderProducts/' + orderId);
+  //The objects returned by the api are directly convertible to User objects
+  return response.json()
+}
+
+export async function findProductById(id: String): Promise<Product> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/products/' + id);
   //The objects returned by the api are directly convertible to User objects
   return response.json()
 }
