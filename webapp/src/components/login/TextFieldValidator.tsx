@@ -29,11 +29,6 @@ export default function TextFiedldValidator() {
         if (pass === (await admin).password) {
             isAdmin = true;
         }
-        if (isAdmin) {
-            toast('Se cambió', {
-                icon: '👏',
-            });
-        }
     }
 
     const handleChange =

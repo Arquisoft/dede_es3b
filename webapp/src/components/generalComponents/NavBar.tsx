@@ -16,9 +16,10 @@ import ProductCartList from '../carrito/ProductCartList';
 import Drawer from '@mui/material/Drawer';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
-const pages = ['Catalogo de Productos', 'Mi perfil'];
+const pages = ['Productos', 'Mi perfil'];
 
-const optionsMiPerfil = ['Iniciar sesión', 'Ver mis pedidos'];
+const optionsProductos = ['Todos los productos', 'Raquetas', 'Pelotas'];
+const optionsMiPerfil = ['Iniciar sesión', 'Ver pedidos'];
 
 type Cart = {
     props: ProductCart[];
@@ -30,7 +31,16 @@ type Cart = {
 
 const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) => {
     const [abrirCarrito, setAbrirCarrito] = useState(false);
+    const [anchorElNavProductos, setAnchorElNavProductos] = React.useState<null | HTMLElement>(null);
     const [anchorElNavMiPerfil, setAnchorElNavMiPerfil] = React.useState<null | HTMLElement>(null);
+
+    const handleOpenProductosMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElNavProductos(event.currentTarget);
+    };
+
+    const handleCloseProductosMenu = () => {
+        setAnchorElNavProductos(null);
+    };
 
     const handleOpenMiPerfilMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNavMiPerfil(event.currentTarget);
@@ -56,23 +66,44 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             key={pages[0]}
-                            href="/"
-                            onClick={() => {
-                                window.location.assign('/');
-                                window.location.reload();
-                            }}
+                            onClick={handleOpenProductosMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
                             {pages[0]}
                         </Button>
+                        <Menu
+                            sx={{ mt: '45px' }}
+                            anchorEl={anchorElNavProductos}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNavProductos)}
+                            onClose={handleCloseProductosMenu}
+                        >
+                            <MenuItem key={optionsProductos[0]} component='a' href='/'>
+                                <Typography textAlign="center">{optionsProductos[0]}</Typography>
+                            </MenuItem>
+                            <MenuItem key={optionsProductos[1]} component='a' href='/login'>
+                                <Typography textAlign="center">{optionsProductos[1]}</Typography>
+                            </MenuItem>
+                            <MenuItem key={optionsProductos[2]} component='a' href='/login'>
+                                <Typography textAlign="center">{optionsProductos[2]}</Typography>
+                            </MenuItem>
+                        </Menu>
                     </Box>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
-                            key='Mi perfil'
+                            key={pages[1]}
                             onClick={handleOpenMiPerfilMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
-                            Mi perfil
+                            {pages[1]}
                         </Button>
                         <Menu
                             sx={{ mt: '45px' }}
@@ -89,11 +120,11 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                             open={Boolean(anchorElNavMiPerfil)}
                             onClose={handleCloseMiPerfilMenu}
                         >
-                            <MenuItem key='Login' component='a' href='/login'>
-                                <Typography textAlign="center">Iniciar sesión</Typography>
+                            <MenuItem key={optionsMiPerfil[0]} component='a' href='/login'>
+                                <Typography textAlign="center">{optionsMiPerfil[0]}</Typography>
                             </MenuItem>
-                            <MenuItem key='Profile' component='a' href='/login'>
-                                <Typography textAlign="center">Mi perfil</Typography>
+                            <MenuItem key={optionsMiPerfil[1]} component='a' href='/login'>
+                                <Typography textAlign="center">{optionsMiPerfil[1]}</Typography>
                             </MenuItem>
                         </Menu>
                     </Box>
