@@ -51,6 +51,7 @@ jobs:
     env:
       API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
       REACT_APP_MAPBOX_KEY: ${{ secrets.REACT_APP_MAPBOX_KEY }}
+      HTTPS: true
     steps:
     - uses: actions/checkout@v2
     - name: Publish to Registry
