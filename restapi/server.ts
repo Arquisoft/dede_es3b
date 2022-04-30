@@ -8,9 +8,9 @@ const app: Application = express();
 const port = process.env.PORT || 5000;
 
 //const db= require('./db/db')
-const options: cors.CorsOptions = {
-  origin: ['http://localhost:3000',' http://*.compute-1.amazonaws.com'] // NOSONAR
-};
+// const options: cors.CorsOptions = {
+//   origin: ['http://localhost:3000', /http:\/\/[ec2].+\.compute-1\.amazonaws\.com:3000/] // NOSONAR
+// };
 
 const metricsMiddleware:RequestHandler = promBundle({includeMethod: true});
 app.use(metricsMiddleware);
