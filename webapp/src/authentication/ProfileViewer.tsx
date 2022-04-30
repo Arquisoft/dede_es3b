@@ -19,8 +19,6 @@ const ProfileViewer: React.FC<ReviewType>= ({setPrecio, pedido}) =>{
   const { session } = useSession();
   const [addr, setAddr] = React.useState("");
 
-  pedido.dni = FOAF.name.iri.value;
-  pedido.email = FOAF.name.iri.value;
   return (
     <Container fixed>
       {session.info.webId ? (

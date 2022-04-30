@@ -39,7 +39,7 @@ export default function Checkout( props: any) {
       case 0:
         return <AddressForm setPrecio={setPrecioEnvio} setAnyError={setAnyError} pedido = {order}/>;
       case 1:
-        return <PaymentForm precioCarrito={precio} precioEnvio={precioEnvio}/>;
+        return <PaymentForm precioCarrito={precio} precioEnvio={precioEnvio} errores={setAnyError} pedido={order}/>;
       case 2:
         return <Review productos={carrito} precioCarrito={precio} precioEnvio={precioEnvio} order={order}/>;
       default:
