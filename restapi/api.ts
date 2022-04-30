@@ -1,9 +1,9 @@
 import express, { Request, Response, Router } from 'express';
 import { check } from 'express-validator';
-import { addOrder, findAllOrders, findById } from './controllers/OrderController';
-import { addOrderProduct, findAllOrderProducts } from './controllers/OrderProductController';
-import { findAllProducts, findByCategory,addProduct} from './controllers/ProductController';
-import { findAllUsers, findByEmail, addUser} from './controllers/UserController';
+import { addOrder, findAllOrders } from './controllers/OrderController';
+import { addOrderProduct, findAllOrderProducts, findByOrderId } from './controllers/OrderProductController';
+import { findAllProducts, findByCategory, addProduct, findProductById } from './controllers/ProductController';
+import { findAllUsers, findByEmail, addUser } from './controllers/UserController';
 import { findAdmin } from './controllers/AdminUserController';
 
 const bodyParser = require('body-parser')
@@ -14,6 +14,7 @@ api.use(bodyParser.urlencoded({ extended: true }));
 
 api.get("/products/list", findAllProducts);
 api.get("/products/:category", findByCategory);
+api.get("/products/:id", findProductById);
 api.post("/products/add", addProduct);
 api.get("/users/list", findAllUsers)
 api.get("/users/:email", findByEmail)
@@ -22,7 +23,8 @@ api.post("/orders/add", addOrder)
 api.post("/users/add", addUser)
 api.post("/orderProducts/add", addOrderProduct)
 api.get("/orderProducts/list", findAllOrderProducts)
-api.get("/orders/:id", findById)
+api.get("/orderProducts/:id", findByOrderId)
+api.get("/orders/:id", findByOrderId)
 api.get("/admin/:username", findAdmin)
 
 
