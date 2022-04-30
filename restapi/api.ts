@@ -2,8 +2,8 @@ import express, { Request, Response, Router } from 'express';
 import { check } from 'express-validator';
 import { addOrder, findAllOrders, findById } from './controllers/OrderController';
 import { addOrderProduct, findAllOrderProducts } from './controllers/OrderProductController';
-import { findAllProducts } from './controllers/ProductController';
-import { findAllUsers, findByEmail, addUser } from './controllers/UserController';
+import { findAllProducts, findByCategory,addProduct} from './controllers/ProductController';
+import { findAllUsers, findByEmail, addUser} from './controllers/UserController';
 import { findAdmin } from './controllers/AdminUserController';
 
 const bodyParser = require('body-parser')
@@ -13,7 +13,8 @@ const api: Router = express.Router()
 api.use(bodyParser.urlencoded({ extended: true }));
 
 api.get("/products/list", findAllProducts);
-
+api.get("/products/:category", findByCategory);
+api.post("/products/add", addProduct);
 api.get("/users/list", findAllUsers)
 api.get("/users/:email", findByEmail)
 api.get("/orders/list", findAllOrders)

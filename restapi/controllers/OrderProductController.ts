@@ -3,7 +3,7 @@ const {ObjectId} = require("mongodb");
 //Prueba
 import { Request, Response } from 'express';
 import OrderProduct from '../models/OrderProductSchema';
-import Product from '../models/OrderProductSchema';
+import Product from '../models/ProductSchema';
 import Order from '../models/OrderSchema';
 
 export const findAllOrderProducts = async (req: Request, res: Response): Promise<Response> => {
@@ -20,7 +20,7 @@ export const addOrderProduct = async (req: Request, res: Response): Promise<Resp
     if (!orderExist){
         return res.status(400).json({ msg: "The order not exist" });
     }
-
+    
 	let productExist = await Product.findOne({ id:  orderProductReq.id_product.toString()});
     if (!productExist){
         return res.status(400).json({ msg: "The product not exist" });
@@ -31,7 +31,7 @@ export const addOrderProduct = async (req: Request, res: Response): Promise<Resp
         return res.status(400).json({ msg: "required quantity is missing" });
 	}
 	if(!orderProductReq.id_product){
-        return res.status(400).json({ msg: "required id_order is missing" });
+        return res.status(400).json({ msg: "required id_product is missing" });
 	}
 	if(!orderProductReq.id_order){
         return res.status(400).json({ msg: "required id_order is missing" });

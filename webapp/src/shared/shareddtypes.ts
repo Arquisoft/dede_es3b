@@ -1,6 +1,7 @@
 export type User = {
   name: string;
   email: string;
+  password: string;
 }
 
 export type Order = {
@@ -13,6 +14,12 @@ export type Order = {
   expiration_date: String,
   price: Number,
   pod_direction: String
+}
+
+export type OrderProduct = {
+  quantity: number,
+  id_order: string,
+  id_product: string
 }
 
 export type Product = {

@@ -2,7 +2,7 @@ import { model, Schema} from 'mongoose'
 
 const productSchema = new Schema(
     {
-        _id: {
+        id: {
             type: String
         },
         description: {
@@ -25,7 +25,6 @@ const productSchema = new Schema(
 
 productSchema.set('toJSON', {
     transform: (document, returnedObject) => {
-        returnedObject.id = returnedObject._id
         delete returnedObject._id
     }
 })
