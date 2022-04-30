@@ -70,5 +70,8 @@
     "start-server-and-test": "^1.14.0",
     "ts-jest": "^27.1.2",
     "ts-node-dev": "^1.1.8"
+  },
+  "browser": {
+    "crypto": false
   }
 }

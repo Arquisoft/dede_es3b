@@ -29,13 +29,13 @@ import { addOrder, addOrderProducts } from '../api/api';
 //   },
 //   { name: 'Shipping', desc: '', price: 'Free' },
 // ];
-const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
-];
+//const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
+// const payments = [
+//   { name: 'Card type', detail: 'Visa' },
+//   { name: 'Card holder', detail: 'Mr John Smith' },
+//   { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
+//   { name: 'Expiry date', detail: '04/2024' },
+// ];
 
 type ReviewType = {
   productos: ProductCart[];
@@ -49,6 +49,14 @@ const Review: React.FC<ReviewType>= ({productos, precioCarrito, precioEnvio, ord
   order.price=precioCarrito+precioEnvio;
   addOrder(order);
   addOrderProducts(productos,order);
+
+  const payments = [
+    { name: 'Card type', detail: 'Visa' },
+    { name: 'Card holder', detail: order.name+' '+order.surname },
+    { name: 'Card number', detail: order.creditcard_number },
+    { name: 'Expiry date', detail: order.expiration_date },
+  ];
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -88,8 +96,8 @@ const Review: React.FC<ReviewType>= ({productos, precioCarrito, precioEnvio, ord
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
+          <Typography gutterBottom>{order.name} {order.surname}</Typography>
+          <Typography gutterBottom>{order.pod_direction}</Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
