@@ -37,7 +37,7 @@ export default function Checkout( props: any) {
   function getStepContent(step: number,  carrito: ProductCart[], precio: number) {
     switch (step) {
       case 0:
-        return <AddressForm setPrecio={setPrecioEnvio} setAnyError={setAnyError} />;
+        return <AddressForm setPrecio={setPrecioEnvio} setAnyError={setAnyError} pedido = {order}/>;
       case 1:
         return <PaymentForm precioCarrito={precio} precioEnvio={precioEnvio}/>;
       case 2:

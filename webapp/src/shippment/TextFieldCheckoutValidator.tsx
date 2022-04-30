@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import toast from 'react-hot-toast';
 import { findByEmail } from '../api/api';
+import { ProductCart, Order } from '../shared/shareddtypes';
 
 interface State {
     nombre: string;
@@ -13,9 +14,10 @@ interface State {
 
 type ReviewType = {
     errores: (error: boolean) => void;
+    pedido: Order;
 }
 
-const TextFieldCheckoutValidator: React.FC<ReviewType> = ({ errores }) =>  {
+const TextFieldCheckoutValidator: React.FC<ReviewType> = ({ errores, pedido }) =>  {
     const [emailError, setEmailError] = useState(true)
     const [passwordError, setPasswordError] = useState(true)
     const [values, setValues] = React.useState<State>({
@@ -25,6 +27,26 @@ const TextFieldCheckoutValidator: React.FC<ReviewType> = ({ errores }) =>  {
 
     let isAdmin = false;
     let start = true;
+
+    useEffect(() => {
+        const nombrePersistente = localStorage.getItem("nombre");
+        const apellidosPersistente = localStorage.getItem("apellidos");
+        if (nombrePersistente) {
+            let nombre: string = nombrePersistente;
+            values.nombre = nombre;
+            setEmailError(false);
+            pedido.name = nombre;
+        }
+
+        if (apellidosPersistente) {
+            let apellidos: string = apellidosPersistente;
+            values.apellidos = apellidos;
+            setPasswordError(false);
+            pedido.surname = apellidos;
+        }
+        
+        
+    }, []);
 
     const handleChange =
         (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,19 +63,26 @@ const TextFieldCheckoutValidator: React.FC<ReviewType> = ({ errores }) =>  {
             setEmailError(true)
         } else {
             setEmailError(false)
+            pedido.name = values.nombre;
         }
 
         if (values.apellidos === '') {
             setPasswordError(true)
         } else {
             setPasswordError(false)
+            pedido.surname = values.apellidos;
         }
 
         if(emailError || passwordError){
             toast.error("Introduce los campos obligatorios");
             errores(true);
-        }else
+        }else{
+            toast.success("Campos obligatorios introducidos");
             errores(false);
+
+            localStorage.setItem("nombre", values.nombre);
+            localStorage.setItem("apellidos", values.apellidos);
+        }
     }
 
     return (
