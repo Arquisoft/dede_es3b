@@ -27,7 +27,7 @@ app.listen(port, ():void => {
 
 require("dotenv").config();
 const mongoose = require('mongoose')
-
+//prueba
 const uri = process.env.MONGODB_URI;
 
 mongoose.connect(uri)
