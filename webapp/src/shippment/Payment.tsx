@@ -18,21 +18,21 @@ type ReviewType = {
 
 interface State {
   nombre: string;
-  apellidos: string;
-  numeroTarjeta: number;
+  cvv: string;
+  numeroTarjeta: string;
   fechaExpiracion: string;
 }
 
 const PaymentForm: React.FC<ReviewType>= ({precioEnvio, precioCarrito, errores, pedido}) => {
   const [nombreError, setNombreError] = useState(true)
-  const [apellidosError, setApellidosError] = useState(true)
+  const [cvvError, setCVVError] = useState(true)
   const [tarjetaError, setTarjetaError] = useState(true)
   const [fechaError, setFechaError] = useState(true)
 
   const [values, setValues] = React.useState<State>({
       nombre: '',
-      apellidos: '',
-      numeroTarjeta: 0,
+      cvv: '',
+      numeroTarjeta: '',
       fechaExpiracion: ''
   });
 
@@ -50,7 +50,7 @@ const PaymentForm: React.FC<ReviewType>= ({precioEnvio, precioCarrito, errores, 
     if (apellidosPersistente) {
         let apellidos: string = apellidosPersistente;
         values.nombre += ' '+apellidos;
-        setApellidosError(false);
+        setNombreError(false);
     }
     
     
@@ -73,21 +73,32 @@ const PaymentForm: React.FC<ReviewType>= ({precioEnvio, precioCarrito, errores, 
       setNombreError(false)
     }
 
-    if (values.apellidos === '') {
-      setApellidosError(true)
+    if (values.numeroTarjeta === '' || values.numeroTarjeta.length!=16) {
+      setTarjetaError(true)
     } else {
-      setApellidosError(false)
+      pedido.creditcard_number = values.numeroTarjeta;
+      setTarjetaError(false)
     }
 
-    if(nombreError || apellidosError){
+    if (values.fechaExpiracion === '') {
+      setFechaError(true)
+    } else {
+      pedido.expiration_date = values.fechaExpiracion;
+      setFechaError(false)
+    }
+
+    if (values.cvv === '' || values.cvv.length!=3) {
+      setCVVError(true)
+    } else {
+      setCVVError(false)
+    }
+
+    if(nombreError || cvvError || tarjetaError || fechaError){
         toast.error("Introduce los campos obligatorios");
         errores(true);
     }else{
         toast.success("Campos obligatorios introducidos");
         errores(false);
-
-        localStorage.setItem("nombre", values.nombre);
-        localStorage.setItem("apellidos", values.apellidos);
     }
   }
 
@@ -112,10 +123,10 @@ const PaymentForm: React.FC<ReviewType>= ({precioEnvio, precioCarrito, errores, 
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
-            onChange={handleChange('nombre')}
-            value={values.nombre}
+            onChange={handleChange('numeroTarjeta')}
+            value={values.numeroTarjeta}
             id="outlined-error-helper-text"
-            error={apellidosError || (!start)}
+            error={tarjetaError || (!start)}
             required
             label="Card number"
             fullWidth
@@ -125,10 +136,10 @@ const PaymentForm: React.FC<ReviewType>= ({precioEnvio, precioCarrito, errores, 
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
-            onChange={handleChange('nombre')}
-            value={values.nombre}
+            onChange={handleChange('fechaExpiracion')}
+            value={values.fechaExpiracion}
             id="outlined-error-helper-text"
-            error={tarjetaError || (!start)}
+            error={fechaError || (!start)}
             required
             label="Expiry date"
             fullWidth
@@ -138,10 +149,10 @@ const PaymentForm: React.FC<ReviewType>= ({precioEnvio, precioCarrito, errores, 
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
-            onChange={handleChange('nombre')}
-            value={values.nombre}
+            onChange={handleChange('cvv')}
+            value={values.cvv}
             id="outlined-error-helper-text"
-            error={fechaError || (!start)}
+            error={cvvError || (!start)}
             required
             label="CVV"
             helperText="Last three digits on signature strip"
@@ -151,13 +162,6 @@ const PaymentForm: React.FC<ReviewType>= ({precioEnvio, precioCarrito, errores, 
           />
         </Grid>
         
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveCard" value="yes" />}
-            label="Remember credit card details for next time"
-          />
-        </Grid>
-
         <Grid item xs={12}>
           <Button onClick={(e) => handleSubmit(e)}
                 type="submit"
