@@ -6,8 +6,9 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
 import {VCARD} from "@inrupt/vocab-common-rdf";
-import React, {ChangeEvent, useEffect} from "react";
+import React, { useEffect} from "react";
 import {getShippingPrice} from "../shippment/CalculateShippment";
+import { ProductCart, Order } from '../shared/shareddtypes';
 
  async function retrievePODAddress(webID: string): Promise<string> {
     let profileDocumentURI = webID.split("#")[0]
@@ -26,9 +27,9 @@ import {getShippingPrice} from "../shippment/CalculateShippment";
   type ReviewType = {
     setPrecio: (precio: number)=> void;
     webID: string;
-
+    pedido: Order;
   }
-const GetAddress: React.FC<ReviewType>= ({webID,setPrecio}) => {
+const GetAddress: React.FC<ReviewType>= ({webID,setPrecio, pedido}) => {
     const [address, setAddress] = React.useState("");
 
     const getPODAddress = async () => {setAddress(await retrievePODAddress(webID))
@@ -43,6 +44,7 @@ const GetAddress: React.FC<ReviewType>= ({webID,setPrecio}) => {
         getPODAddress();
     })
 
+    pedido.pod_direction = address;
 
     return (
         <Grid container>

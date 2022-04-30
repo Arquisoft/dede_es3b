@@ -5,20 +5,22 @@ import {getSolidDataset, getStringNoLocale, getThing, getUrl, Thing} from "@inru
 import Box from "@mui/material/Box";
 import React, {useEffect} from "react";
 import GetAddress from "./GetAddress";
+import { ProductCart, Order } from '../shared/shareddtypes';
 
 import { ChangeEvent } from 'react';
 
 type ReviewType = {
   setPrecio: (precio: number)=> void;
+  pedido: Order;
 }
 //const ProfileViewer = (props:any) => 
 
-const ProfileViewer: React.FC<ReviewType>= ({setPrecio}) =>{
+const ProfileViewer: React.FC<ReviewType>= ({setPrecio, pedido}) =>{
   const { session } = useSession();
   const [addr, setAddr] = React.useState("");
 
-
-
+  pedido.dni = FOAF.name.iri.value;
+  pedido.email = FOAF.name.iri.value;
   return (
     <Container fixed>
       {session.info.webId ? (
@@ -31,7 +33,7 @@ const ProfileViewer: React.FC<ReviewType>= ({setPrecio}) =>{
               <Text property={FOAF.name.iri.value} />
             </Typography>
              <Typography gutterBottom variant="h5" component="h2">  
-              <GetAddress webID={session.info.webId} setPrecio ={setPrecio}  />
+              <GetAddress webID={session.info.webId} setPrecio ={setPrecio} pedido={pedido} />
               
 
             </Typography>
