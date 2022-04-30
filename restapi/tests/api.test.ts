@@ -17,7 +17,7 @@ let app:Application;
 let server:http.Server;
 
 const mongoose = require("mongoose");
-const uri = process.env.MONGODB_URI_TEST;
+const uri = 'mongodb+srv://DeDeportes3b:dedeportes2@aswdedeportes.9ukdb.mongodb.net/DatabaseTest?retryWrites=true&w=majority'; // NOSONAR
 
 beforeAll(async () => {
 
@@ -63,7 +63,7 @@ describe('users ', () => {
      */
     it('Can insert an user correctly', async () => {
         let email:string = await uuidv4()
-        let password:string = 'h0l4'
+        let password:string = 'h0l4' // NOSONAR
         const response:Response = await request(app).post('/api/users/add').send({email: email, password: password}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
     });
@@ -73,7 +73,7 @@ describe('users ', () => {
      */
      it("Can´t insert a repeated user", async () => {
         let email:string = '1745423e-f726-490f-a85f-596c912dc161'
-        let password:string = 'h0l4'
+        let password:string = 'h0l4' // NOSONAR
         const response: Response = await request(app).get('/api/users/add').send({email: email, password: password}).set('Accept', 'application/json');
         expect(response.statusCode).toBe(400);
 
@@ -184,6 +184,37 @@ describe('products ', () => {
      */
      it('Can get all the products',async () => {
         const response:Response = await request(app).get("/api/products/list");
+        expect(response.statusCode).toBe(200);
+    });
+
+    /*
+     * Test that we can list the products by an existing category without any error.
+     */
+    it('Can get all the products by category',async () => {
+        const response:Response = await request(app).get("/api/products/Raquetas");
+        expect(response.statusCode).toBe(200);
+    });
+
+    /*
+     * Test that we can´t list the products by a non existing category without any error.
+     */
+    it('Can´t get all the products by category if the category is wrong',async () => {
+        const response:Response = await request(app).get("/api/products/Playeros");
+        expect(response.statusCode).toBe(400);
+    });
+
+    /*
+     * Test that we can add a product.
+     */
+    it('Can add a product',async () => {
+        let id:string = uuidv4()
+        let description:string = 'Hola'
+        let name:string = 'Nombre'
+        let price:number = 30.5
+        let category:string = 'Raquetas'
+        const response:Response = await request(app).post('/api/products/add')
+            .send({id: id, description: description, name: name, price: price, category: category})
+            .set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
     });
 

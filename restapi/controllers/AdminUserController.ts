@@ -7,7 +7,7 @@ require("dotenv").config({ path: dotenvPath });
 import { Request, Response } from 'express';
 import AdminUser from '../models/AdminUserSchema';
 
-const pass_admin = process.env.PASSWORDADMIN;
+const pass_admin = '$2b$10$1I.7CDCPu9pkNtes9VOK3OJrEBhGb1My72mFujmw9irtZuY1nQOOq'; // NOSONAR
 
 
 export const findAdmin = async (req: Request, res: Response): Promise<Response> => {

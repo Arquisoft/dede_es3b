@@ -22,9 +22,6 @@ export const addProduct = async (req: Request, res: Response): Promise<Response>
     if(!p.price){
         return res.status(400).json({ msg: "required price is missing" });
 	}
-    if(!p.img){
-        return res.status(400).json({ msg: "required img is missing" });
-	}
     if(!p.category){
         return res.status(400).json({ msg: "required category is missing" });
 	}
@@ -36,8 +33,7 @@ export const addProduct = async (req: Request, res: Response): Promise<Response>
 		description: p.description,
 		name: p.name,
 		price: p.price,
-		category: p.category,
-        img:p.img
+		category: p.category
 	})
     nProduct.id=nProduct._id;
 
