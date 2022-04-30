@@ -1,14 +1,17 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
+import TextFieldCheckoutValidator from './TextFieldCheckoutValidator';
 import Authenticator from '../authentication/Authenticator';
 
 type ReviewType = {
   setPrecio: (precio: number)=> void;
+  setAnyError: (error: boolean) => void;
 }
 
-const AddressForm: React.FC<ReviewType>= ({setPrecio}) => {
+
+const AddressForm: React.FC<ReviewType>= ({setPrecio, setAnyError}) => {
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -16,28 +19,11 @@ const AddressForm: React.FC<ReviewType>= ({setPrecio}) => {
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="firstName"
-            name="firstName"
-            label="First name"
-            fullWidth
-            autoComplete="given-name"
-            variant="standard"
-          />
+          <TextFieldCheckoutValidator errores = {setAnyError}></TextFieldCheckoutValidator>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="lastName"
-            name="lastName"
-            label="Last name"
-            fullWidth
-            autoComplete="family-name"
-            variant="standard"
-          />
+          <Authenticator setPrecio={setPrecio}></Authenticator>
         </Grid>
-        <Authenticator setPrecio={setPrecio}></Authenticator>
       </Grid>
     </React.Fragment>
   );

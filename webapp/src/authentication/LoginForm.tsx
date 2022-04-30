@@ -27,7 +27,7 @@ function LoginForm(): JSX.Element {
               <LoginButton oidcIssuer={idp} redirectUrl={currentUrl}>
                 <Button variant="contained" color="primary">
                   Login
-                  </Button>
+                </Button>
               </LoginButton>
             ),
           }}

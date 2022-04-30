@@ -12,7 +12,7 @@ type ReviewType = {
 const Login: React.FC<ReviewType> = ({ setPrecio }) => {
     const [abrirAdmin, setAdmin] = useState(false);
     const [abrirPod, setPod] = useState(false);
-
+    const [anyError, setAnyError] = useState(false);
     function pod() {
         setAdmin(false);
         setPod(true);
@@ -57,7 +57,7 @@ const Login: React.FC<ReviewType> = ({ setPrecio }) => {
                 </div>
 
                 <div>
-                    {abrirPod ? <ProfileViewer setPrecio={setPrecio} /> : abrirPod}
+                    {abrirPod ? <ProfileViewer setPrecio={setPrecio} setAnyError={setAnyError}/> : abrirPod}
                 </div>
             </Box>
         </Container>
