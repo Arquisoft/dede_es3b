@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 import request, {Response} from 'supertest';
 import express, { Application,RequestHandler } from 'express';
 import * as http from 'http';
@@ -7,13 +5,19 @@ import bp from 'body-parser';
 import cors from 'cors';
 import api from '../api';
 
+import path, { normalize } from 'path';
+var dotenvPath = path.resolve('../.env');
+require("dotenv").config({path: dotenvPath});
+
+const crypto = require("crypto");
+
 
 const {v4: uuidv4} = require("uuid");
 let app:Application;
 let server:http.Server;
 
 const mongoose = require("mongoose");
-const uri = "mongodb+srv://DeDeportes3b:dedeportes2@aswdedeportes.9ukdb.mongodb.net/DatabaseTest?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI_TEST;
 
 beforeAll(async () => {
 
@@ -58,31 +62,39 @@ describe('users ', () => {
      * Test that a user can be created through the productService without throwing any errors.
      */
     it('Can insert an user correctly', async () => {
-        let dni:string = await uuidv4()
-        let name:string = 'Pepe'
-        let surname:string = 'Gonzalez'
-        let email:string = 'pepegonzalez@gmail.com'
-        const response:Response = await request(app).post('/api/users/add').send({dni: dni, name: name, surname: surname, email: email}).set('Accept', 'application/json')
+        let email:string = await uuidv4()
+        let password:string = 'h0l4'
+        const response:Response = await request(app).post('/api/users/add').send({email: email, password: password}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
     });
 
     /**
-     * Test that we can get a user from the database without error
+     * Test that we can´t insert a repeated user
      */
-    it("Can get a user", async () => {
-        const response: Response = await request(app).get('/api/users/55555555E');
+     it("Can´t insert a repeated user", async () => {
+        let email:string = '1745423e-f726-490f-a85f-596c912dc161'
+        let password:string = 'h0l4'
+        const response: Response = await request(app).get('/api/users/add').send({email: email, password: password}).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(400);
+
+    });
+
+    /**
+     * Test that we can get a single user
+     */
+     it("Can get a single user", async () => {
+        const response: Response = await request(app).get('/api/users/1745423e-f726-490f-a85f-596c912dc161');
+        const pass = crypto.createHmac('sha256','h0l4').digest('hex');
         expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(
         expect.objectContaining({
             "user":[{
-                dni: '55555555E',
-                name: 'Pepe',
-                surname: 'Gonzalez',
-                email: 'pepegonzalez@gmail.com'
+                email: '1745423e-f726-490f-a85f-596c912dc161',
+                password: pass
             }]
         })
-        );
+
     });
+    
 
 });
 
@@ -172,6 +184,20 @@ describe('products ', () => {
      */
      it('Can get all the products',async () => {
         const response:Response = await request(app).get("/api/products/list");
+        expect(response.statusCode).toBe(200);
+    });
+
+
+
+});
+
+describe('admin ', () => {
+
+    /*
+     * Test that we can list the admin.
+     */
+    it("Can get the admin", async () => {
+        const response: Response = await request(app).get('/api/admin/admin');
         expect(response.statusCode).toBe(200);
     });
 
