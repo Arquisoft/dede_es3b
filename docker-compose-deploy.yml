@@ -5,12 +5,12 @@ volumes:
 services:
   restapi:
   
-    image: ghcr.io/arquisoft/dede_es3b/restapi:bf6ad100ee7c82a45155279e0d86791a55f465ff
+    image: ghcr.io/arquisoft/dede_es3b/restapi:pruebas-gatling
     ports:
       - "5000:5000"
   webapp:
   
-    image: ghcr.io/arquisoft/dede_es3b/webapp:143a2cacba5744b8970847ee29fc246b6edc7a30
+    image: ghcr.io/arquisoft/dede_es3b/webapp:pruebas-gatling
     ports:
       - "3000:3000"
     depends_on: 
