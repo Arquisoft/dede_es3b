@@ -157,7 +157,7 @@ function App(): JSX.Element {
             <Route path="/raquets" element={<ProductList props={productosRaquetas} add={addToCart}></ProductList>} />
             <Route path="/balls" element={<ProductList props={productosPelotas} add={addToCart}></ProductList>} />
             <Route path="/login" element={<Login setPrecio={() => getPrecio()}></Login>} />
-            <Route path="/profile" element={<Profile></Profile>} />
+            <Route path="/profile" element={<Profile props={productos[0]} add={addToCart}></Profile>} />
             <Route path="/checkout" element={<Checkout carrito={carrito} precio={precioCarrito}></Checkout>} />
           </Routes>
         </Router>
