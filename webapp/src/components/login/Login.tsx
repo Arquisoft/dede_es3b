@@ -3,8 +3,8 @@ import { Button, Card, CardContent, Container, Typography } from "@material-ui/c
 import ProfileViewer from "../../shippment/PersonalDataForm";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import TextFiedldValidator from '../TextFieldValidator';
+import TextFiedldValidator from './TextFieldValidator';
+import { ProductCart, Order } from '../../shared/shareddtypes';
 
 type ReviewType = {
     setPrecio: (precio: number) => void;
@@ -13,7 +13,18 @@ type ReviewType = {
 const Login: React.FC<ReviewType> = ({ setPrecio }) => {
     const [abrirAdmin, setAdmin] = useState(false);
     const [abrirPod, setPod] = useState(false);
-
+    const [anyError, setAnyError] = useState(false);
+    const [order, setOrder] = useState<Order>({
+        id: 'string',
+        dni: 'string',
+        name: 'string',
+        surname: 'string',
+        email: 'string',
+        creditcard_number: 'string',
+        expiration_date: 'string',
+        price: 90,
+        pod_direction:'string'
+      });
     function pod() {
         setAdmin(false);
         setPod(true);
@@ -32,6 +43,7 @@ const Login: React.FC<ReviewType> = ({ setPrecio }) => {
                     onClick={() => {
                         admin();
                     }}
+                    variant="contained"
                 >
                     Login Admin
                 </Button>
@@ -40,24 +52,26 @@ const Login: React.FC<ReviewType> = ({ setPrecio }) => {
                     onClick={() => {
                         pod();
                     }}
+                    variant="contained"
                 >
                     Login POD
                 </Button>
             </Box>
-            <div>
-                {abrirAdmin ?
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6}>
-                            <TextFiedldValidator></TextFiedldValidator>
+            <Box bgcolor="white">
+                <div>
+                    {abrirAdmin ?
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} sm={6}>
+                                <TextFiedldValidator></TextFiedldValidator>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    : abrirAdmin}
-            </div>
+                        : abrirAdmin}
+                </div>
 
-            <div>
-                {abrirPod ? <ProfileViewer setPrecio={setPrecio} /> : abrirPod}
-            </div>
-
+                <div>
+                    {abrirPod ? <ProfileViewer setPrecio={setPrecio} setAnyError={setAnyError} pedido={order}/> : abrirPod}
+                </div>
+            </Box>
         </Container>
     );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
-import { getProducts, getUsers } from './api/api';
+import { findByCategory, getProducts, getUsers } from './api/api';
 import { User } from './shared/shareddtypes';
 import './App.css';
 import ProductList from './components/products/ProductList';
@@ -12,64 +12,9 @@ import toast, { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Checkout from './shippment/CheckOut';
 import Login from './components/login/Login';
-
-// const productos = [
-//   {
-//       id: '1',
-//       category: 'Ropa',
-//       name: 'Chaqueta',
-//       description: 'Para abrigarse',
-//       price: 90
-//   },
-//   {
-//       id: '2',
-//       category: 'Material',
-//       name: 'Pelota',
-//       description: 'Para jugar',
-//       price: 2
-//   },
-//   {
-//       id: '3',
-//       category: 'Material',
-//       name: 'Pala de pádel',
-//       description: 'Para jugar al pádel',
-//       price: 265
-//   },
-//   {
-//       id: '4',
-//       category: 'Ropa',
-//       name: 'Pantalón',
-//       description: 'Para vestirse',
-//       price: 45
-//   },
-//   {
-//       id: '5',
-//       category: 'Material',
-//       name: 'Balón',
-//       description: 'Para jugar al furbo',
-//       price: 25
-//   },
-//   {
-//       id: '6',
-//       category: 'Material',
-//       name: 'Guantes',
-//       description: 'Para parar golitos',
-//       price: 34
-//   }
-// ]
+import Profile from './components/Profile';
 
 function App(): JSX.Element {
-
-  const [users, setUsers] = useState<User[]>([]);
-
-
-  const refreshUserList = async () => {
-    setUsers(await getUsers());
-  }
-
-  useEffect(() => {
-    refreshUserList();
-  }, []);
 
   useEffect(() => {
     const carritoPersistente = localStorage.getItem("carrito");
@@ -89,6 +34,26 @@ function App(): JSX.Element {
 
   useEffect(() => {
     refreshProductList();
+  }, []);
+
+  const [productosRaquetas, setProductosRaquetas] = useState<Product[]>([]);
+
+  const refreshProductRaquetsList = async () => {
+    setProductosRaquetas(await findByCategory("Raquetas"));
+  }
+
+  useEffect(() => {
+    refreshProductRaquetsList();
+  }, []);
+
+  const [productosPelotas, setProductosPelotas] = useState<Product[]>([]);
+
+  const refreshProductBallsList = async () => {
+    setProductosPelotas(await findByCategory("Pelotas"));
+  }
+
+  useEffect(() => {
+    refreshProductBallsList();
   }, []);
 
   const [carrito, setCarrito] = useState([] as ProductCart[]);
@@ -168,6 +133,18 @@ function App(): JSX.Element {
 
   //const getElementosCarrito = () => { return carrito.length; }
   const precioCarrito = getPrecio();
+
+  const [loggedAsAdmin, setLoggedAsAdmin] = useState(false);
+  const [loggedAsUser, setLoggedAsUser] = useState(false);
+
+  // useEffect(() => {
+  //   localStorage.setItem("loggedAsAdmin", loggedAsAdmin)
+  // }, [loggedAsAdmin]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("loggedAsUser", loggedAsUser)
+  // }, [loggedAsUser]);
+
   return (
     <>
       <Container>
@@ -177,7 +154,10 @@ function App(): JSX.Element {
         <Router>
           <Routes>
             <Route path="/" element={<ProductList props={productos} add={addToCart}></ProductList>} />
+            <Route path="/raquets" element={<ProductList props={productosRaquetas} add={addToCart}></ProductList>} />
+            <Route path="/balls" element={<ProductList props={productosPelotas} add={addToCart}></ProductList>} />
             <Route path="/login" element={<Login setPrecio={() => getPrecio()}></Login>} />
+            <Route path="/profile" element={<Profile props={productos[0]} add={addToCart}></Profile>} />
             <Route path="/checkout" element={<Checkout carrito={carrito} precio={precioCarrito}></Checkout>} />
           </Routes>
         </Router>
