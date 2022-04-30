@@ -15,6 +15,7 @@ import AddressForm from './PersonalDataForm';
 import PaymentForm from './Payment';
 import Review from './Review';
 import { ProductCart, Order } from '../shared/shareddtypes';
+import toast from 'react-hot-toast';
 
 export default function Checkout( props: any) {
   const [precioEnvio, setPrecioEnvio] = useState<number>(0);
@@ -31,11 +32,12 @@ export default function Checkout( props: any) {
                                             });
 
   const steps = ['Shipping address', 'Payment details', 'Review your order'];
-  
+  const [anyError, setAnyError] = useState(true);
+
   function getStepContent(step: number,  carrito: ProductCart[], precio: number) {
     switch (step) {
       case 0:
-        return <AddressForm setPrecio={setPrecioEnvio}/>;
+        return <AddressForm setPrecio={setPrecioEnvio} setAnyError={setAnyError} pedido = {order}/>;
       case 1:
         return <PaymentForm precioCarrito={precio} precioEnvio={precioEnvio}/>;
       case 2:
@@ -51,11 +53,15 @@ export default function Checkout( props: any) {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
+    if(!anyError)
+      setActiveStep(activeStep + 1);
+    else
+      toast.error("Compruebe los datos introducidos")
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
+    setAnyError(true);
   };
 
   return (
