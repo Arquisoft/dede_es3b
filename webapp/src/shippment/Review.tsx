@@ -50,6 +50,8 @@ const Review: React.FC<ReviewType>= ({productos, precioCarrito, precioEnvio, ord
   addOrder(order);
   addOrderProducts(productos,order);
 
+  localStorage.removeItem("carrito");
+
   const payments = [
     { name: 'Card type', detail: 'Visa' },
     { name: 'Card holder', detail: order.name+' '+order.surname },

@@ -21,10 +21,9 @@ export default function Checkout( props: any) {
   const [precioEnvio, setPrecioEnvio] = useState<number>(0);
   const [order, setOrder] = useState<Order>({
                                               id: 'string',
-                                              dni: 'string',
+                                              pod_name: 'string',
                                               name: 'string',
                                               surname: 'string',
-                                              email: 'string',
                                               creditcard_number: 'string',
                                               expiration_date: 'string',
                                               price: 90,
