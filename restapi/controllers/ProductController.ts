@@ -5,10 +5,8 @@ import Product from '../models/ProductSchema';
 
 export const findAllProducts = async (req: Request, res: Response): Promise<Response> => {
     const products = await Product.find({});
-    res.setHeader('Content-Type','application/json')
+   // res.setHeader('Content-Type','application/json')
     res.status(200);
-    res.send(products);  
-
     return res.json(products);
 };
 
