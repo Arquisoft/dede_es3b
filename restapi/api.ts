@@ -10,7 +10,7 @@ const bodyParser = require('body-parser')
 
 const api: Router = express.Router()
 
-api.use(bodyParser.urlencoded({ extended: true }));
+//api.use(bodyParser.urlencoded({ extended: true }));
 
 api.get("/products/list", findAllProducts);
 api.get("/products/:category", findByCategory);
