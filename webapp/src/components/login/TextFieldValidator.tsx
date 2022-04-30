@@ -3,13 +3,14 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
-import { findAdmin } from '../api/api';
 import toast from 'react-hot-toast';
+import { findByEmail } from '../../api/api';
 
 interface State {
     email: string;
     password: string;
 }
+const crypto = require("crypto");
 
 export default function TextFiedldValidator() {
     const [emailError, setEmailError] = useState(false)
@@ -22,11 +23,11 @@ export default function TextFiedldValidator() {
     let start = true;
 
     const checkIfIsAdmin = async () => {
-        isAdmin = await findAdmin(values.email, values.password);
-        if (isAdmin) {
-            toast('Se cambió', {
-                icon: '👏',
-            });
+        let admin = findByEmail("admin@admin.com");
+        const pass = values.password//crypto.createHmac('sha256', values.password).digest('hex');
+
+        if (pass === (await admin).password) {
+            isAdmin = true;
         }
     }
 
@@ -51,16 +52,20 @@ export default function TextFiedldValidator() {
         } else {
             setPasswordError(false)
         }
-        if (!(values.email === 'admin@admin.com') || !(values.password === 'admin')) {
-            isAdmin = false;
-            toast.error("No eres admin")
-        }
+        // if (!(values.email === 'admin@admin.com') || !(values.password === 'admin')) {
+        //     isAdmin = false;
+        //     toast.error("No eres admin")
+        // }
+        // if (values.email === 'admin@admin.com' && values.password === 'admin') {
+        //     isAdmin = true;
+        //     toast.success("Eres admin");
+        // }
+        
         checkIfIsAdmin();
-        if (values.email === 'admin@admin.com' && values.password === 'admin') {
-            isAdmin = true;
+        if (isAdmin) {
             toast.success("Eres admin");
         }
-
+        
     }
 
     return (
@@ -92,7 +97,8 @@ export default function TextFiedldValidator() {
                 />
             </div>
             <Button onClick={(e) => handleSubmit(e)}
-                type="submit">
+                type="submit"
+                variant='contained'>
                 Login
             </Button>
         </Box>
