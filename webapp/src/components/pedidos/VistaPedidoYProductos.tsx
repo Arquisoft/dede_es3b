@@ -12,10 +12,9 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Order, OrderProduct, Product } from "../../../shared/shareddtypes";
 import { useEffect, useState } from 'react';
-import { findOrderProductById, findProductById } from '../../../api/api';
-import VistaProductos from './VistaProductos';
+import { OrderProduct, Order, Product } from '../../shared/shareddtypes';
+import { findOrderProductById, findProductById } from '../../api/api';
 
 type OrderProducts = {
     order: Order;

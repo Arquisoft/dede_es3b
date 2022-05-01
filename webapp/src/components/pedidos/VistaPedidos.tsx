@@ -5,7 +5,7 @@ import TableHead from '@mui/material/TableHead';
 import Paper from '@mui/material/Paper';
 import { TableCell, TableRow } from "@mui/material";
 import TableContainer from '@mui/material/TableContainer';
-import { Order, Product } from "../../../shared/shareddtypes";
+import { Order, Product } from "../../shared/shareddtypes";
 import { useState } from 'react';
 import VistaPedidoYProductos from './VistaPedidoYProductos';
 
