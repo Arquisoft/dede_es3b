@@ -2,50 +2,7 @@
 == Cross-cutting Concepts
 
 
-[role="arc42help"]
-****
-.Content
-This section describes overall, principal regulations and solution ideas that are
-relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks.
-They can include many different topics, such as
 
-* domain models
-* architecture patterns or design patterns
-* rules for using specific technology
-* principal, often technical decisions of overall decisions
-* implementation rules
-
-.Motivation
-Concepts form the basis for _conceptual integrity_ (consistency, homogeneity)
-of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.
-
-Some of these concepts cannot be assigned to individual building blocks
-(e.g. security or safety). This is the place in the template that we provided for a
-cohesive specification of such concepts.
-
-.Form
-The form can be varied:
-
-* concept papers with any kind of structure
-* cross-cutting model excerpts or scenarios using notations of the architecture views
-* sample implementations, especially for technical concepts
-* reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
-
-.Structure
-A potential (but not mandatory) structure for this section could be:
-
-* Domain concepts
-* User Experience concepts (UX)
-* Safety and security concepts
-* Architecture and design patterns
-* "Under-the-hood"
-* development concepts
-* operational concepts
-
-Note: it might be difficult to assign individual concepts to one specific topic
-on this list.
-****
 
 image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
 
@@ -63,6 +20,7 @@ DeDeportes will be based in the sale of sport products.
 * *Order:* will be an order of products of the store done by the user.
 * *Product:* will be all the sport materials available to buy by all the users in the store.
 * *OrderedProduct* will store the products of the multiple orders. Each one will have the product´s id and the order´s id.
+* *User* used for administration purposes.
 
 In our application there´s going to be an administrator wich information is going to be stored in the user collection.
 
@@ -89,3 +47,7 @@ DEDE offers security for its API endpoints only via HTTP basic access authentica
 === Internationalization
 
 Only supported language is Spanish. There is no hook for doing internationalization in the frontend and there are no plans for creating one for now.
+
+=== Testability
+
+The project contains .ts test using jest on both restapi and webapp, also on the e2e test. Our objective is get the most coverge of the code.
