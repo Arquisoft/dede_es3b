@@ -7,6 +7,8 @@ type Producto = {
 }
 
 const VistaProductos: React.FC<Producto> = ({ product, quantity }) => {
+    console.log(product)
+    console.log(quantity)
     return <TableRow key={product.name}>
         <TableCell component="th" scope="row">
             {product.name}
