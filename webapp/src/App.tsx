@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
-import { findByCategory, getOrders, getProducts, getUsers } from './api/api';
-import { Order, User } from './shared/shareddtypes';
+import { findByCategory, getOrders, getProducts } from './api/api';
+import { Order } from './shared/shareddtypes';
 import './App.css';
 import ProductList from './components/products/ProductList';
 import { Footer } from './components/generalComponents/Footer';
@@ -12,8 +12,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Checkout from './shippment/CheckOut';
 import Login from './components/login/Login';
-import Profile from './components/Profile';
-import VistaPedidos from './components/pedidos/pruebas/VistaPedidos';
+import VistaPedidos from './components/pedidos/VistaPedidos';
 
 function App(): JSX.Element {
 

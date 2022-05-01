@@ -58,7 +58,7 @@ export const findByCategory = async (req: Request, res: Response): Promise<Respo
 
 export const findProductById = async (req: Request, res: Response): Promise<Response> => {
 
-    const product = await Product.find({
+    const product = await Product.findOne({
 
         _id: req.params.id
 

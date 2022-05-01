@@ -12,17 +12,15 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Order, OrderProduct, Product } from "../../../shared/shareddtypes";
 import { useEffect, useState } from 'react';
-import { findOrderProductById, findProductById } from '../../../api/api';
-import VistaProductos from './VistaProductos';
+import { OrderProduct, Order, Product } from '../../shared/shareddtypes';
+import { findOrderProductById, findProductById } from '../../api/api';
 
 type OrderProducts = {
     order: Order;
 }
 
 type ProductQuantity = {
-    product: Product;
     prName: string;
     quantity: number;
     prPrice: number;
@@ -30,9 +28,7 @@ type ProductQuantity = {
 
 function VistaPedidoYProductos(order: OrderProducts): JSX.Element {
     const [open, setOpen] = useState(false);
-    const [products, setProducts] = useState<Product[]>([]);
     const [orderProducts, setOrderProducts] = useState<OrderProduct[]>([]);
-    const [quantities, setQuantities] = useState<Number[]>([]);
     const [productsQuantity, setProductsQuantity] = useState<ProductQuantity[]>([]);
 
     const getOrderProducts = async () => {
@@ -45,22 +41,14 @@ function VistaPedidoYProductos(order: OrderProducts): JSX.Element {
 
     const getProductsYQuantities = async () => {
         var productsList: Product[] = [];
-        var quantitiesList: Number[] = [];
         var productQuantity: ProductQuantity[] = [];
         let index = 0;
         for (let i = 0; i < orderProducts.length; i++) {
             productsList[index] = await findProductById(orderProducts[i].id_product);
-            console.log(productsList[index].name)
-            quantitiesList[index] = orderProducts[i].quantity;
-            productQuantity[index] = { product: productsList[index], prName: productsList[index].name, quantity: orderProducts[i].quantity, prPrice: productsList[index].price };
+            productQuantity[index] = { prName: productsList[index].name, quantity: orderProducts[i].quantity, prPrice: productsList[index].price };
             index++;
         }
-        setProducts(productsList);
-        setQuantities(quantitiesList);
         setProductsQuantity(productQuantity);
-        console.log(products)
-        console.log(quantities)
-        console.log(productsQuantity)
     }
 
     return <React.Fragment>
@@ -102,10 +90,6 @@ function VistaPedidoYProductos(order: OrderProducts): JSX.Element {
                             <TableBody>
                                 {
                                     productsQuantity.map((pr) => {
-                                        console.log(pr)
-                                        console.log(pr.prName)
-                                        console.log(pr.quantity)
-                                        console.log(pr.prPrice)
                                         return <TableRow key={pr.prName}>
                                             <TableCell component="th" scope="row">
                                                 {pr.prName}
