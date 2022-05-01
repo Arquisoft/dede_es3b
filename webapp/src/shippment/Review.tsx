@@ -51,6 +51,7 @@ const Review: React.FC<ReviewType>= ({productos, precioCarrito, precioEnvio, ord
   
   const id_Order = uuidv4();
   order.id=id_Order;
+  order.pod_name = order.name;
   addOrder(order);
   addOrderProducts(productos,order);
 

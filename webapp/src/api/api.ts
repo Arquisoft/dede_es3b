@@ -43,7 +43,7 @@ export async function addOrder(order: Order): Promise<boolean> {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      'pod_name': order.pod_name, 'name': order.name, 'surname': order.surname, 'creditcard_number': order.creditcard_number, 'expiration_date': order.expiration_date,
+      'id':order.id,'pod_name': order.pod_name, 'name': order.name, 'surname': order.surname, 'creditcard_number': order.creditcard_number, 'expiration_date': order.expiration_date,
       'price': order.price, 'pod_direction': order.pod_direction
     })
   });
@@ -58,7 +58,7 @@ export async function addOrderProducts(products: ProductCart[], order: Order): P
 
   products.forEach(p => {
     const getJSON = () => {
-      return JSON.stringify({ 'quantity': p.quantity, 'id_product': p.id, 'id_order': order.id });
+      return JSON.stringify({ 'quantity': p.quantity, 'id_product': p.id, 'id_order': order.id ,'pod_name':order.pod_name});
     }
     let response = fetch(apiEndPoint + '/orderProducts/add', {
       method: 'POST',

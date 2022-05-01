@@ -15,8 +15,7 @@ const orderProductSchema = new Schema(
             required: true
         },
         pod_name: {
-            type: String,
-            required: true
+            type: String
         }
 
     }
