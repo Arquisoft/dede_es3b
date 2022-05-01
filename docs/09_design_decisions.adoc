@@ -41,3 +41,23 @@ We have decided to carry out the documentation in English since in this way more
 
 .Status
 Accepted
+
+=== Using an extra database for the tests
+.Problem
+We have to run the backend tests lots of times to test them, so our database will have lots of unused data.
+
+.Decision
+We will use an extra database to run the restapi tests to not fill up our main database since to run the backend tests we need to run them many times.
+
+.Status
+Accepted
+
+=== Deploy our application on Amazon Web Services (AWS)
+.Problem
+We have to decide wich platform we will use to deploy the application
+
+.Decision
+after having problems with the deployment on heroku we decided to use AWS to deploy the application
+
+.Status
+Accepted
