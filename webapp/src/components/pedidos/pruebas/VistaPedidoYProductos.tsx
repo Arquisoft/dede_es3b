@@ -12,23 +12,52 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Order, Product } from "../../../shared/shareddtypes";
+import { Order, OrderProduct, Product } from "../../../shared/shareddtypes";
+import { useState } from 'react';
+import { findOrderProductById, findProductById } from '../../../api/api';
+import VistaProductos from './VistaProductos';
 
 type OrderProducts = {
     order: Order;
 }
 
-const index = 0;
-
 const VistaPedidoYProductos: React.FC<OrderProducts> = ({ order }) => {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    let orderProducts: OrderProduct[];
+    var quantities: Number[] = [];
+    var products: Product[] = [];
+    let index = -1;
+
+    const getOrderProducts = async () => {
+        orderProducts = await findOrderProductById(order.id);
+    }
+
+    const getProductsYQuantities = async () => {
+        (await findOrderProductById(order.id)).map(async (o) => {
+            products.push(await findProductById(o.id_product));
+            quantities.push(o.quantity);
+        });
+    }
+
+    type OrderTableItemProps = {
+        order: Order;
+    };
+
+    function OrderTableItem(props: OrderTableItemProps): JSX.Element {
+        return <div>Hola</div>
+    }
+
     return <React.Fragment>
         <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
             <TableCell>
                 <IconButton
                     aria-label="expand row"
                     size="small"
-                    onClick={() => setOpen(!open)}
+                    onClick={() => {
+                        setOpen(!open);
+                        getOrderProducts();
+                        getProductsYQuantities();
+                    }}
                 >
                     {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                 </IconButton>
@@ -40,7 +69,7 @@ const VistaPedidoYProductos: React.FC<OrderProducts> = ({ order }) => {
             <TableCell >{order.pod_direction}</TableCell>
             <TableCell align="right">{order.price}</TableCell>
         </TableRow>
-        {/* <TableRow>
+        <TableRow>
             <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <Box sx={{ margin: 1 }}>
@@ -56,21 +85,17 @@ const VistaPedidoYProductos: React.FC<OrderProducts> = ({ order }) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {products.map((product) => (
-                                    <TableRow key={product.name}>
-                                        <TableCell component="th" scope="row">
-                                            {product.name}
-                                        </TableCell>
-                                        <TableCell>{quantities[index]}</TableCell>
-                                        <TableCell>{product.price}</TableCell>
-                                    </TableRow>
-                                ))}
+                                {
+                                    products.map((pr) => {
+                                        return <VistaProductos product={pr} quantity={quantities[index++]}></VistaProductos>
+                                    })
+                                }
                             </TableBody>
                         </Table>
                     </Box>
                 </Collapse>
             </TableCell>
-        </TableRow> */}
+        </TableRow>
     </React.Fragment>
 };
 

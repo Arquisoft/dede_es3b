@@ -3,7 +3,7 @@ import { Product } from "../../../shared/shareddtypes";
 
 type Producto = {
     product: Product;
-    quantity: number;
+    quantity: Number;
 }
 
 const VistaProductos: React.FC<Producto> = ({ product, quantity }) => {
