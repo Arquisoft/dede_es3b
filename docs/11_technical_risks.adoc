@@ -12,5 +12,12 @@
 |Security|Keeping customer information secure is a vitally important activity. For this, we must find out how to make a security and authentication system as effective as possible.
 |Team|Working in teams with a certain number of people is never a simple task. The best solution is to hold weekly meetings to get to know each other and have constant communication to solve any problem that arises together.
 |===
+
 === Tecnical Debts
-For the moment the retrieve of the address of the pod will be done by having a note in the pod.
+[options="header"]
+|===
+| Risk | Explication
+|Pod´s| During the project, mastery of this technology led to different problems that were resolved
+|URL Api test| Despite trying to use the .env file to make the connection to the database, we had to hardcode it
+|Deployment| The deployment of the application has been a problem. At first we had chosen heroku but we ended up doing it on Amazon
+|===
