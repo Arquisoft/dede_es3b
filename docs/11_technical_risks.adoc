@@ -13,4 +13,4 @@
 |Team|Working in teams with a certain number of people is never a simple task. The best solution is to hold weekly meetings to get to know each other and have constant communication to solve any problem that arises together.
 |===
 === Tecnical Debts
-For the moment the retrieve of the address of the pod will be done by having a note in the pod.
+On the deployment of the application, some parts of the funtionality are not working, these are the connection with the PODs and restApi. We are working on fixing it.
