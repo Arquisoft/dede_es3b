@@ -80,7 +80,7 @@ function VistaPedidoYProductos(order: OrderProducts): JSX.Element {
             <TableCell component="th" scope="row">
                 {order.order.name + " " + order.order.surname}
             </TableCell>
-            <TableCell >{order.order.email}</TableCell>
+            <TableCell >{order.order.pod_name}</TableCell>
             <TableCell >{order.order.pod_direction}</TableCell>
             <TableCell align="right">{order.order.price}</TableCell>
         </TableRow>
