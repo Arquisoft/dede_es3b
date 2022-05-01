@@ -6,10 +6,9 @@ export type User = {
 
 export type Order = {
   id: String,
-  dni: String,
+  pod_name: String,
   name: String,
   surname: String,
-  email: String,
   creditcard_number: String,
   expiration_date: String,
   price: Number,
@@ -19,7 +18,8 @@ export type Order = {
 export type OrderProduct = {
   quantity: number,
   id_order: string,
-  id_product: string
+  id_product: string,
+  pod_name: string
 }
 
 export type Product = {
