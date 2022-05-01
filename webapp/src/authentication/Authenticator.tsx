@@ -2,15 +2,17 @@ import { useState } from "react";
 import LoginForm from "./LoginForm"
 import ProfileViewer from "./ProfileViewer"
 import { SessionProvider, useSession } from "@inrupt/solid-ui-react";
+import { ProductCart, Order } from '../shared/shareddtypes';
 
 
 
 //function Authenticator(props: any): JSX.Element
 type ReviewType = {
     setPrecio: (precio: number)=> void;
+    pedido: Order;
   }
   
-  const Authenticator: React.FC<ReviewType>= ({setPrecio}) =>
+  const Authenticator: React.FC<ReviewType>= ({setPrecio, pedido}) =>
 
  {
     //We use this state variable
@@ -32,7 +34,7 @@ type ReviewType = {
     return (
         <>
             <SessionProvider sessionId="log-in-example">
-                {(!isLoggedIn) ? <LoginForm /> : <ProfileViewer setPrecio={setPrecio} />}
+                {(!isLoggedIn) ? <LoginForm /> : <ProfileViewer setPrecio={setPrecio} pedido={pedido}/>}
             </SessionProvider>
         </>
     );

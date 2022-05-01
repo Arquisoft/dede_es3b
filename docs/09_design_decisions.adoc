@@ -49,6 +49,18 @@ Saving the stock images localy can be a problem if the cuantity and size of them
 .Decision
 We'll use Cloudiary to store the images, we will save on the database the url pointing to the concrete photo to display it on the webapp.
 
+
+.Status
+Accepted
+
+
+=== Using an extra database for the tests
+.Problem
+We have to run the backend tests lots of times to test them, so our database will have lots of unused data.
+
+.Decision
+We will use an extra database to run the restapi tests to not fill up our main database since to run the backend tests we need to run them many times.
+
 .Status
 Accepted
 

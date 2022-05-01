@@ -2,7 +2,7 @@
 == Introduction and Goals
 
 
-Decentraliced Delivery or DeDe is a new, decentralized, and open-source delivery system. Based on the Solid Priciples for privacy and security. This application is designed for: 
+Decentraliced Delivery or DeDe is a new, decentralized, and open-source delivery system. Based on the Solid Priciples for privacy and security. The application focuses on the sale of sporting goods, especially balls and rackets. This application is designed for: 
 
 * Having a virtual shop that can be accessed by anyone
 * Delviering the products to the customers
@@ -41,4 +41,5 @@ Here is a list of the functional and non-functional requirements that the applic
 | Client | Teachers. They evaluate the project | They check that the project meets the expectations of the subject in addition to its proper functioning
 | Users | They use the application | They are the users who are interested in using the application
 | Developers | Team in charge of developing and testing the project (dedeportes) | They create the project from the skeleton iteratively. They are responsible for making the application functional and secure
+| Admin | He use the aplication with priviliges | It is a special user that has privileges to see all orders placed
 |===
