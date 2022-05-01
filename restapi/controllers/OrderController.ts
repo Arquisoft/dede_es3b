@@ -24,6 +24,7 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
     if(!orderReq.pod_direction){
         return res.status(400).json({ msg: "required POD direction is missing" });
 	}
+    
 	
     const nOrder =  new Order({
         id: orderReq.id,
@@ -36,7 +37,7 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
         price: orderReq.price,
         pod_direction: orderReq.pod_direction
 	})
-    nOrder.id=nOrder._id
+    //nOrder.id=nOrder._id
     
 	nOrder.save();
     
