@@ -16,10 +16,9 @@ const Login: React.FC<ReviewType> = ({ setPrecio }) => {
     const [anyError, setAnyError] = useState(false);
     const [order, setOrder] = useState<Order>({
         id: 'string',
-        dni: 'string',
+        pod_name: 'string',
         name: 'string',
         surname: 'string',
-        email: 'string',
         creditcard_number: 'string',
         expiration_date: 'string',
         price: 90,

@@ -58,8 +58,8 @@ const GetAddress: React.FC<ReviewType>= ({webID,setPrecio, pedido}) => {
         getPODAddress();
     })
 
-    pedido.dni = name;
-    pedido.email = name;
+    localStorage.setItem("userLogged",name);
+    pedido.pod_name = name;
     pedido.pod_direction = address;
 
     return (
