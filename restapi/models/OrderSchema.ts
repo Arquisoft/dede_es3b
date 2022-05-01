@@ -7,19 +7,14 @@ const orderSchema = new Schema(
             type: String,
             required: true
         },
-        dni: {
-            type: String,
-            required: true
-        },
+        pod_name: {
+            type: String
+        }, 
         name: {
             type: String
         }, 
         surname: {
             type: String
-        },
-        email: {
-            type: String,
-            required: true
         },
         creditcard_number: {
             type: String,

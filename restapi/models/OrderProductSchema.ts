@@ -13,7 +13,12 @@ const orderProductSchema = new Schema(
         id_order: {
             type: String,
             required: true
+        },
+        pod_name: {
+            type: String,
+            required: true
         }
+
     }
 )
 

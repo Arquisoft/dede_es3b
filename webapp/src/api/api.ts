@@ -38,7 +38,6 @@ export async function getOrders(): Promise<Order[]> {
 
 export async function addOrder(order: Order): Promise<boolean> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  console.log(order.id)
 
   let response = await fetch(apiEndPoint + '/orders/add', {
     method: 'POST',

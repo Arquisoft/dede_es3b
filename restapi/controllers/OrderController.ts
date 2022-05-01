@@ -6,11 +6,8 @@ import Order from '../models/OrderSchema';
 export const addOrder = async (req: Request, res: Response): Promise<Response> => {
 	const orderReq = req.body
 	
-    if(!orderReq.dni){
-        return res.status(400).json({ msg: "required dni is missing" });
-	}
-	if(!orderReq.email){
-        return res.status(400).json({ msg: "required email is missing" });
+    if(!orderReq.pod_name){
+        return res.status(400).json({ msg: "required pod_name is missing" });
 	}
     if(!orderReq.creditcard_number){
         return res.status(400).json({ msg: "required creditCard number is missing" });
@@ -28,10 +25,9 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
 	
     const nOrder =  new Order({
         id: orderReq.id,
-		dni: orderReq.dni,
+		pod_name: orderReq.pod_name,
 		name: orderReq.name,
 		surname: orderReq.surname,
-		email: orderReq.email,
         creditcard_number: orderReq.creditcard_number,
         expiration_date: orderReq.expiration_date,
         price: orderReq.price,

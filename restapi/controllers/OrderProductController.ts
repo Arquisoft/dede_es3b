@@ -16,7 +16,7 @@ export const addOrderProduct = async (req: Request, res: Response): Promise<Resp
 
 	const orderProductReq = req.body
 	
-	/*let orderExist = await Order.findOne({ id:  orderProductReq.id_order.toString()});
+	let orderExist = await Order.findOne({ id:  orderProductReq.id_order.toString()});
     if (!orderExist){
         return res.status(400).json({ msg: "The order not exist" });
     }
@@ -25,7 +25,7 @@ export const addOrderProduct = async (req: Request, res: Response): Promise<Resp
     if (!productExist){
         return res.status(400).json({ msg: "The product not exist" });
     }
-	*/
+	
 
     if(!orderProductReq.quantity){
         return res.status(400).json({ msg: "required quantity is missing" });
@@ -36,11 +36,15 @@ export const addOrderProduct = async (req: Request, res: Response): Promise<Resp
 	if(!orderProductReq.id_order){
         return res.status(400).json({ msg: "required id_order is missing" });
 	}
+    if(!orderProductReq.pod_name){
+        return res.status(400).json({ msg: "required pod_name is missing" });
+	}
 	
     const nOrderProduct =  new OrderProduct({
 		quantity: orderProductReq.quantity,
 		id_product: orderProductReq.id_product,
-        id_order: orderProductReq.id_order
+        id_order: orderProductReq.id_order,
+        pod_name:orderProductReq.pod_name
 	})
 	
 	nOrderProduct.save()
