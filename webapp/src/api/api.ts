@@ -44,8 +44,7 @@ export async function addOrder(order: Order): Promise<boolean> {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      'dni': order.dni, 'name': order.name, 'surname': order.surname,
-      'email': order.email, 'creditcard_number': order.creditcard_number, 'expiration_date': order.expiration_date,
+      'pod_name': order.pod_name, 'name': order.name, 'surname': order.surname, 'creditcard_number': order.creditcard_number, 'expiration_date': order.expiration_date,
       'price': order.price, 'pod_direction': order.pod_direction
     })
   });
