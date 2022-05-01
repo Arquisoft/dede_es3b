@@ -18,4 +18,7 @@
 | Heroku | Heroku is a cloud storage platform specialized in react projects. It is a high quality option in terms of safety and maintenance.
 | AWS | Cloud storage service specialized in shared resources, mobile applications or databases. It is a globalized option that offers guarantees in terms of security, accessibility, visibility and cost.
 | Dotenv | It is an external tool to handle environment variables. In this way, in the project there is an .env file in which the connection urls are stored
+| Draw.io | It´s the tool we use to create the domain model
+| PlantUML | Open source tool with which we create sequence diagrams textually
+| Mapbox API | API that we use in our code to calculate the distances to the clients home
 |===
