@@ -1,7 +1,6 @@
 import { Product } from '../../shared/shareddtypes';
 import Grid from '@mui/material/Grid';
 import ProductItem from './ProductItem';
-import OrdersTableAdmin from '../orders/OrdersTableAdmin';
 
 type Cart = {
     props: Product[];
@@ -15,7 +14,6 @@ const ProductList: React.FC<Cart> = ({ props, add }) => {
                 <ProductItem props={p} add={add}></ProductItem>
             </Grid>
         ))}
-        <OrdersTableAdmin></OrdersTableAdmin>
     </Grid>
 };
 

@@ -48,9 +48,9 @@ export const addOrderProduct = async (req: Request, res: Response): Promise<Resp
     return res.status(200).json({ nOrderProduct });
 };
 
-export const findByOrderId = async (req: Request, res: Response): Promise<Response> => {
+export const findByOrderProductId = async (req: Request, res: Response): Promise<Response> => {
 
-    const order = await Order.find({
+    const order = await OrderProduct.find({
 
         id_order: req.params.id
 

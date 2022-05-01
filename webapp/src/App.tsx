@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
-import { findByCategory, getProducts, getUsers } from './api/api';
-import { User } from './shared/shareddtypes';
+import { findByCategory, getOrders, getProducts, getUsers } from './api/api';
+import { Order, User } from './shared/shareddtypes';
 import './App.css';
 import ProductList from './components/products/ProductList';
 import { Footer } from './components/generalComponents/Footer';
@@ -13,7 +13,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Checkout from './shippment/CheckOut';
 import Login from './components/login/Login';
 import Profile from './components/Profile';
-import OrdersTableAdmin from './components/orders/OrdersTableAdmin';
+import VistaPedidos from './components/pedidos/pruebas/VistaPedidos';
 
 function App(): JSX.Element {
 
@@ -55,6 +55,16 @@ function App(): JSX.Element {
 
   useEffect(() => {
     refreshProductBallsList();
+  }, []);
+
+  const [orders, setOrders] = useState<Order[]>([]);
+
+  const refreshOrderList = async () => {
+    setOrders(await getOrders());
+  }
+
+  useEffect(() => {
+    refreshOrderList();
   }, []);
 
   const [carrito, setCarrito] = useState([] as ProductCart[]);
@@ -158,8 +168,9 @@ function App(): JSX.Element {
             <Route path="/raquets" element={<ProductList props={productosRaquetas} add={addToCart}></ProductList>} />
             <Route path="/balls" element={<ProductList props={productosPelotas} add={addToCart}></ProductList>} />
             <Route path="/login" element={<Login setPrecio={() => getPrecio()}></Login>} />
-            <Route path="/profile" element={<Profile props={productos[0]} add={addToCart}></Profile>} />
+            {/* <Route path="/profile" element={<Profile props={productos[0]} add={addToCart}></Profile>} /> */}
             <Route path="/checkout" element={<Checkout carrito={carrito} precio={precioCarrito}></Checkout>} />
+            <Route path="/ejemplo" element={<VistaPedidos orders={orders}></VistaPedidos>} />
           </Routes>
         </Router>
 
