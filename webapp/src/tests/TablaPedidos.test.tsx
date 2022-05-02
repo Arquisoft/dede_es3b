@@ -11,10 +11,9 @@ test("The order table is rendered", async () => {
     const order1: Order =
     {
         id: '1',
-        dni: '12a',
         name: 'Pedro',
         surname: 'Díaz',
-        email: 'pedro@email.com',
+        pod_name: 'pedro@email.com',
         creditcard_number: '1234567812345678',
         expiration_date: '24/04/2023',
         price: 180,
@@ -23,10 +22,9 @@ test("The order table is rendered", async () => {
     const order2: Order =
     {
         id: '2',
-        dni: '34b',
         name: 'Nacho',
         surname: 'Méndez',
-        email: 'nacho@email.com',
+        pod_name: 'nacho@email.com',
         creditcard_number: '3456789034567890',
         expiration_date: '25/05/2023',
         price: 40,
