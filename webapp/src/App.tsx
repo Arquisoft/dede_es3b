@@ -169,7 +169,7 @@ function App(): JSX.Element {
             <Route path="/login" element={<Login setPrecio={() => getPrecio()}></Login>} />
             {/* <Route path="/profile" element={<Profile props={productos[0]} add={addToCart}></Profile>} /> */}
             <Route path="/checkout" element={<Checkout carrito={carrito} precio={precioCarrito}></Checkout>} />
-            <Route path="/ejemplo" element={<VistaPedidos orders={orders}></VistaPedidos>} />
+            <Route path="/pedidosAdmin" element={<VistaPedidos orders={orders}></VistaPedidos>} />
           </Routes>
         </Router>
 

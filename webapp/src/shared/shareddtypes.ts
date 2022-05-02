@@ -5,15 +5,15 @@ export type User = {
 }
 
 export type Order = {
-  id: String,
-  dni: String,
-  name: String,
-  surname: String,
-  email: String,
-  creditcard_number: String,
-  expiration_date: String,
+  id: string,
+  dni: string,
+  name: string,
+  surname: string,
+  email: string,
+  creditcard_number: string,
+  expiration_date: string,
   price: Number,
-  pod_direction: String
+  pod_direction: string
 }
 
 export type OrderProduct = {
