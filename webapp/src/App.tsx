@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
-import { findByCategory, getOrders, getProducts } from './api/api';
+import { findByCategory, getOrders, getProducts, getOrdersByPodName } from './api/api';
 import { Order } from './shared/shareddtypes';
 import './App.css';
 import ProductList from './components/products/ProductList';
@@ -59,18 +59,12 @@ function App(): JSX.Element {
   const [orders, setOrders] = useState<Order[]>([]);
 
   const refreshOrderList = async () => {
-    setOrders(await getOrders());
-
-    //updateOrderList();
-  }
-
-  const updateOrderList = () => {
     const user = localStorage.getItem("userLogged");
-    if(user){
-      setOrders( orders.filter(o => o.pod_name===user));
+    if(loggedAsAdmin)
+      setOrders(await getOrders());
+    else if(user){
+      setOrders(await getOrdersByPodName(user));
     }
-    else if(!loggedAsAdmin)
-      setOrders([]);
   }
 
   useEffect(() => {
