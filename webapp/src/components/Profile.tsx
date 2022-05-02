@@ -1,41 +1,19 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
-import { Profiler } from "react";
-import { Product } from '../shared/shareddtypes';
+import * as React from 'react';
+import { Box, Typography } from "@mui/material";
+import { Order } from "../shared/shareddtypes";
+import VistaPedidos from './pedidos/VistaPedidos';
 
-type Cart = {
-    props: Product;
-    add: (clickedItem: Product) => void;
+type Orders = {
+    orders: Order[];
 }
 
-// const { id, category, name, description, price } = props;
-
-const Profile: React.FC<Cart> = ({ props, add }) => {
-    // const url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Portrait_of_an_Iguana.jpg/490px-Portrait_of_an_Iguana.jpg";
-    const url = "https://res.cloudinary.com/asw2122/image/upload/" + props.img + ".png";
-    return <Card sx={{ maxWidth: 600 }}>
-        <CardMedia
-            component="img"
-            height="200"
-            width="400"
-            image={url}
-            alt="producto"
-        />
-        <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-                {props.name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-                {props.description}
-            </Typography>
-            <Typography variant="h6" component="div">
-                <br></br>
-                {props.price}€
-            </Typography>
-        </CardContent>
-        <CardActions>
-            <Button component="button" data-testid="add" size="small" onClick={() => { add(props); }}>Add to Cart</Button>
-        </CardActions>
-    </Card>
+const Profile: React.FC<Orders> = ({ orders }) => {
+    return (
+        <Box bgcolor="white">
+            <Typography variant="h3" align="center">Pedidos</Typography>
+            <VistaPedidos orders={orders}></VistaPedidos>
+        </Box>
+    );
 };
 
 

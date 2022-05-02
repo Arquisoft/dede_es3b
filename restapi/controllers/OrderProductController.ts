@@ -1,5 +1,5 @@
 require("../db/db")
-const {ObjectId} = require("mongodb");
+const { ObjectId } = require("mongodb");
 //Prueba
 import { Request, Response } from 'express';
 import OrderProduct from '../models/OrderProductSchema';
@@ -22,7 +22,6 @@ export const addOrderProduct = async (req: Request, res: Response): Promise<Resp
         console.log("product")
         return res.status(400).json({ msg: "The product not exist" });
     }
-	
 
     if(!orderProductReq.quantity){
         console.log("quantity")
@@ -51,4 +50,18 @@ export const addOrderProduct = async (req: Request, res: Response): Promise<Resp
 	nOrderProduct.save()
 	
     return res.status(200).json({ nOrderProduct });
+};
+
+export const findByOrderProductId = async (req: Request, res: Response): Promise<Response> => {
+
+    const order = await OrderProduct.find({
+
+        id_order: req.params.id
+
+    });
+
+    if (order.length == 0) {
+        return res.status(400).json({ msg: "Order product not found" });
+    }
+    return res.status(200).json(order);
 };

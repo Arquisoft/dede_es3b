@@ -43,14 +43,12 @@ const GetAddress: React.FC<ReviewType>= ({webID,setPrecio, pedido}) => {
     const [address, setAddress] = React.useState("");
     const [name, setName] = React.useState("");
 
-    const getPODAddress = async () => {setAddress(await retrievePODAddress(webID))
+    const getPODAddress = async () => {
+        setAddress(await retrievePODAddress(webID))
         //props.setAddr(await retrievePODAddress(props.webID));
-        
+        setName(await retriebePODName(webID))
         setPrecio(await getShippingPrice(await retrievePODAddress(webID)));
         //console.log(await getShippingPrice(await retrievePODAddress(props.webID)))
-
-        setName(await retriebePODName(webID))
-        
     }
     ;
 
