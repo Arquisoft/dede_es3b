@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
-import { findByCategory, getOrders, getProducts, getUsers } from './api/api';
-import { Order, User } from './shared/shareddtypes';
+import { findByCategory, getOrders, getProducts, getOrdersByPodName } from './api/api';
+import { Order } from './shared/shareddtypes';
 import './App.css';
 import ProductList from './components/products/ProductList';
 import { Footer } from './components/generalComponents/Footer';
@@ -12,8 +12,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Checkout from './shippment/CheckOut';
 import Login from './components/login/Login';
-import Profile from './components/Profile';
-import VistaPedidos from './components/pedidos/pruebas/VistaPedidos';
+import VistaPedidos from './components/pedidos/VistaPedidos';
 
 function App(): JSX.Element {
 
@@ -60,7 +59,12 @@ function App(): JSX.Element {
   const [orders, setOrders] = useState<Order[]>([]);
 
   const refreshOrderList = async () => {
-    setOrders(await getOrders());
+    const user = localStorage.getItem("userLogged");
+    if(loggedAsAdmin)
+      setOrders(await getOrders());
+    else if(user){
+      setOrders(await getOrdersByPodName(user));
+    }
   }
 
   useEffect(() => {
@@ -146,15 +150,8 @@ function App(): JSX.Element {
   const precioCarrito = getPrecio();
 
   const [loggedAsAdmin, setLoggedAsAdmin] = useState(false);
-  const [loggedAsUser, setLoggedAsUser] = useState(false);
 
-  // useEffect(() => {
-  //   localStorage.setItem("loggedAsAdmin", loggedAsAdmin)
-  // }, [loggedAsAdmin]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("loggedAsUser", loggedAsUser)
-  // }, [loggedAsUser]);
+ 
 
   return (
     <>
@@ -167,10 +164,10 @@ function App(): JSX.Element {
             <Route path="/" element={<ProductList props={productos} add={addToCart}></ProductList>} />
             <Route path="/raquets" element={<ProductList props={productosRaquetas} add={addToCart}></ProductList>} />
             <Route path="/balls" element={<ProductList props={productosPelotas} add={addToCart}></ProductList>} />
-            <Route path="/login" element={<Login setPrecio={() => getPrecio()}></Login>} />
+            <Route path="/login" element={<Login setPrecio={() => getPrecio()} setLoggedAdmin={setLoggedAsAdmin} adminLogged={loggedAsAdmin}></Login>} />
             {/* <Route path="/profile" element={<Profile props={productos[0]} add={addToCart}></Profile>} /> */}
             <Route path="/checkout" element={<Checkout carrito={carrito} precio={precioCarrito}></Checkout>} />
-            <Route path="/ejemplo" element={<VistaPedidos orders={orders}></VistaPedidos>} />
+            <Route path="/orders" element={<VistaPedidos orders={orders}></VistaPedidos>} />
           </Routes>
         </Router>
 

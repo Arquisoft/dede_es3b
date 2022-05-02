@@ -43,10 +43,21 @@ type ReviewType = {
   precioEnvio: number;
   order: Order;
 }
+const {v4: uuidv4} = require("uuid");
 
 const Review: React.FC<ReviewType>= ({productos, precioCarrito, precioEnvio, order}) => {
   //crear pedido
   order.price=precioCarrito+precioEnvio;
+  
+  const id_Order = uuidv4();
+  order.id=id_Order;
+
+  if(order.pod_name === ''){
+    order.pod_name = order.name
+    localStorage.setItem("userLogged", order.pod_name);
+  }
+
+  //order.pod_name = order.name;
   addOrder(order);
   addOrderProducts(productos,order);
 
@@ -58,6 +69,8 @@ const Review: React.FC<ReviewType>= ({productos, precioCarrito, precioEnvio, ord
     { name: 'Card number', detail: order.creditcard_number },
     { name: 'Expiry date', detail: order.expiration_date },
   ];
+
+  
 
   return (
     <React.Fragment>
