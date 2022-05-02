@@ -42,6 +42,18 @@ We have decided to carry out the documentation in English since in this way more
 .Status
 Accepted
 
+=== Choosing the storage of images for the webapp
+.Problem
+Saving the stock images localy can be a problem if the cuantity and size of them are big, also the way to store it online is easier than locally
+
+.Decision
+We'll use Cloudiary to store the images, we will save on the database the url pointing to the concrete photo to display it on the webapp.
+
+
+.Status
+Accepted
+
+
 === Using an extra database for the tests
 .Problem
 We have to run the backend tests lots of times to test them, so our database will have lots of unused data.
@@ -52,12 +64,22 @@ We will use an extra database to run the restapi tests to not fill up our main d
 .Status
 Accepted
 
-=== Deploy our application on Amazon Web Services (AWS)
+=== Calculate the distance between two points
 .Problem
-We have to decide wich platform we will use to deploy the application
+To calculate the shipping price we need to get the coordinates of the address of the client.
 
 .Decision
-after having problems with the deployment on heroku we decided to use AWS to deploy the application
+We use the MAPBOX api to get the coordinates of the address then with an mathematical formula to calculate the distance, then we asing a cost to the distance.
+
+.Status
+Accepted
+
+=== Deployment service
+.Problem
+To deploy the app we need a provider, we ha thought to use Heroku but at that moment it had a problem.
+
+.Decision
+We use AWS to deploy the app, also we deploy it by SSH on the CI.
 
 .Status
 Accepted

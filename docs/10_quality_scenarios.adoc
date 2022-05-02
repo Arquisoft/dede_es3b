@@ -9,13 +9,12 @@ image:qualityTree.png[Quality Tree]
 
 
 ==== Security
-By saving on the SOLID PODs the information of the user and also by only having esential info on the database.
+By saving on the SOLID PODs the information of the user and also by only having esential info on the database. Also we encrypt the data of the petitions.
 
 ==== Testability / Coverage
-
-Using Cucumber for testing and Codecov for code coverge we ensure the quality of the aplication.
+We use Codecov and Sonarcloud during development to get the most coverage of our code. Also we are using js tests for testing both restapi and webapp, Jest for e2e tests and gatling for performance tests. This ensure code and app quality.
 
 ==== Eficency
-We need to ensure a fast conection and transaction between the user and the app.
+We need to ensure a fast conection and transaction between the user and the app. Galting is used to ensure this.
 
 
