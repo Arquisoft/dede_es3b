@@ -2,7 +2,7 @@ import express, { Request, Response, Router } from 'express';
 import { check } from 'express-validator';
 import { addOrder, findAllOrders, findById } from './controllers/OrderController';
 import { addOrderProduct, findAllOrderProducts } from './controllers/OrderProductController';
-import { findAllProducts, findByCategory,addProduct} from './controllers/ProductController';
+import { findAllProducts, findByCategory,addProduct, findAllProducts2} from './controllers/ProductController';
 import { findAllUsers, findByEmail, addUser} from './controllers/UserController';
 import { findAdmin } from './controllers/AdminUserController';
 
@@ -25,7 +25,7 @@ api.get("/orderProducts/list", findAllOrderProducts)
 api.get("/orders/:id", findById)
 api.get("/admin/:username", findAdmin)
 
-
+api.get("/pro", findAllProducts2)
 export default api;
 
 

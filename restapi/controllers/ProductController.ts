@@ -10,6 +10,14 @@ export const findAllProducts = async (req: Request, res: Response): Promise<Resp
     return res.json(products);
 };
 
+export const findAllProducts2 = async (req: Request, res: Response) => {
+    const products = await Product.find({});
+   // res.setHeader('Content-Type','application/json')
+   console.log(products);
+    res.status(200);
+    res.json(products);
+};
+
 
 export const addProduct = async (req: Request, res: Response): Promise<Response> => {
     const p = req.body
