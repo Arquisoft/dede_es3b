@@ -57,6 +57,7 @@ function VistaPedidoYProductos(order: OrderProducts): JSX.Element {
                 <IconButton
                     aria-label="expand row"
                     size="small"
+                    data-testid={'expand' + order.order.id}
                     onClick={() => {
                         setOpen(!open);
                         getProductsYQuantities();
@@ -84,7 +85,7 @@ function VistaPedidoYProductos(order: OrderProducts): JSX.Element {
                                 <TableRow>
                                     <TableCell>Nombre</TableCell>
                                     <TableCell>Cantidad</TableCell>
-                                    <TableCell>Precio</TableCell>
+                                    <TableCell>Precio ud.</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>

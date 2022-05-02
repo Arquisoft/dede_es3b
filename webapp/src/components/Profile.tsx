@@ -1,17 +1,19 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
-import { Profiler } from "react";
-import { Product } from '../shared/shareddtypes';
+import * as React from 'react';
+import { Box, Typography } from "@mui/material";
+import { Order } from "../shared/shareddtypes";
+import VistaPedidos from './pedidos/VistaPedidos';
 
-type Profile = {
-    loggedA: boolean;
-    loggedU: boolean;
+type Orders = {
+    orders: Order[];
 }
 
-// const { id, category, name, description, price } = props;
-
-const Profile: React.FC<Profile> = ({ loggedA, loggedU }) => {
-    return <Card sx={{ maxWidth: 600 }}>
-    </Card>
+const Profile: React.FC<Orders> = ({ orders }) => {
+    return (
+        <Box bgcolor="white">
+            <Typography variant="h3" align="center">Pedidos</Typography>
+            <VistaPedidos orders={orders}></VistaPedidos>
+        </Box>
+    );
 };
 
 
