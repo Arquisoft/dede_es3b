@@ -57,21 +57,6 @@ function App(): JSX.Element {
     refreshProductBallsList();
   }, []);
 
-  const [orders, setOrders] = useState<Order[]>([]);
-
-  const refreshOrderList = async () => {
-    const user = localStorage.getItem("userLogged");
-    if(loggedAsAdmin)
-      setOrders(await getOrders());
-    else if(user){
-      setOrders(await getOrdersByPodName(user));
-    }
-  }
-
-  useEffect(() => {
-    refreshOrderList();
-  }, []);
-
   const [carrito, setCarrito] = useState([] as ProductCart[]);
 
   useEffect(() => {
@@ -152,7 +137,22 @@ function App(): JSX.Element {
 
   const [loggedAsAdmin, setLoggedAsAdmin] = useState(false);
 
- 
+  const [orders, setOrders] = useState<Order[]>([]);
+
+  const refreshOrderList = async () => {
+    const user = localStorage.getItem("userLogged");
+    const admin = localStorage.getItem("loggedAsAdmin");
+
+    if(admin)
+      setOrders(await getOrders());
+    else if(user){
+      setOrders(await getOrdersByPodName(user));
+    }
+  }
+
+  useEffect(() => {
+    refreshOrderList();
+  }, []);
 
   return (
     <>
