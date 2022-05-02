@@ -35,41 +35,6 @@ test("The order table is rendered", async () => {
 
     let orders: Order[] = [order1, order2];
 
-
-    /* const orderProduct1: OrderProduct =
-    {
-        quantity:2,
-        id_order:'1',
-        id_product:'1'
-    }
-
-    const product1: Product =
-    {
-        id: '1',
-        category: 'Ropa',
-        name: 'Chaqueta',
-        description: 'Para abrigarse',
-        price: 90,
-        img: ""
-    }
-
-    const orderProduct2: OrderProduct =
-    {
-        quantity:1,
-        id_order:'1',
-        id_product:'2'
-    }
-
-    const product2: Product =
-    {
-        id: '2',
-        category: 'Playeros',
-        name: 'Nike Air Force 1',
-        description: 'Para andar',
-        price: 110,
-        img: ""
-    } */
-
     const components = render(
         <VistaPedidos orders={orders}></VistaPedidos>
     );

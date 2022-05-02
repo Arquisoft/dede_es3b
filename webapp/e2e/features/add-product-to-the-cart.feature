@@ -1,6 +1,6 @@
 Feature: Adding a product to the cart
 
-Scenario: The user is registered in the site
+Scenario: Add a product to the cart
   Given A registered user
-  When I add a product to the cart 
-  Then It should be in the cart menu
+  When Select a product from the catalogue
+  Then The product should appear in the cart menu

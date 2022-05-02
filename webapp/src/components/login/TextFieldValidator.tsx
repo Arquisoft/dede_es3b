@@ -52,20 +52,19 @@ export default function TextFiedldValidator() {
         } else {
             setPasswordError(false)
         }
-        // if (!(values.email === 'admin@admin.com') || !(values.password === 'admin')) {
-        //     isAdmin = false;
-        //     toast.error("No eres admin")
-        // }
-        // if (values.email === 'admin@admin.com' && values.password === 'admin') {
-        //     isAdmin = true;
-        //     toast.success("Eres admin");
-        // }
-        
+        if (!(values.email === 'admin@admin.com') || !(values.password === 'admin')) {
+            isAdmin = false;
+            toast.error("No eres admin")
+        }
+        if (values.email === 'admin@admin.com' && values.password === 'admin') {
+            isAdmin = true;
+            toast.success("Eres admin");
+        }
         checkIfIsAdmin();
         if (isAdmin) {
             toast.success("Eres admin");
         }
-        
+
     }
 
     return (
