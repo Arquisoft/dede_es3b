@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
-import { findByCategory, getOrders, getProducts } from './api/api';
+import { findByCategory, getOrders, getProducts, getOrdersByPodName } from './api/api';
 import { Order } from './shared/shareddtypes';
 import './App.css';
 import ProductList from './components/products/ProductList';
@@ -55,16 +55,6 @@ function App(): JSX.Element {
 
   useEffect(() => {
     refreshProductBallsList();
-  }, []);
-
-  const [orders, setOrders] = useState<Order[]>([]);
-
-  const refreshOrderList = async () => {
-    setOrders(await getOrders());
-  }
-
-  useEffect(() => {
-    refreshOrderList();
   }, []);
 
   const [carrito, setCarrito] = useState([] as ProductCart[]);
@@ -146,15 +136,23 @@ function App(): JSX.Element {
   const precioCarrito = getPrecio();
 
   const [loggedAsAdmin, setLoggedAsAdmin] = useState(false);
-  const [loggedAsUser, setLoggedAsUser] = useState(false);
 
-  // useEffect(() => {
-  //   localStorage.setItem("loggedAsAdmin", loggedAsAdmin)
-  // }, [loggedAsAdmin]);
+  const [orders, setOrders] = useState<Order[]>([]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("loggedAsUser", loggedAsUser)
-  // }, [loggedAsUser]);
+  const refreshOrderList = async () => {
+    const user = localStorage.getItem("userLogged");
+    const admin = localStorage.getItem("loggedAsAdmin");
+
+    if(admin)
+      setOrders(await getOrders());
+    else if(user){
+      setOrders(await getOrdersByPodName(user));
+    }
+  }
+
+  useEffect(() => {
+    refreshOrderList();
+  }, []);
 
   return (
     <>
@@ -167,9 +165,10 @@ function App(): JSX.Element {
             <Route path="/" element={<ProductList props={productos} add={addToCart}></ProductList>} />
             <Route path="/raquets" element={<ProductList props={productosRaquetas} add={addToCart}></ProductList>} />
             <Route path="/balls" element={<ProductList props={productosPelotas} add={addToCart}></ProductList>} />
-            <Route path="/login" element={<Login setPrecio={() => getPrecio()}></Login>} />
+            <Route path="/login" element={<Login setPrecio={() => getPrecio()} setLoggedAdmin={setLoggedAsAdmin} adminLogged={loggedAsAdmin}></Login>} />
+            {/* <Route path="/profile" element={<Profile props={productos[0]} add={addToCart}></Profile>} /> */}
             <Route path="/checkout" element={<Checkout carrito={carrito} precio={precioCarrito}></Checkout>} />
-            <Route path="/pedidosAdmin" element={<Profile orders={orders}></Profile>} />
+            <Route path="/orders" element={<VistaPedidos orders={orders}></VistaPedidos>} />
           </Routes>
         </Router>
 

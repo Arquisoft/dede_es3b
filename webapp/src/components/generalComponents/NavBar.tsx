@@ -119,10 +119,10 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                             open={Boolean(anchorElNavMiPerfil)}
                             onClose={handleCloseMiPerfilMenu}
                         >
-                            <MenuItem key={optionsMiPerfil[0]} component='a' href='/login'>
+                            <MenuItem key={optionsMiPerfil[0]} component='a' href='/login' onClick={ () => localStorage.removeItem("loggedAsAdmin")}>
                                 <Typography textAlign="center">{optionsMiPerfil[0]}</Typography>
                             </MenuItem>
-                            <MenuItem key={optionsMiPerfil[1]} component='a' href='/pedidosAdmin'>
+                            <MenuItem key={optionsMiPerfil[1]} component='a' href='/orders'>
                                 <Typography textAlign="center">{optionsMiPerfil[1]}</Typography>
                             </MenuItem>
                         </Menu>

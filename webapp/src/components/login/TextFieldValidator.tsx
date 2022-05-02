@@ -6,13 +6,17 @@ import { Button } from '@mui/material';
 import toast from 'react-hot-toast';
 import { findByEmail } from '../../api/api';
 
+type ReviewType = {
+    setLoggedAdmin: (admin:boolean) => void;
+}
+
 interface State {
     email: string;
     password: string;
 }
 const crypto = require("crypto");
 
-export default function TextFiedldValidator() {
+const TextFiedldValidator: React.FC<ReviewType> = ({ setLoggedAdmin }) => {
     const [emailError, setEmailError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
     const [values, setValues] = React.useState<State>({
@@ -58,13 +62,15 @@ export default function TextFiedldValidator() {
         }
         if (values.email === 'admin@admin.com' && values.password === 'admin') {
             isAdmin = true;
-            toast.success("Eres admin");
+            //toast.success("Eres admin");
         }
-        checkIfIsAdmin();
+        
+        //checkIfIsAdmin();
         if (isAdmin) {
             toast.success("Eres admin");
+            localStorage.setItem("loggedAsAdmin", 'true');
         }
-
+        setLoggedAdmin(isAdmin);
     }
 
     return (
@@ -103,3 +109,5 @@ export default function TextFiedldValidator() {
         </Box>
     );
 }
+
+export default TextFiedldValidator;

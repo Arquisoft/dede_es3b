@@ -17,6 +17,11 @@ type Cart = {
 
 const VistaPedidosUsuarios: React.FC<Cart> = ({props, remove, aumentar, reducir}) => {
     //const url = "https://res.cloudinary.com/asw2122/image/upload/" + props.img + ".png";
+    //Coger de un usuario todos los pedidos de la tabla pedidos
+    //Todos los que tengan el mismo id_order que esten en el mismo desplegable
+
+    
+
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
