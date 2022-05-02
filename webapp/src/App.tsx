@@ -60,6 +60,17 @@ function App(): JSX.Element {
 
   const refreshOrderList = async () => {
     setOrders(await getOrders());
+
+    //updateOrderList();
+  }
+
+  const updateOrderList = () => {
+    const user = localStorage.getItem("userLogged");
+    if(user){
+      setOrders( orders.filter(o => o.pod_name===user));
+    }
+    else if(!loggedAsAdmin)
+      setOrders([]);
   }
 
   useEffect(() => {
@@ -145,15 +156,8 @@ function App(): JSX.Element {
   const precioCarrito = getPrecio();
 
   const [loggedAsAdmin, setLoggedAsAdmin] = useState(false);
-  const [loggedAsUser, setLoggedAsUser] = useState(false);
 
-  // useEffect(() => {
-  //   localStorage.setItem("loggedAsAdmin", loggedAsAdmin)
-  // }, [loggedAsAdmin]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("loggedAsUser", loggedAsUser)
-  // }, [loggedAsUser]);
+ 
 
   return (
     <>
@@ -166,10 +170,10 @@ function App(): JSX.Element {
             <Route path="/" element={<ProductList props={productos} add={addToCart}></ProductList>} />
             <Route path="/raquets" element={<ProductList props={productosRaquetas} add={addToCart}></ProductList>} />
             <Route path="/balls" element={<ProductList props={productosPelotas} add={addToCart}></ProductList>} />
-            <Route path="/login" element={<Login setPrecio={() => getPrecio()}></Login>} />
+            <Route path="/login" element={<Login setPrecio={() => getPrecio()} setLoggedAdmin={setLoggedAsAdmin} adminLogged={loggedAsAdmin}></Login>} />
             {/* <Route path="/profile" element={<Profile props={productos[0]} add={addToCart}></Profile>} /> */}
             <Route path="/checkout" element={<Checkout carrito={carrito} precio={precioCarrito}></Checkout>} />
-            <Route path="/ejemplo" element={<VistaPedidos orders={orders}></VistaPedidos>} />
+            <Route path="/orders" element={<VistaPedidos orders={orders}></VistaPedidos>} />
           </Routes>
         </Router>
 
