@@ -27,7 +27,7 @@ const VistaPedidos: React.FC<Orders> = ({ orders }) => {
             </TableHead>
             <TableBody>
                 {orders.map((orden) => (
-                    <VistaPedidoYProductos key={orden.name} order={orden}></VistaPedidoYProductos>
+                    <VistaPedidoYProductos key={orden.id} order={orden}></VistaPedidoYProductos>
                 ))}
             </TableBody>
         </Table>
