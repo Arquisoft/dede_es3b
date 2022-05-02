@@ -68,6 +68,7 @@ const TextFiedldValidator: React.FC<ReviewType> = ({ setLoggedAdmin }) => {
         //checkIfIsAdmin();
         if (isAdmin) {
             toast.success("Eres admin");
+            localStorage.setItem("loggedAsAdmin", 'true');
         }
         setLoggedAdmin(isAdmin);
     }

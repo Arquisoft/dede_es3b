@@ -63,10 +63,12 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             key={pages[0]}
+                            component="button"
+                            id='productos'
                             onClick={handleOpenProductosMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
-                            {pages[0]}
+                            Productos
                         </Button>
                         <Menu
                             sx={{ mt: '45px' }}
@@ -117,7 +119,7 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                             open={Boolean(anchorElNavMiPerfil)}
                             onClose={handleCloseMiPerfilMenu}
                         >
-                            <MenuItem key={optionsMiPerfil[0]} component='a' href='/login'>
+                            <MenuItem key={optionsMiPerfil[0]} component='a' href='/login' onClick={ () => localStorage.removeItem("loggedAsAdmin")}>
                                 <Typography textAlign="center">{optionsMiPerfil[0]}</Typography>
                             </MenuItem>
                             <MenuItem key={optionsMiPerfil[1]} component='a' href='/orders'>
@@ -131,7 +133,7 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                             <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
                         </Drawer>
                         <Tooltip title="Ver carrito">
-                            <IconButton sx={{ p: 0 }} onClick={() => setAbrirCarrito(true)}>
+                            <IconButton id='botonCarrito' sx={{ p: 0 }} onClick={() => setAbrirCarrito(true)}>
                                 <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" alt="Ver carrito" />
                             </IconButton>
                         </Tooltip>
