@@ -36,6 +36,13 @@ export async function getOrders(): Promise<Order[]> {
   return response.json()
 }
 
+export async function getOrdersByPodName(name:String): Promise<Order[]> {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint + '/orders/list/'+name);
+  //The objects returned by the api are directly convertible to User objects
+  return response.json()
+}
+
 export async function addOrder(order: Order): Promise<boolean> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
 
@@ -79,7 +86,7 @@ export async function findByEmail(email: String): Promise<User> {
 
 export async function findByCategory(category: String): Promise<Product[]> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint + '/products/' + category);
+  let response = await fetch(apiEndPoint + '/products/category=' + category);
   //The objects returned by the api are directly convertible to User objects
   return response.json()
 }
@@ -100,7 +107,7 @@ export async function findOrderProductById(orderId: String): Promise<OrderProduc
 
 export async function findProductById(id: String): Promise<Product> {
   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint + '/products/' + id);
+  let response = await fetch(apiEndPoint + '/products/id=' + id);
   //The objects returned by the api are directly convertible to User objects
   return response.json()
 }
