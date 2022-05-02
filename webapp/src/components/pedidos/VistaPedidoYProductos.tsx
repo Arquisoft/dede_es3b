@@ -57,6 +57,7 @@ function VistaPedidoYProductos(order: OrderProducts): JSX.Element {
                 <IconButton
                     aria-label="expand row"
                     size="small"
+                    data-testid={'expand' + order.order.id}
                     onClick={() => {
                         setOpen(!open);
                         getProductsYQuantities();
