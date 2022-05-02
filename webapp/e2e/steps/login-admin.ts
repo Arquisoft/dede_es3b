@@ -33,7 +33,7 @@ defineFeature(feature, test => {
     test('Login with the pod', ({ given, when, then }) => {
 
         let username = "admin@admin.com";
-        let password = "admin";
+        let password = "admin"; //NOSONAR
 
         given('The main page', () => {
 
