@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Checkout from './shippment/CheckOut';
 import Login from './components/login/Login';
 import VistaPedidos from './components/pedidos/VistaPedidos';
+import Profile from './components/Profile';
 
 function App(): JSX.Element {
 

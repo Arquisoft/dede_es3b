@@ -5,8 +5,7 @@ import TableHead from '@mui/material/TableHead';
 import Paper from '@mui/material/Paper';
 import { TableCell, TableRow } from "@mui/material";
 import TableContainer from '@mui/material/TableContainer';
-import { Order, Product } from "../../shared/shareddtypes";
-import { useState } from 'react';
+import { Order } from "../../shared/shareddtypes";
 import VistaPedidoYProductos from './VistaPedidoYProductos';
 
 type Orders = {
@@ -14,8 +13,6 @@ type Orders = {
 }
 
 const VistaPedidos: React.FC<Orders> = ({ orders }) => {
-    const [quantities, setQuantities] = useState<number[]>([]);
-    const [products, setProducts] = useState<Product[]>([]);
 
     return <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
@@ -23,14 +20,13 @@ const VistaPedidos: React.FC<Orders> = ({ orders }) => {
                 <TableRow>
                     <TableCell />
                     <TableCell>Nombre y apellidos</TableCell>
-                    <TableCell >Email</TableCell>
                     <TableCell >Direccion</TableCell>
-                    <TableCell align="right">Precio</TableCell>
+                    <TableCell align="right">Precio total</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
                 {orders.map((orden) => (
-                    <VistaPedidoYProductos order={orden}></VistaPedidoYProductos>
+                    <VistaPedidoYProductos key={orden.id} order={orden}></VistaPedidoYProductos>
                 ))}
             </TableBody>
         </Table>
