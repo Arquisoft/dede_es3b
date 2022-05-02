@@ -20,9 +20,8 @@ const VistaPedidos: React.FC<Orders> = ({ orders }) => {
                 <TableRow>
                     <TableCell />
                     <TableCell>Nombre y apellidos</TableCell>
-                    <TableCell >Email</TableCell>
                     <TableCell >Direccion</TableCell>
-                    <TableCell align="right">Precio</TableCell>
+                    <TableCell align="right">Precio total</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>

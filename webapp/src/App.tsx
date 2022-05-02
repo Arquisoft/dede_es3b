@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Checkout from './shippment/CheckOut';
 import Login from './components/login/Login';
 import VistaPedidos from './components/pedidos/VistaPedidos';
+import Profile from './components/Profile';
 
 function App(): JSX.Element {
 
@@ -167,9 +168,8 @@ function App(): JSX.Element {
             <Route path="/raquets" element={<ProductList props={productosRaquetas} add={addToCart}></ProductList>} />
             <Route path="/balls" element={<ProductList props={productosPelotas} add={addToCart}></ProductList>} />
             <Route path="/login" element={<Login setPrecio={() => getPrecio()}></Login>} />
-            {/* <Route path="/profile" element={<Profile props={productos[0]} add={addToCart}></Profile>} /> */}
             <Route path="/checkout" element={<Checkout carrito={carrito} precio={precioCarrito}></Checkout>} />
-            <Route path="/pedidosAdmin" element={<VistaPedidos orders={orders}></VistaPedidos>} />
+            <Route path="/pedidosAdmin" element={<Profile orders={orders}></Profile>} />
           </Routes>
         </Router>
 
