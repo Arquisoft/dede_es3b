@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -120,7 +120,7 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                             <MenuItem key={optionsMiPerfil[0]} component='a' href='/login'>
                                 <Typography textAlign="center">{optionsMiPerfil[0]}</Typography>
                             </MenuItem>
-                            <MenuItem key={optionsMiPerfil[1]} component='a' href='/login'>
+                            <MenuItem key={optionsMiPerfil[1]} component='a' href='/orders'>
                                 <Typography textAlign="center">{optionsMiPerfil[1]}</Typography>
                             </MenuItem>
                         </Menu>
