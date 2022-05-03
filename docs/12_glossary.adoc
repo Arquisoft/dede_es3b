@@ -20,5 +20,8 @@
 | Dotenv | It is an external tool to handle environment variables. In this way, in the project there is an .env file in which the connection urls are stored
 | Draw.io | It´s the tool we use to create the domain model
 | PlantUML | Open source tool with which we create sequence diagrams textually
-| Mapbox API | API that we use in our code to calculate the distances to the clients home
+| Mapbox API | API that we use in our code to calculate the distances to the clients
+| Arc42 | Arc 42 is a perfect documentation template for a project specification
+| MERN | It is the name given to the use of a series of technologies: MongoDB, ReactJS, Express and Node
+| Mui | It is a library that provides you with all the necessary tools to carry out the design and development of your application
 |===
