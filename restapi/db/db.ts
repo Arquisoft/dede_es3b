@@ -1,4 +1,3 @@
-require("dotenv").config();
 const mongoose = require('mongoose')
 
 const uri = "mongodb+srv://DeDeportes3b:dedeportes2@aswdedeportes.9ukdb.mongodb.net/ASWDeDeportes?retryWrites=true&w=majority";
