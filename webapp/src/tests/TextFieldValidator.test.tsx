@@ -1,12 +1,11 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import '@testing-library/jest-dom/extend-expect'
 import TextFiedldValidator  from "../components/login/TextFieldValidator";
 
 test("The login view is rendered ans shows admin login after pushing the button", async () => {
 
     const admin = (precio: boolean) => {};
-
-
+    
     const footer = render(
         <TextFiedldValidator setLoggedAdmin={admin}></TextFiedldValidator>
     );
