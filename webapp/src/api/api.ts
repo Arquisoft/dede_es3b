@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { User, Product, ProductCart, Order, OrderProduct } from '../shared/shareddtypes';
 
 export async function addUser(user: User): Promise<boolean> {
