@@ -4,9 +4,7 @@ import puppeteer from "puppeteer";
 const feature = loadFeature('./features/login-admin.feature');
 
 let page: puppeteer.Page;
-let page2: puppeteer.Page;
 let browser: puppeteer.Browser;
-const apiEndPoint = process.env.REACT_APP_URI || 'http://localhost:3000/'
 
 defineFeature(feature, test => {
     jest.setTimeout(30000);
@@ -16,21 +14,15 @@ defineFeature(feature, test => {
             //: await puppeteer.launch({ headless: true });
             : await puppeteer.launch({ headless: false, slowMo: 50 });  //Para verlo en cámara lenta
         page = await browser.newPage();
-        page2 = await browser.newPage();
 
         await page
-            .goto("http://localhost:3000/", {
-                waitUntil: "networkidle0",
-            })
-            .catch(() => { });
-        await page2
-            .goto(apiEndPoint + "login", {
+            .goto("http://localhost:3000", {
                 waitUntil: "networkidle0",
             })
             .catch(() => { });
     });
 
-    test('Login with the pod', ({ given, when, then }) => {
+    test('Login as an admin', ({ given, when, then }) => {
 
         let username = "admin@admin.com";
         let password = "admin"; //NOSONAR
@@ -39,17 +31,54 @@ defineFeature(feature, test => {
 
         });
 
-        when('Try to login with the pod', async () => {
-            await expect(page2).toClick('button', { text: 'Login Admin' })
-            await expect(page2).toFill("[label:'Email']", username)
-            await expect(page2).toFill("[label:'Password']", password)
-            await expect(page2).toClick('button', { text: 'Login' })
+        when('Try to login as an admin', async () => {
+            await page.setViewport({ width: 1200, height: 1300 });
 
+            await expect(page).toMatch('Mi perfil')
+            await expect(page).toClick('button', { text: 'Mi perfil' })
+            await expect(page).toClick("a[href='/login']")
+            await page.waitForNavigation()
+
+            await expect(page).toClick('button', { text: 'Login Admin' })
+            await expect(page).toFill("[label:'Email']", username)
+            await expect(page).toFill("[label:'Password']", password)
+            await expect(page).toMatch('Login')
+            await expect(page).toClick('button', { text: 'Login' })
 
         });
 
         then('The login works', async () => {
-            await expect(page2).not.toMatch("No eres admin")
+            await expect(page).toMatch('Eres admin')
+        });
+    })
+
+    test('Login with a no admin account', ({ given, when, then }) => {
+
+        let username = "admin@admin";
+        let password = "password"; //NOSONAR
+
+        given('The main page', () => {
+
+        });
+
+        when('Try to login as an admin', async () => {
+            await page.setViewport({ width: 1200, height: 1300 });
+
+            await expect(page).toMatch('Mi perfil')
+            await expect(page).toClick('button', { text: 'Mi perfil' })
+            await expect(page).toClick("a[href='/login']")
+            await page.waitForNavigation()
+
+            await expect(page).toClick('button', { text: 'Login Admin' })
+            await expect(page).toFill("[label:'Email']", username)
+            await expect(page).toFill("[label:'Password']", password)
+            await expect(page).toMatch('Login')
+            await expect(page).toClick('button', { text: 'Login' })
+
+        });
+
+        then('The login does not work', async () => {
+            await expect(page).toMatch('No eres admin')
         });
     })
 

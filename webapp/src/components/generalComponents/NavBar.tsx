@@ -119,7 +119,7 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                             open={Boolean(anchorElNavMiPerfil)}
                             onClose={handleCloseMiPerfilMenu}
                         >
-                            <MenuItem key={optionsMiPerfil[0]} component='a' href='/login' onClick={ () => localStorage.removeItem("loggedAsAdmin")}>
+                            <MenuItem key={optionsMiPerfil[0]} component='a' href='/login' onClick={() => localStorage.removeItem("loggedAsAdmin")}>
                                 <Typography textAlign="center">{optionsMiPerfil[0]}</Typography>
                             </MenuItem>
                             <MenuItem key={optionsMiPerfil[1]} component='a' href='/orders'>
@@ -133,7 +133,7 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                             <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
                         </Drawer>
                         <Tooltip title="Ver carrito">
-                            <IconButton id='botonCarrito' sx={{ p: 0 }} onClick={() => setAbrirCarrito(true)}>
+                            <IconButton id='botoncarrito' sx={{ p: 0 }} onClick={() => setAbrirCarrito(true)}>
                                 <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" alt="Ver carrito" />
                             </IconButton>
                         </Tooltip>

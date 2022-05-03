@@ -4,7 +4,6 @@ import puppeteer from "puppeteer";
 const feature = loadFeature('./features/filter-products.feature');
 
 let page: puppeteer.Page;
-let page2: puppeteer.Page;
 let browser: puppeteer.Browser;
 
 defineFeature(feature, test => {
@@ -15,15 +14,9 @@ defineFeature(feature, test => {
             //: await puppeteer.launch({ headless: true });
             : await puppeteer.launch({ headless: false, slowMo: 50 });  //Para verlo en cámara lenta
         page = await browser.newPage();
-        page2 = await browser.newPage();
 
         await page
-            .goto("http://localhost:3000/", {
-                waitUntil: "networkidle0",
-            })
-            .catch(() => { });
-        await page2
-            .goto("http://localhost:3000/raquets", {
+            .goto("http://localhost:3000", {
                 waitUntil: "networkidle0",
             })
             .catch(() => { });
@@ -36,14 +29,19 @@ defineFeature(feature, test => {
         });
 
         when('Select filter by "Raquetas" in the menu', async () => {
+            await page.setViewport({ width: 1200, height: 1300 });
+
             await expect(page).toMatch('Productos')
             await expect(page).toMatch('Mi perfil')
 
+            await expect(page).toClick('button', { text: 'Productos' })
+            await expect(page).toClick("a[href='/raquets']")
+            await page.waitForNavigation()
         });
 
         then('Balls shouldn´t appear in the catalogue', async () => {
-            await expect(page2).toMatch('Ascis')
-            await expect(page2).not.toMatch('Mundial')
+            await expect(page).toMatch('Ascis')
+            await expect(page).not.toMatch('Mundial')
         });
     })
 
@@ -54,12 +52,14 @@ defineFeature(feature, test => {
         });
 
         when('Select filter by "Pelotas" in the menu', async () => {
+            await page.setViewport({ width: 1200, height: 1300 });
+
             await expect(page).toMatch('Productos')
             await expect(page).toMatch('Mi perfil')
 
-            //await expect(page).toClick('button', { text: 'Productos' })
-            await expect(page).toContain('#productos')
+            await expect(page).toClick('button', { text: 'Productos' })
             await expect(page).toClick('a[href="/balls"]')
+            await page.waitForNavigation()
         });
 
         then('Rackets shouldn´t appear in the catalogue', async () => {

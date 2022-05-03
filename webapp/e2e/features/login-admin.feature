@@ -1,6 +1,11 @@
-Feature: Login with the pod
+Feature: Login as an admin
 
-Scenario: Login with the pod
+Scenario: Login as an admin
   Given The main page
-  When Try to login with the pod
+  When Try to login as an admin
   Then The login works
+
+Scenario: Login with a no admin account
+  Given The main page
+  When Try to login as an admin
+  Then The login does not work
