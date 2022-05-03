@@ -53,6 +53,8 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 
 image:08-domainModel.png["UML Diagram"]
 
+Although for the project we are using MongoDB, which is a non-relational database, our data model will be based on a model of entities and relationships.
+
 === Domain concepts
 
 DeDeportes will be based in the sale of sport products.
@@ -61,8 +63,8 @@ DeDeportes will be based in the sale of sport products.
 * *Order:* will be an order of products of the store done by the user.
 * *Product:* will be all the sport materials available to buy by all the users in the store.
 * *OrderedProduct* will store the products of the multiple orders. Each one will have the product´s id and the order´s id.
-* *Credit Card:* each user can have more than one credit cards associated t buy in the store. Will be inside the order entity.
-* *Administrator:* could do changes in the application.
+
+In our application there´s going to be an administrator wich information is going to be stored in the user collection.
 
 === Development concepts
 
@@ -86,4 +88,4 @@ DEDE offers security for its API endpoints only via HTTP basic access authentica
 
 === Internationalization
 
-Only supported language is English. There is no hook for doing internationalization in the frontend and there are no plans for creating one for now.
+Only supported language is Spanish. There is no hook for doing internationalization in the frontend and there are no plans for creating one for now.

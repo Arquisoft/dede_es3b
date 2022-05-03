@@ -180,7 +180,7 @@ describe('products ', () => {
      * Test that we can list the products by an existing category without any error.
      */
     it('Can get all the products by category',async () => {
-        const response:Response = await request(app).get("/api/products/Raquetas");
+        const response:Response = await request(app).get("/api/products/category=Raquetas");
         expect(response.statusCode).toBe(200);
     });
 
@@ -188,7 +188,7 @@ describe('products ', () => {
      * Test that we can´t list the products by a non existing category without any error.
      */
     it('Can´t get all the products by category if the category is wrong',async () => {
-        const response:Response = await request(app).get("/api/products/Playeros");
+        const response:Response = await request(app).get("/api/products/category=Playeros");
         expect(response.statusCode).toBe(400);
     });
 
