@@ -24,4 +24,5 @@
 | Arc42 | Arc 42 is a perfect documentation template for a project specification
 | MERN | It is the name given to the use of a series of technologies: MongoDB, ReactJS, Express and Node
 | Mui | It is a library that provides you with all the necessary tools to carry out the design and development of your application
+| Toast | Informational message that appears on the screen for a few seconds without requiring acceptance
 |===
