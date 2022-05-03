@@ -1,7 +1,7 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
-const feature = loadFeature('./features/login-admin.feature');
+const feature = loadFeature('./features/login-admin-wrong.feature');
 
 let page: puppeteer.Page;
 let browser: puppeteer.Browser;
@@ -22,10 +22,10 @@ defineFeature(feature, test => {
             .catch(() => { });
     });
 
-    test('Login as an admin', ({ given, when, then }) => {
+    test('Login with a no admin account', ({ given, when, then }) => {
 
-        let username = "admin@admin.com";
-        let password = "admin"; //NOSONAR
+        let username = "admin@admin";
+        let password = "password"; //NOSONAR
 
         given('The main page', () => {
 
@@ -47,8 +47,8 @@ defineFeature(feature, test => {
 
         });
 
-        then('The login works', async () => {
-            await expect(page).toMatch('Eres admin')
+        then('The login does not work', async () => {
+            await expect(page).toMatch('No eres admin')
         });
     })
 
