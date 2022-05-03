@@ -11,4 +11,18 @@
 | mongoose | Mongoose is a Node.js library that allows us to write queries against a MongooDB database, with features like validations
 | Schema | A schema in Mongoose is a JSON structure that contains information about the properties of a document. It may also contain information about validation and default values, and whether a particular property is required.
 | Release or tag | A tag allows you to specify uncommit in git and store the current state of the project in .tar format.
+| Node | Node is an environment that allows you to establish different connections at the same time. Its use is based on events.
+| Jest | It is a library that allows you to run tests quickly and efficiently.
+| Crypto | Crytpo is a module that allows passwords to be encrypted when saving them in a database. This increases the security of the application. We use sha-256.
+| Uuid | Node module that automatically creates id combinations so they are unique.
+| Heroku | Heroku is a cloud storage platform specialized in react projects. It is a high quality option in terms of safety and maintenance.
+| AWS | Cloud storage service specialized in shared resources, mobile applications or databases. It is a globalized option that offers guarantees in terms of security, accessibility, visibility and cost.
+| Dotenv | It is an external tool to handle environment variables. In this way, in the project there is an .env file in which the connection urls are stored
+| Draw.io | It´s the tool we use to create the domain model
+| PlantUML | Open source tool with which we create sequence diagrams textually
+| Mapbox API | API that we use in our code to calculate the distances to the clients
+| Arc42 | Arc 42 is a perfect documentation template for a project specification
+| MERN | It is the name given to the use of a series of technologies: MongoDB, ReactJS, Express and Node
+| Mui | It is a library that provides you with all the necessary tools to carry out the design and development of your application
+| Toast | Informational message that appears on the screen for a few seconds without requiring acceptance
 |===

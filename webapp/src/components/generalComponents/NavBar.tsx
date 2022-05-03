@@ -1,75 +1,54 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Drawer } from '@material-ui/core';
 import { ProductCart } from '../../shared/shareddtypes';
 import ProductCartList from '../carrito/ProductCartList';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Drawer from '@mui/material/Drawer';
 
-const pages = ['Deportes', 'Material', 'Ropa'];
+const pages = ['Productos', 'Mi perfil'];
 
-const optionsDeportes = ['Pádel', 'Fútbol', 'Baloncesto'];
-const optionsMaterial = ['Accesorios', 'Calzado', 'Pelotas'];
-const optionsRopa = ['Camisetas', 'Pantalones', 'Chaquetas'];
+const optionsProductos = ['Todos los productos', 'Raquetas', 'Pelotas'];
+const optionsMiPerfil = ['Iniciar sesión', 'Ver pedidos'];
 
 type Cart = {
     props: ProductCart[];
-    remove: (id: string)=>void;
+    remove: (id: string) => void;
     precio: () => number;
-    aumentar:(clickedItem: ProductCart)=>void;
-    reducir:(id: string)=>void;
+    aumentar: (clickedItem: ProductCart) => void;
+    reducir: (id: string) => void;
 }
 
-const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
-    const [anchorElNavCart, setAnchorElNavCart] = React.useState<null | HTMLElement>(null);
-    const [anchorElNavDeportes, setAnchorElNavDeportes] = React.useState<null | HTMLElement>(null);
-    const [anchorElNavMaterial, setAnchorElNavMaterial] = React.useState<null | HTMLElement>(null);
-    const [anchorElNavRopa, setAnchorElNavRopa] = React.useState<null | HTMLElement>(null);
+const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) => {
+    const [abrirCarrito, setAbrirCarrito] = useState(false);
+    const [anchorElNavProductos, setAnchorElNavProductos] = React.useState<null | HTMLElement>(null);
+    const [anchorElNavMiPerfil, setAnchorElNavMiPerfil] = React.useState<null | HTMLElement>(null);
 
-    const handleOpenCart = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNavCart(event.currentTarget);
+    const handleOpenProductosMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElNavProductos(event.currentTarget);
     };
 
-    const handleCloseCart = () => {
-        setAnchorElNavCart(null);
+    const handleCloseProductosMenu = () => {
+        setAnchorElNavProductos(null);
     };
 
-    const handleOpenDeportesMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNavDeportes(event.currentTarget);
+    const handleOpenMiPerfilMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElNavMiPerfil(event.currentTarget);
     };
 
-    const handleCloseDeportesMenu = () => {
-        setAnchorElNavDeportes(null);
-    };
-
-    const handleOpenMaterialMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNavMaterial(event.currentTarget);
-    };
-
-    const handleCloseMaterialMenu = () => {
-        setAnchorElNavMaterial(null);
-    };
-
-    const handleOpenRopaMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNavRopa(event.currentTarget);
-    };
-
-    const handleCloseRopaMenu = () => {
-        setAnchorElNavRopa(null);
+    const handleCloseMiPerfilMenu = () => {
+        setAnchorElNavMiPerfil(null);
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" style={{ backgroundColor: "#008b8b", color: "white" }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
@@ -78,110 +57,89 @@ const NavBar: React.FC<Cart> = ({props,remove, precio, aumentar, reducir}) => {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        <img src='https://res.cloudinary.com/asw2122/image/upload/v1648725943/logo-dedeportes.png' />
+                        <img src='https://res.cloudinary.com/asw2122/image/upload/v1648725943/logo-dedeportes.png' alt="dedeportes" />
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             key={pages[0]}
-                            onClick={handleOpenDeportesMenu}
+                            component="button"
+                            id='productos'
+                            onClick={handleOpenProductosMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
-                            Deportes
+                            Productos
                         </Button>
                         <Menu
                             sx={{ mt: '45px' }}
-                            anchorEl={anchorElNavDeportes}
+                            anchorEl={anchorElNavProductos}
                             anchorOrigin={{
                                 vertical: 'top',
-                                horizontal: 'right',
+                                horizontal: 'left',
                             }}
-                            
+
                             transformOrigin={{
                                 vertical: 'top',
-                                horizontal: 'right',
+                                horizontal: 'left',
                             }}
-                            open={Boolean(anchorElNavDeportes)}
-                            onClose={handleCloseDeportesMenu}
+                            open={Boolean(anchorElNavProductos)}
+                            onClose={handleCloseProductosMenu}
                         >
-                            {optionsDeportes.map((option) => (
-                                <MenuItem key={option} onClick={handleCloseDeportesMenu}>
-                                    <Typography textAlign="center">{option}</Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem key={optionsProductos[0]} component='a' href='/'>
+                                <Typography textAlign="center">{optionsProductos[0]}</Typography>
+                            </MenuItem>
+                            <MenuItem key={optionsProductos[1]} component='a' href='/raquets'>
+                                <Typography textAlign="center">{optionsProductos[1]}</Typography>
+                            </MenuItem>
+                            <MenuItem key={optionsProductos[2]} component='a' href='/balls'>
+                                <Typography textAlign="center">{optionsProductos[2]}</Typography>
+                            </MenuItem>
                         </Menu>
+                    </Box>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             key={pages[1]}
-                            onClick={handleOpenMaterialMenu}
+                            onClick={handleOpenMiPerfilMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
-                            Material
+                            {pages[1]}
                         </Button>
                         <Menu
                             sx={{ mt: '45px' }}
-                            anchorEl={anchorElNavMaterial}
+                            anchorEl={anchorElNavMiPerfil}
                             anchorOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            
+
                             transformOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            open={Boolean(anchorElNavMaterial)}
-                            onClose={handleCloseMaterialMenu}
+                            open={Boolean(anchorElNavMiPerfil)}
+                            onClose={handleCloseMiPerfilMenu}
                         >
-                            {optionsMaterial.map((option) => (
-                                <MenuItem key={option} onClick={handleCloseMaterialMenu}>
-                                    <Typography textAlign="center">{option}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                        <Button
-                            key={pages[2]}
-                            onClick={handleOpenRopaMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
-                        >
-                            Ropa
-                        </Button>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            anchorEl={anchorElNavRopa}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElNavRopa)}
-                            onClose={handleCloseRopaMenu}
-                        >
-                            {optionsRopa.map((option) => (
-                                <MenuItem key={option} onClick={handleCloseRopaMenu}>
-                                    <Typography textAlign="center">{option}</Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem key={optionsMiPerfil[0]} component='a' href='/login' onClick={() => localStorage.removeItem("loggedAsAdmin")}>
+                                <Typography textAlign="center">{optionsMiPerfil[0]}</Typography>
+                            </MenuItem>
+                            <MenuItem key={optionsMiPerfil[1]} component='a' href='/orders'>
+                                <Typography textAlign="center">{optionsMiPerfil[1]}</Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
 
-                    <Box sx={{ flexGrow: 0 , display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+                        <Drawer anchor='right' open={abrirCarrito} onClose={() => setAbrirCarrito(false)}>
+                            <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
+                        </Drawer>
                         <Tooltip title="Ver carrito">
-                            <IconButton sx={{ p: 0 }} onClick={handleOpenCart}>
-                                <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" />
+                            <IconButton data-testid="carrito" id='botoncarrito' sx={{ p: 0 }} onClick={() => setAbrirCarrito(true)}>
+                                <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" alt="Ver carrito" />
                             </IconButton>
                         </Tooltip>
                     </Box>
                 </Toolbar>
             </Container>
-
-            <SwipeableDrawer  anchor='right' open={Boolean(anchorElNavCart)} onOpen={handleCloseCart} onClose={handleCloseCart}>
-                <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
-            </SwipeableDrawer >
-
         </AppBar>
     );
 };

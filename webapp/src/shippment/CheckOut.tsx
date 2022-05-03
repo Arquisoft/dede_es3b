@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React, { Component,useState, useEffect } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
@@ -15,15 +16,15 @@ import AddressForm from './PersonalDataForm';
 import PaymentForm from './Payment';
 import Review from './Review';
 import { ProductCart, Order } from '../shared/shareddtypes';
+import toast from 'react-hot-toast';
 
 export default function Checkout( props: any) {
   const [precioEnvio, setPrecioEnvio] = useState<number>(0);
   const [order, setOrder] = useState<Order>({
                                               id: 'string',
-                                              dni: 'string',
+                                              pod_name: 'string',
                                               name: 'string',
                                               surname: 'string',
-                                              email: 'string',
                                               creditcard_number: 'string',
                                               expiration_date: 'string',
                                               price: 90,
@@ -31,13 +32,14 @@ export default function Checkout( props: any) {
                                             });
 
   const steps = ['Shipping address', 'Payment details', 'Review your order'];
-  
+  const [anyError, setAnyError] = useState(true);
+
   function getStepContent(step: number,  carrito: ProductCart[], precio: number) {
     switch (step) {
       case 0:
-        return <AddressForm setPrecio={setPrecioEnvio}/>;
+        return <AddressForm setPrecio={setPrecioEnvio} setAnyError={setAnyError} pedido = {order}/>;
       case 1:
-        return <PaymentForm precioCarrito={precio} precioEnvio={precioEnvio}/>;
+        return <PaymentForm precioCarrito={precio} precioEnvio={precioEnvio} errores={setAnyError} pedido={order}/>;
       case 2:
         return <Review productos={carrito} precioCarrito={precio} precioEnvio={precioEnvio} order={order}/>;
       default:
@@ -51,11 +53,19 @@ export default function Checkout( props: any) {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
+    if(!anyError){
+      setActiveStep(activeStep + 1);
+      setAnyError(true);
+      if(activeStep>=1)
+        setAnyError(false);
+    }
+    else
+      toast.error("Compruebe los datos introducidos")
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
+    setAnyError(true);
   };
 
   return (

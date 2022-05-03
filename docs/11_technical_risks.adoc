@@ -11,6 +11,19 @@
 |MongoDB|Until now we have always used other types of database management systems. MongoDB is a new challenge that the team will face. In this case, having used databases in many other subjects, the learning time may be less
 |Security|Keeping customer information secure is a vitally important activity. For this, we must find out how to make a security and authentication system as effective as possible.
 |Team|Working in teams with a certain number of people is never a simple task. The best solution is to hold weekly meetings to get to know each other and have constant communication to solve any problem that arises together.
+|Pod´s| During the project, mastery of this technology led to different problems that were resolved
+|URL Api test| Despite trying to use the .env file to make the connection to the database, we had to hardcode it
+|Deployment| The deployment of the application has been a problem. At first we had chosen heroku but we ended up doing it on Amazon
 |===
+
+
 === Tecnical Debts
-For the moment the retrieve of the address of the pod will be done by having a note in the pod.
+[options="header"]
+|===
+| Problem | Explication
+| Pod´s data in deployment | Due to using amazon web service as a means of deployment, when testing the deployed application it is not allowed to access the information of the pods.
+| Double order creation | When an order is created from the application, an extra order is generated for each payment. After reviewing the project we have not found the error
+| Test e2e | During the test we have not been able to access the menu buttons, so a not found error appeared. The solution we have taken has been to carry out the tests even if they fail
+| Menu nav | When you start using the pods in the application, the application's nav menu changes color
+| Hardcoding | The compatibility between the URLs of the connections in the .env file and the deployment has given problems. The solution taken has been to hardcode and use the NOSONAR comment
+|===

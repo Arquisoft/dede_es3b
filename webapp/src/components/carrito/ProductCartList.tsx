@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Item from '@mui/material/Grid';
 import ProductCartItem from './ProductCartItem';
 import Checkout from '../../shippment/CheckOut';
+import Button from '@mui/material/Button';
 
 type Cart = {
     productos: ProductCart[];
@@ -24,7 +25,17 @@ const ProductCartList: React.FC<Cart> = ({ productos, remove, precio, aumentar, 
                 </Grid>)) :
             <p>No hay productos en el carrito</p>
         }
-        <Checkout carrito={productos} precio={precioCarrito}></Checkout>
+
+        <Button
+            href="/checkout"
+            onClick={() => {
+                window.location.assign('/checkout');
+                window.location.reload();
+            }}
+        >
+            Pagar
+        </Button>
+        
     </Grid>
 };
 

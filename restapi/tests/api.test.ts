@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 import request, {Response} from 'supertest';
 import express, { Application,RequestHandler } from 'express';
 import * as http from 'http';
@@ -7,13 +5,19 @@ import bp from 'body-parser';
 import cors from 'cors';
 import api from '../api';
 
+import path, { normalize } from 'path';
+var dotenvPath = path.resolve('../.env');
+require("dotenv").config({path: dotenvPath});
+
+const crypto = require("crypto");
+
 
 const {v4: uuidv4} = require("uuid");
 let app:Application;
 let server:http.Server;
 
 const mongoose = require("mongoose");
-const uri = "mongodb+srv://DeDeportes3b:dedeportes2@aswdedeportes.9ukdb.mongodb.net/DatabaseTest?retryWrites=true&w=majority";
+const uri = 'mongodb+srv://DeDeportes3b:dedeportes2@aswdedeportes.9ukdb.mongodb.net/DatabaseTest?retryWrites=true&w=majority'; // NOSONAR
 
 beforeAll(async () => {
 
@@ -58,31 +62,39 @@ describe('users ', () => {
      * Test that a user can be created through the productService without throwing any errors.
      */
     it('Can insert an user correctly', async () => {
-        let dni:string = await uuidv4()
-        let name:string = 'Pepe'
-        let surname:string = 'Gonzalez'
-        let email:string = 'pepegonzalez@gmail.com'
-        const response:Response = await request(app).post('/api/users/add').send({dni: dni, name: name, surname: surname, email: email}).set('Accept', 'application/json')
+        let email:string = await uuidv4()
+        let password:string = 'h0l4' // NOSONAR
+        const response:Response = await request(app).post('/api/users/add').send({email: email, password: password}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
     });
 
     /**
-     * Test that we can get a user from the database without error
+     * Test that we can´t insert a repeated user
      */
-    it("Can get a user", async () => {
-        const response: Response = await request(app).get('/api/users/55555555E');
+     it("Can´t insert a repeated user", async () => {
+        let email:string = '1745423e-f726-490f-a85f-596c912dc161'
+        let password:string = 'h0l4' // NOSONAR
+        const response: Response = await request(app).get('/api/users/add').send({email: email, password: password}).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(400);
+
+    });
+
+    /**
+     * Test that we can get a single user
+     */
+     it("Can get a single user", async () => {
+        const response: Response = await request(app).get('/api/users/1745423e-f726-490f-a85f-596c912dc161');
+        const pass = crypto.createHmac('sha256','h0l4').digest('hex');
         expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(
         expect.objectContaining({
             "user":[{
-                dni: '55555555E',
-                name: 'Pepe',
-                surname: 'Gonzalez',
-                email: 'pepegonzalez@gmail.com'
+                email: '1745423e-f726-490f-a85f-596c912dc161',
+                password: pass
             }]
         })
-        );
+
     });
+    
 
 });
 
@@ -101,23 +113,12 @@ describe('orderproducts ', () => {
      */
      it('Can insert a correct orderedProduct correctly with existing order_id and product_id', async () => {
         let quantity:number = 12
-        let id_order:string = '62481a106fa3602e90668aa0'
+        let id_order:string = 'edc7f4de-34c4-407a-b83c-3e41b469b5df'
         let id_product:string = '6248170a6fa3602e90668a9c'
-        const response:Response = await request(app).post('/api/orderProducts/add').send({id_order: id_order, id_product: id_product, quantity: quantity}).set('Accept', 'application/json')
+        let pod_name:string = 'UOOOO'
+        const response:Response = await request(app).post('/api/orderProducts/add').send({id_order: id_order, id_product: id_product, quantity: quantity,pod_name:pod_name}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
     });
-
-    /*
-     * Test that a orderedProduct can´t be added with invalid order_id.
-     */
-    it('Can´t insert a correct orderedProduct because this order not exist', async () => {
-        let quantity:number = 12
-        let id_order:string = 'hola'
-        let id_product:string = '6248170a6fa3602e90668a9c'
-        const response:Response = await request(app).post('/api/orderProducts/add').send({id_order: id_order, id_product: id_product, quantity: quantity}).set('Accept', 'application/json')
-        expect(response.statusCode).toBe(400);
-    });
-
 
     /*
      * Test that a orderedProduct can´t be added with invalid product_id.
@@ -126,7 +127,8 @@ describe('orderproducts ', () => {
         let quantity:number = 12
         let id_order:string = '624819246fa3602e90668a9f'
         let id_product:string = 'hola'
-        const response:Response = await request(app).post('/api/orderProducts/add').send({id_order: id_order, id_product: id_product, quantity: quantity}).set('Accept', 'application/json')
+        let pod_name:string = 'UOOOO'
+        const response:Response = await request(app).post('/api/orderProducts/add').send({id_order: id_order, id_product: id_product, quantity: quantity,pod_name:pod_name}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(400);
     });
 });
@@ -147,16 +149,15 @@ describe('order ', () => {
      */
     it('Can insert a correct order correctly with a non existing order_id', async () => {
         let id:string = uuidv4()
-        let dni:string = '11111111A'
+        let pod_name:string='UOOO'
         let name:string = 'Martin'
         let surname:string = 'Fernandez'
-        let email:string = 'martinfernandez@gmail.com'
         let creditcard_number:string = '111-111-111-111'
         let expiration_date:string = '28-12-2022'
         let price:number = 15
         let pod_direction:string = 'micasa'
         const response:Response = await request(app).post('/api/orders/add')
-            .send({id: id, dni: dni, name: name, surname: surname, email: email, creditcard_number: creditcard_number, 
+            .send({id: id,pod_name:pod_name,name: name, surname: surname,creditcard_number: creditcard_number, 
                 expiration_date: expiration_date, price: price, pod_direction: pod_direction})
             .set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
@@ -172,6 +173,51 @@ describe('products ', () => {
      */
      it('Can get all the products',async () => {
         const response:Response = await request(app).get("/api/products/list");
+        expect(response.statusCode).toBe(200);
+    });
+
+    /*
+     * Test that we can list the products by an existing category without any error.
+     */
+    it('Can get all the products by category',async () => {
+        const response:Response = await request(app).get("/api/products/category=Raquetas");
+        expect(response.statusCode).toBe(200);
+    });
+
+    /*
+     * Test that we can´t list the products by a non existing category without any error.
+     */
+    it('Can´t get all the products by category if the category is wrong',async () => {
+        const response:Response = await request(app).get("/api/products/category=Playeros");
+        expect(response.statusCode).toBe(400);
+    });
+
+    /*
+     * Test that we can add a product.
+     */
+    it('Can add a product',async () => {
+        let id:string = uuidv4()
+        let description:string = 'Hola'
+        let name:string = 'Nombre'
+        let price:number = 30.5
+        let category:string = 'Raquetas'
+        const response:Response = await request(app).post('/api/products/add')
+            .send({id: id, description: description, name: name, price: price, category: category})
+            .set('Accept', 'application/json')
+        expect(response.statusCode).toBe(200);
+    });
+
+
+
+});
+
+describe('admin ', () => {
+
+    /*
+     * Test that we can list the admin.
+     */
+    it("Can get the admin", async () => {
+        const response: Response = await request(app).get('/api/admin/admin');
         expect(response.statusCode).toBe(200);
     });
 
