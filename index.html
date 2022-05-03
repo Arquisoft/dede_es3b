@@ -504,6 +504,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_using_pod">9.2. Using POD</a></li>
 <li><a href="#_using_a_local_database_at_the_beginning_and_then_insert_it_into_the_project">9.3. Using a local database at the beginning and then insert it into the project</a></li>
 <li><a href="#_choosing_the_language_well_use_in_the_documentation">9.4. Choosing the language we´ll use in the documentation</a></li>
+<li><a href="#_choosing_the_storage_of_images_for_the_webapp">9.5. Choosing the storage of images for the webapp</a></li>
+<li><a href="#_using_an_extra_database_for_the_tests">9.6. Using an extra database for the tests</a></li>
+<li><a href="#_calculate_the_distance_between_two_points">9.7. Calculate the distance between two points</a></li>
+<li><a href="#_deployment_service">9.8. Deployment service</a></li>
 </ul>
 </li>
 <li><a href="#section-quality-scenarios">10. Quality Requirements</a>
@@ -562,7 +566,7 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <h2 id="section-introduction-and-goals">1. Introduction and Goals</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Decentraliced Delivery or DeDe is a new, decentralized, and open-source delivery system. Based on the Solid Priciples for privacy and security. This application is designed for:</p>
+<p>Decentraliced Delivery or DeDe is a new, decentralized, and open-source delivery system. Based on the Solid Priciples for privacy and security. The application focuses on the sale of sporting goods, especially balls and rackets. This application is designed for:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -690,6 +694,11 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">Developers</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Team in charge of developing and testing the project (dedeportes)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">They create the project from the skeleton iteratively. They are responsible for making the application functional and secure</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">He use the aplication with priviliges</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is a special user that has privileges to see all orders placed</p></td>
 </tr>
 </tbody>
 </table>
@@ -1524,6 +1533,9 @@ on this list.</p>
 <div class="paragraph">
 <p><span class="image"><img src="./images/08-domainModel.png" alt="UML Diagram"></span></p>
 </div>
+<div class="paragraph">
+<p>Although for the project we are using MongoDB, which is a non-relational database, our data model will be based on a model of entities and relationships.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_domain_concepts">8.2. Domain concepts</h3>
@@ -1544,13 +1556,10 @@ on this list.</p>
 <li>
 <p><strong>OrderedProduct</strong> will store the products of the multiple orders. Each one will have the product´s id and the order´s id.</p>
 </li>
-<li>
-<p><strong>Credit Card:</strong> each user can have more than one credit cards associated t buy in the store. Will be inside the order entity.</p>
-</li>
-<li>
-<p><strong>Administrator:</strong> could do changes in the application.</p>
-</li>
 </ul>
+</div>
+<div class="paragraph">
+<p>In our application there´s going to be an administrator wich information is going to be stored in the user collection.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1586,7 +1595,7 @@ on this list.</p>
 <div class="sect2">
 <h3 id="_internationalization">8.6. Internationalization</h3>
 <div class="paragraph">
-<p>Only supported language is English. There is no hook for doing internationalization in the frontend and there are no plans for creating one for now.</p>
+<p>Only supported language is Spanish. There is no hook for doing internationalization in the frontend and there are no plans for creating one for now.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1655,6 +1664,66 @@ When the project progresses, after the second project´s review we will use Mong
 <div class="title">Status</div>
 <p>Accepted</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_choosing_the_storage_of_images_for_the_webapp">9.5. Choosing the storage of images for the webapp</h3>
+<div class="paragraph">
+<div class="title">Problem</div>
+<p>Saving the stock images localy can be a problem if the cuantity and size of them are big, also the way to store it online is easier than locally</p>
+</div>
+<div class="paragraph">
+<div class="title">Decision</div>
+<p>We&#8217;ll use Cloudiary to store the images, we will save on the database the url pointing to the concrete photo to display it on the webapp.</p>
+</div>
+<div class="paragraph">
+<div class="title">Status</div>
+<p>Accepted</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_an_extra_database_for_the_tests">9.6. Using an extra database for the tests</h3>
+<div class="paragraph">
+<div class="title">Problem</div>
+<p>We have to run the backend tests lots of times to test them, so our database will have lots of unused data.</p>
+</div>
+<div class="paragraph">
+<div class="title">Decision</div>
+<p>We will use an extra database to run the restapi tests to not fill up our main database since to run the backend tests we need to run them many times.</p>
+</div>
+<div class="paragraph">
+<div class="title">Status</div>
+<p>Accepted</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_calculate_the_distance_between_two_points">9.7. Calculate the distance between two points</h3>
+<div class="paragraph">
+<div class="title">Problem</div>
+<p>To calculate the shipping price we need to get the coordinates of the address of the client.</p>
+</div>
+<div class="paragraph">
+<div class="title">Decision</div>
+<p>We use the MAPBOX api to get the coordinates of the address then with an mathematical formula to calculate the distance, then we asing a cost to the distance.</p>
+</div>
+<div class="paragraph">
+<div class="title">Status</div>
+<p>Accepted</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deployment_service">9.8. Deployment service</h3>
+<div class="paragraph">
+<div class="title">Problem</div>
+<p>To deploy the app we need a provider, we ha thought to use Heroku but at that moment it had a problem.</p>
+</div>
+<div class="paragraph">
+<div class="title">Decision</div>
+<p>We use AWS to deploy the app, also we deploy it by SSH on the CI.</p>
+</div>
+<div class="paragraph">
+<div class="title">Status</div>
+<p>Accepted</p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1673,19 +1742,19 @@ When the project progresses, after the second project´s review we will use Mong
 <div class="sect3">
 <h4 id="_security_2">10.2.1. Security</h4>
 <div class="paragraph">
-<p>By saving on the SOLID PODs the information of the user and also by only having esential info on the database.</p>
+<p>By saving on the SOLID PODs the information of the user and also by only having esential info on the database. Also we encrypt the data of the petitions.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_testability_coverage">10.2.2. Testability / Coverage</h4>
 <div class="paragraph">
-<p>Using Cucumber for testing and Codecov for code coverge we ensure the quality of the aplication.</p>
+<p>We use Codecov and Sonarcloud during development to get the most coverage of our code. Also we are using js tests for testing both restapi and webapp, Jest for e2e tests and gatling for performance tests. This ensure code and app quality.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_eficency">10.2.3. Eficency</h4>
 <div class="paragraph">
-<p>We need to ensure a fast conection and transaction between the user and the app.</p>
+<p>We need to ensure a fast conection and transaction between the user and the app. Galting is used to ensure this.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1733,14 +1802,57 @@ When the project progresses, after the second project´s review we will use Mong
 <td class="tableblock halign-left valign-top"><p class="tableblock">Team</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Working in teams with a certain number of people is never a simple task. The best solution is to hold weekly meetings to get to know each other and have constant communication to solve any problem that arises together.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pod´s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">During the project, mastery of this technology led to different problems that were resolved</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL Api test</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Despite trying to use the .env file to make the connection to the database, we had to hardcode it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deployment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The deployment of the application has been a problem. At first we had chosen heroku but we ended up doing it on Amazon</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
 <h3 id="_tecnical_debts">11.2. Tecnical Debts</h3>
-<div class="paragraph">
-<p>For the moment the retrieve of the address of the pod will be done by having a note in the pod.</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Problem</th>
+<th class="tableblock halign-left valign-top">Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pod´s data in deployment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Due to using amazon web service as a means of deployment, when testing the deployed application it is not allowed to access the information of the pods.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Double order creation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When an order is created from the application, an extra order is generated for each payment. After reviewing the project we have not found the error</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test e2e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">During the test we have not been able to access the menu buttons, so a not found error appeared. The solution we have taken has been to carry out the tests even if they fail</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Menu nav</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When you start using the pods in the application, the application&#8217;s nav menu changes color</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hardcoding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The compatibility between the URLs of the connections in the .env file and the deployment has given problems. The solution taken has been to hardcode and use the NOSONAR comment</p></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1788,6 +1900,62 @@ When the project progresses, after the second project´s review we will use Mong
 <td class="tableblock halign-left valign-top"><p class="tableblock">Release or tag</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A tag allows you to specify uncommit in git and store the current state of the project in .tar format.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node is an environment that allows you to establish different connections at the same time. Its use is based on events.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is a library that allows you to run tests quickly and efficiently.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crypto</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crytpo is a module that allows passwords to be encrypted when saving them in a database. This increases the security of the application. We use sha-256.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uuid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node module that automatically creates id combinations so they are unique.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heroku</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heroku is a cloud storage platform specialized in react projects. It is a high quality option in terms of safety and maintenance.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud storage service specialized in shared resources, mobile applications or databases. It is a globalized option that offers guarantees in terms of security, accessibility, visibility and cost.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dotenv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is an external tool to handle environment variables. In this way, in the project there is an .env file in which the connection urls are stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draw.io</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It´s the tool we use to create the domain model</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PlantUML</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open source tool with which we create sequence diagrams textually</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mapbox API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API that we use in our code to calculate the distances to the clients</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arc42</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arc 42 is a perfect documentation template for a project specification</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MERN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is the name given to the use of a series of technologies: MongoDB, ReactJS, Express and Node</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mui</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is a library that provides you with all the necessary tools to carry out the design and development of your application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Toast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Informational message that appears on the screen for a few seconds without requiring acceptance</p></td>
+</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
@@ -1815,7 +1983,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-04 08:47:22 +0200
+Last updated 2022-02-24 15:10:22 +0100
 </div>
 </div>
 </body>
