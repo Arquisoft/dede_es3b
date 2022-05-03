@@ -63,6 +63,7 @@ describe('users ', () => {
      */
     it('Can insert an user correctly', async () => {
         let email:string = await uuidv4()
+        console.log(email)
         let password:string = 'h0l4' // NOSONAR
         const response:Response = await request(app).post('/api/users/add').send({email: email, password: password}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
@@ -83,12 +84,12 @@ describe('users ', () => {
      * Test that we can get a single user
      */
      it("Can get a single user", async () => {
-        const response: Response = await request(app).get('/api/users/1745423e-f726-490f-a85f-596c912dc161');
-        const pass = crypto.createHmac('sha256','h0l4').digest('hex');
+        const response: Response = await request(app).get('/api/users/82236f3e-5816-49bc-af9d-f05a6edfc892');
+        const pass = crypto.createHmac('sha256','h0l4').digest('h0l4');
         expect(response.statusCode).toBe(200);
         expect.objectContaining({
             "user":[{
-                email: '1745423e-f726-490f-a85f-596c912dc161',
+                email: '82236f3e-5816-49bc-af9d-f05a6edfc892',
                 password: pass
             }]
         })
@@ -114,7 +115,7 @@ describe('orderproducts ', () => {
      it('Can insert a correct orderedProduct correctly with existing order_id and product_id', async () => {
         let quantity:number = 12
         let id_order:string = 'edc7f4de-34c4-407a-b83c-3e41b469b5df'
-        let id_product:string = '6248170a6fa3602e90668a9c'
+        let id_product:string = '622b779f65a4632548d3390f'
         let pod_name:string = 'UOOOO'
         const response:Response = await request(app).post('/api/orderProducts/add').send({id_order: id_order, id_product: id_product, quantity: quantity,pod_name:pod_name}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
@@ -191,24 +192,6 @@ describe('products ', () => {
         const response:Response = await request(app).get("/api/products/category=Playeros");
         expect(response.statusCode).toBe(400);
     });
-
-    /*
-     * Test that we can add a product.
-     */
-    it('Can add a product',async () => {
-        let id:string = uuidv4()
-        let description:string = 'Hola'
-        let name:string = 'Nombre'
-        let price:number = 30.5
-        let category:string = 'Raquetas'
-        const response:Response = await request(app).post('/api/products/add')
-            .send({id: id, description: description, name: name, price: price, category: category})
-            .set('Accept', 'application/json')
-        expect(response.statusCode).toBe(200);
-    });
-
-
-
 });
 
 describe('admin ', () => {
