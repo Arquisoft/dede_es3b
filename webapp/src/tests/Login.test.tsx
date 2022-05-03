@@ -4,13 +4,10 @@ import Login  from "../components/login/Login";
 
 test("The login view is rendered ans shows admin login after pushing the button", async () => {
 
-    const precio = (precio: number) => {};
-    const admin = (isAdmin: boolean) => {};
     const adminLogged = false;
 
-
     const footer = render(
-        <Login setPrecio={precio} setLoggedAdmin={admin} adminLogged={adminLogged}></Login>
+        <Login setPrecio={(precio: number) => {}} setLoggedAdmin={(isAdmin: boolean) => {}} adminLogged={adminLogged}></Login>
     );
 
     const button = footer.getByText('Login Admin') as HTMLElement;
@@ -22,13 +19,10 @@ test("The login view is rendered ans shows admin login after pushing the button"
 
 test("The login view is rendered ans shows user/pod login after pushing the button", async () => {
 
-    const precio = (precio: number) => {};
-    const admin = (isAdmin: boolean) => {};
     const adminLogged = false;
 
-
     const footer = render(
-        <Login setPrecio={precio} setLoggedAdmin={admin} adminLogged={adminLogged}></Login>
+        <Login setPrecio={(precio: number) => {}} setLoggedAdmin={(isAdmin: boolean) => {}} adminLogged={adminLogged}></Login>
     );
 
     const button = footer.getByText('Login POD') as HTMLElement;
