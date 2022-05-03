@@ -53,7 +53,7 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 
 image:08-domainModel.png["UML Diagram"]
 
-Although for the project we are using MongoDB, which is a non-relational database, our data model will be based on a model of entities and relationships.
+Although for the project we are using MongoDB, which is a non-relational database, our data model will be based on a model of entities and relationships. This is done like this because it makes us easier to build up the application and we can set up common atributes to all products of the data base.
 
 === Domain concepts
 
