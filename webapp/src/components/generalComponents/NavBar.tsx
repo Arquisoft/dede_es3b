@@ -133,7 +133,7 @@ const NavBar: React.FC<Cart> = ({ props, remove, precio, aumentar, reducir }) =>
                             <ProductCartList productos={props} remove={remove} precio={precio} aumentar={aumentar} reducir={reducir}></ProductCartList>
                         </Drawer>
                         <Tooltip title="Ver carrito">
-                            <IconButton id='botoncarrito' sx={{ p: 0 }} onClick={() => setAbrirCarrito(true)}>
+                            <IconButton data-testid="carrito" id='botoncarrito' sx={{ p: 0 }} onClick={() => setAbrirCarrito(true)}>
                                 <img src="https://res.cloudinary.com/asw2122/image/upload/v1648726327/carrito.png" alt="Ver carrito" />
                             </IconButton>
                         </Tooltip>
