@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import { findByCategory, getOrders, getProducts, getOrdersByPodName } from './api/api';
@@ -13,7 +14,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Checkout from './shippment/CheckOut';
 import Login from './components/login/Login';
 import VistaPedidos from './components/pedidos/VistaPedidos';
-import Profile from './components/Profile';
 
 function App(): JSX.Element {
 

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import {
     getSolidDataset, getStringNoLocale, getThing, Thing, getUrl
 } from "@inrupt/solid-client";
