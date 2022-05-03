@@ -973,6 +973,18 @@ together with a mapping table showing the relationships between channels and inp
 <td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is an open-source library that helps the team to make the GUI with the help of TypeScript</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React-Hot-Toast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is an api that allows us to make floating notifications to the user</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MUI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is a library that help us on the view of the application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloudinary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Its the repository where we store the images of the products</p></td>
+</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
@@ -1197,6 +1209,9 @@ Refer to details in the following sections.</p>
 <div class="paragraph">
 <p><span class="image"><img src="./images/Section5Diagram.png" alt="Whtite box diagram"></span></p>
 </div>
+<div class="paragraph">
+<p>The database we are going to use is a remote one. It makes the use of it easier and can be used wherever the application is used.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_blackbox_descriptions_of_overall_system">5.2. Blackbox descriptions of Overall System</h3>
@@ -1405,23 +1420,35 @@ The next schemes are some scenarios of our sport online shop.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DEDE development</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Where DEDE development takes place, standard computer with REACT and Node.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where DEDE development takes place.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DEDE database</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A MONGO Database deployed on a docker container.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Atlas System</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using Atlas hosting service for a MONGO Database.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Device</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A host to React, normally the same computer as development</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Client Side</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The device that the client is using to connect to the aplication</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Solid Pods</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The user PODs that must be configurated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solid Host</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The host for the Client POD, can be choosen by the client and it must be configurated to use the address</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Browser</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">To comunicate with the Device, must be a mallor browser</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloudiary System</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to store all the product images.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mapbox Api</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to get some coordinates from an address to calculate the shipping costs.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Host</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using Amazon Web Services to deploy the app  by SSH.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elastic Address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">To only have one address in the case of app instances shuting down and changing their address.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1534,7 +1561,7 @@ on this list.</p>
 <p><span class="image"><img src="./images/08-domainModel.png" alt="UML Diagram"></span></p>
 </div>
 <div class="paragraph">
-<p>Although for the project we are using MongoDB, which is a non-relational database, our data model will be based on a model of entities and relationships.</p>
+<p>Although for the project we are using MongoDB, which is a non-relational database, our data model will be based on a model of entities and relationships. This is done like this because it makes us easier to build up the application and we can set up common atributes to all products of the data base.</p>
 </div>
 </div>
 <div class="sect2">
