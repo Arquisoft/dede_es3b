@@ -61,6 +61,20 @@ export const findByCategory = async (req: Request, res: Response): Promise<Respo
 
     if (p.length == 0) {
         return res.status(400).json({ msg: "Products not found, you may introduce any valid category" });
-	}
+    }
     return res.status(200).json(p);
+};
+
+export const findProductById = async (req: Request, res: Response): Promise<Response> => {
+
+    const product = await Product.findOne({
+
+        _id: req.params.id
+
+    });
+
+    if (product.length == 0) {
+        return res.status(400).json({ msg: "Product not found" });
+    }
+    return res.status(200).json(product);
 };

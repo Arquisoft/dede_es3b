@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { useState } from "react";
 import LoginForm from "./LoginForm"
 import ProfileViewer from "./ProfileViewer"

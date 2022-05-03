@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React, { Component,useState, useEffect } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
@@ -21,10 +22,9 @@ export default function Checkout( props: any) {
   const [precioEnvio, setPrecioEnvio] = useState<number>(0);
   const [order, setOrder] = useState<Order>({
                                               id: 'string',
-                                              dni: 'string',
+                                              pod_name: 'string',
                                               name: 'string',
                                               surname: 'string',
-                                              email: 'string',
                                               creditcard_number: 'string',
                                               expiration_date: 'string',
                                               price: 90,
@@ -53,8 +53,12 @@ export default function Checkout( props: any) {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
-    if(!anyError)
+    if(!anyError){
       setActiveStep(activeStep + 1);
+      setAnyError(true);
+      if(activeStep>=1)
+        setAnyError(false);
+    }
     else
       toast.error("Compruebe los datos introducidos")
   };

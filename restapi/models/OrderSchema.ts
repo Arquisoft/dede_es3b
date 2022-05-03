@@ -4,26 +4,19 @@ import { model, Schema} from 'mongoose'
 const orderSchema = new Schema(
     {
         id:{
-            type: String,
-            required: true
+            type: String
         },
-        dni: {
-            type: String,
-            required: true
-        },
+        pod_name: {
+            type: String
+        }, 
         name: {
             type: String
         }, 
         surname: {
             type: String
         },
-        email: {
-            type: String,
-            required: true
-        },
         creditcard_number: {
-            type: String,
-            required: true
+            type: String
         },
         expiration_date: {
             type: String,

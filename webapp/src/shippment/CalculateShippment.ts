@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export const getShippingPrice = async (address: String) => {
     let coords = await calculateCoordinates(address);
   

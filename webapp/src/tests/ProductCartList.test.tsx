@@ -193,3 +193,219 @@ test("A product is removed to the cart", async () => {
     expect(components.container).toHaveTextContent('No hay productos en el carrito');
     //console.log('Aquí acaba el tercero')
 });
+
+
+test("A product on the cart has aumented its quantity", async () => {
+
+    const product: Product[] = [
+        {
+            id: '1',
+            category: 'Ropa',
+            name: 'Chaqueta',
+            description: 'Para abrigarse',
+            price: 90,
+            img: ""
+        }]
+
+    var carrito: ProductCart[] = [];
+    const addToCart = (p: Product) => { carrito.push({ ...p, quantity: 1 }) };
+    const remove = (id: string) => { carrito.pop() };
+    const aumentar = (clickedItem: Product) => 
+    { 
+        carrito = carrito.reduce(
+            (coleccion, p) => {
+                if (p.id === clickedItem.id) {
+                    p.quantity++;
+                    return [...coleccion, p];
+                }
+                return [...coleccion, p];
+                }
+                , [] as ProductCart[]
+        );
+    };
+    const reducir = (id: string) => 
+    {
+        carrito = carrito.reduce(
+            (coleccion, p) => {
+                if (p.id === id) {
+                    if (p.quantity > 1) {
+                    p.quantity--;
+                    return [...coleccion, p];
+                    }
+                    else
+                    return coleccion;
+                }
+                return [...coleccion, p];
+                }
+                , [] as ProductCart[]
+            )
+    }
+
+    const components = render(
+        <Grid>
+            <ProductList props={product} add={addToCart}></ProductList>
+            <ProductCartList
+                productos={carrito}
+                remove={remove}
+                precio={() => 0}
+                aumentar={aumentar}
+                reducir={reducir}>
+            </ProductCartList>
+        </Grid>
+    );
+
+    expect(components.container).toHaveTextContent('No hay productos en el carrito');
+    const button = components.getByTestId('add') as HTMLElement;
+    fireEvent.click(button);
+
+    components.rerender(
+        <Grid>
+            <ProductList props={product} add={addToCart}></ProductList>
+            <ProductCartList
+                productos={carrito}
+                remove={remove}
+                precio={() => 0}
+                aumentar={aumentar}
+                reducir={reducir}>
+            </ProductCartList>
+        </Grid>
+    );
+
+    expect(components.container).toHaveTextContent('1');
+    expect(components.container).toHaveTextContent('Remove');
+
+    const button2 = components.getByTestId('aumentar') as HTMLElement;
+    fireEvent.click(button2);
+
+    components.rerender(
+        <Grid>
+            <ProductList props={product} add={addToCart}></ProductList>
+            <ProductCartList
+                productos={carrito}
+                remove={remove}
+                precio={() => 0}
+                aumentar={aumentar}
+                reducir={reducir}>
+            </ProductCartList>
+        </Grid>
+    );
+
+    expect(components.container).toHaveTextContent('2');
+});
+
+test("A product on the cart has reduce its quantity", async () => {
+
+    const product: Product[] = [
+        {
+            id: '1',
+            category: 'Ropa',
+            name: 'Chaqueta',
+            description: 'Para abrigarse',
+            price: 90,
+            img: ""
+        }]
+
+    var carrito: ProductCart[] = [];
+    const addToCart = (p: Product) => { carrito.push({ ...p, quantity: 1 }) };
+    const remove = (id: string) => { carrito.pop() };
+    const aumentar = (clickedItem: Product) => 
+    { 
+        carrito = carrito.reduce(
+            (coleccion, p) => {
+                if (p.id === clickedItem.id) {
+                    p.quantity++;
+                    return [...coleccion, p];
+                }
+                return [...coleccion, p];
+                }
+                , [] as ProductCart[]
+        );
+    };
+    const reducir = (id: string) => 
+    {
+        carrito = carrito.reduce(
+            (coleccion, p) => {
+                if (p.id === id) {
+                    if (p.quantity > 1) {
+                    p.quantity--;
+                    return [...coleccion, p];
+                    }
+                    else
+                    return coleccion;
+                }
+                return [...coleccion, p];
+                }
+                , [] as ProductCart[]
+            )
+    }
+
+    const components = render(
+        <Grid>
+            <ProductList props={product} add={addToCart}></ProductList>
+            <ProductCartList
+                productos={carrito}
+                remove={remove}
+                precio={() => 0}
+                aumentar={aumentar}
+                reducir={reducir}>
+            </ProductCartList>
+        </Grid>
+    );
+
+    expect(components.container).toHaveTextContent('No hay productos en el carrito');
+    const button = components.getByTestId('add') as HTMLElement;
+    fireEvent.click(button);
+
+    components.rerender(
+        <Grid>
+            <ProductList props={product} add={addToCart}></ProductList>
+            <ProductCartList
+                productos={carrito}
+                remove={remove}
+                precio={() => 0}
+                aumentar={aumentar}
+                reducir={reducir}>
+            </ProductCartList>
+        </Grid>
+    );
+
+    expect(components.container).toHaveTextContent('1');
+    expect(components.container).toHaveTextContent('Remove');
+
+    const button2 = components.getByTestId('aumentar') as HTMLElement;
+    fireEvent.click(button2);
+
+    components.rerender(
+        <Grid>
+            <ProductList props={product} add={addToCart}></ProductList>
+            <ProductCartList
+                productos={carrito}
+                remove={remove}
+                precio={() => 0}
+                aumentar={aumentar}
+                reducir={reducir}>
+            </ProductCartList>
+        </Grid>
+    );
+
+    expect(components.container).toHaveTextContent('2');
+
+    const button3 = components.getByTestId('reducir') as HTMLElement;
+    fireEvent.click(button3);
+
+    components.rerender(
+        <Grid>
+            <ProductList props={product} add={addToCart}></ProductList>
+            <ProductCartList
+                productos={carrito}
+                remove={remove}
+                precio={() => 0}
+                aumentar={aumentar}
+                reducir={reducir}>
+            </ProductCartList>
+        </Grid>
+    );
+
+    expect(components.container).toHaveTextContent('1');
+    expect(components.container).toHaveTextContent('Pagar');
+});

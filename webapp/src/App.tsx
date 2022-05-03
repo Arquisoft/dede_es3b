@@ -1,7 +1,8 @@
+/* istanbul ignore file */
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
-import { findByCategory, getProducts, getUsers } from './api/api';
-import { User } from './shared/shareddtypes';
+import { findByCategory, getOrders, getProducts, getOrdersByPodName } from './api/api';
+import { Order } from './shared/shareddtypes';
 import './App.css';
 import ProductList from './components/products/ProductList';
 import { Footer } from './components/generalComponents/Footer';
@@ -12,7 +13,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Checkout from './shippment/CheckOut';
 import Login from './components/login/Login';
-import Profile from './components/Profile';
+import VistaPedidos from './components/pedidos/VistaPedidos';
 
 function App(): JSX.Element {
 
@@ -135,15 +136,23 @@ function App(): JSX.Element {
   const precioCarrito = getPrecio();
 
   const [loggedAsAdmin, setLoggedAsAdmin] = useState(false);
-  const [loggedAsUser, setLoggedAsUser] = useState(false);
 
-  // useEffect(() => {
-  //   localStorage.setItem("loggedAsAdmin", loggedAsAdmin)
-  // }, [loggedAsAdmin]);
+  const [orders, setOrders] = useState<Order[]>([]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("loggedAsUser", loggedAsUser)
-  // }, [loggedAsUser]);
+  const refreshOrderList = async () => {
+    const user = localStorage.getItem("userLogged");
+    const admin = localStorage.getItem("loggedAsAdmin");
+
+    if(admin)
+      setOrders(await getOrders());
+    else if(user){
+      setOrders(await getOrdersByPodName(user));
+    }
+  }
+
+  useEffect(() => {
+    refreshOrderList();
+  }, []);
 
   return (
     <>
@@ -156,9 +165,10 @@ function App(): JSX.Element {
             <Route path="/" element={<ProductList props={productos} add={addToCart}></ProductList>} />
             <Route path="/raquets" element={<ProductList props={productosRaquetas} add={addToCart}></ProductList>} />
             <Route path="/balls" element={<ProductList props={productosPelotas} add={addToCart}></ProductList>} />
-            <Route path="/login" element={<Login setPrecio={() => getPrecio()}></Login>} />
-            <Route path="/profile" element={<Profile props={productos[0]} add={addToCart}></Profile>} />
+            <Route path="/login" element={<Login setPrecio={() => getPrecio()} setLoggedAdmin={setLoggedAsAdmin} adminLogged={loggedAsAdmin}></Login>} />
+            {/* <Route path="/profile" element={<Profile props={productos[0]} add={addToCart}></Profile>} /> */}
             <Route path="/checkout" element={<Checkout carrito={carrito} precio={precioCarrito}></Checkout>} />
+            <Route path="/orders" element={<VistaPedidos orders={orders}></VistaPedidos>} />
           </Routes>
         </Router>
 
