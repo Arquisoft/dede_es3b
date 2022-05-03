@@ -12,18 +12,26 @@ image:DeploymentView.png[Deployment View]
 |Artifact |Description
 
 |DEDE development
-|Where DEDE development takes place, standard computer with REACT and Node.
+|Where DEDE development takes place.
 
-|DEDE database
-|A MONGO Database deployed on a docker container.
+|Atlas System
+|Using Atlas hosting service for a MONGO Database.
 
+|Client Side
+|The device that the client is using to connect to the aplication
 
-|Device
-|A host to React, normally the same computer as development
+|Solid Host
+|The host for the Client POD, can be choosen by the client and it must be configurated to use the address
 
-|Solid Pods
-|The user PODs that must be configurated
+|Cloudiary System
+|Used to store all the product images.
 
-|Browser
-|To comunicate with the Device, must be a mallor browser
+|Mapbox Api
+|Used to get some coordinates from an address to calculate the shipping costs.
+
+|AWS Host
+|Using Amazon Web Services to deploy the app  by SSH.
+
+|Elastic Address
+|To only have one address in the case of app instances shuting down and changing their address.
 |===
