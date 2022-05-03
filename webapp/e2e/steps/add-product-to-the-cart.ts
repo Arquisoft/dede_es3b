@@ -20,13 +20,15 @@ defineFeature(feature, test => {
       .goto("http://localhost:3000/", {
         waitUntil: "networkidle0",
       })
-      .catch(() => { });
+      .catch(() => {
+        //This is intentional
+      });
   });
 
   test('Add a product to the cart', ({ given, when, then }) => {
 
     given('A registered user', () => {
-
+      //This is intentional
     });
 
     when('Select a product from the catalogue', async () => {

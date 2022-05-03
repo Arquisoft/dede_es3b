@@ -19,13 +19,15 @@ defineFeature(feature, test => {
             .goto("http://localhost:3000", {
                 waitUntil: "networkidle0",
             })
-            .catch(() => { });
+            .catch(() => {
+                //This is intentional
+            });
     });
 
     test('Filter products by Raquetas', ({ given, when, then }) => {
 
         given('The main page', () => {
-
+            //This is intentional
         });
 
         when('Select filter by "Raquetas" in the menu', async () => {
@@ -48,7 +50,7 @@ defineFeature(feature, test => {
     test('Filter products by Pelotas', ({ given, when, then }) => {
 
         given('The main page', () => {
-
+            //This is intentional   
         });
 
         when('Select filter by "Pelotas" in the menu', async () => {

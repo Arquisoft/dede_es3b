@@ -19,7 +19,9 @@ defineFeature(feature, test => {
             .goto("http://localhost:3000", {
                 waitUntil: "networkidle0",
             })
-            .catch(() => { });
+            .catch(() => {
+                //This is intentional
+            });
     });
 
     test('Login as an admin', ({ given, when, then }) => {
@@ -28,7 +30,7 @@ defineFeature(feature, test => {
         let password = "admin"; //NOSONAR
 
         given('The main page', () => {
-
+            //This is intentional
         });
 
         when('Try to login as an admin', async () => {
