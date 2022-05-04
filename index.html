@@ -478,9 +478,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#section-runtime-view">6. Runtime View</a>
 <ul class="sectlevel2">
-<li><a href="#_login">6.1. Login</a></li>
-<li><a href="#_sign_up">6.2. Sign up</a></li>
-<li><a href="#_get_the_content_of_the_shopping_cart">6.3. Get the content of the shopping cart</a></li>
+<li><a href="#_login_with_pod">6.1. Login with POD</a></li>
+<li><a href="#_get_the_content_of_the_shopping_cart">6.2. Get the content of the shopping cart</a></li>
+<li><a href="#_login_as_an_admin">6.3. Login as an admin</a></li>
 </ul>
 </li>
 <li><a href="#section-deployment-view">7. Deployment View</a>
@@ -1053,7 +1053,7 @@ Refer to details in the following sections.</p>
 <p><strong>Docker:</strong> Will be used for the deployment of the application</p>
 </li>
 <li>
-<p><strong>Heroku:</strong> Will be used for the deployment of the application</p>
+<p><strong>AWS:</strong> Will be used for the deployment of the application</p>
 </li>
 </ul>
 </div>
@@ -1312,64 +1312,40 @@ You will mainly capture scenarios in your documentation to communicate your arch
 The next schemes are some scenarios of our sport online shop.</p>
 </div>
 <div class="sect2">
-<h3 id="_login">6.1. Login</h3>
+<h3 id="_login_with_pod">6.1. Login with POD</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Client will choose Login in the home page.</p>
+<p>Client will choose My Profile in the home page.</p>
 </li>
 <li>
-<p>The client will be redirect to the Login page, where he has to fill the gaps with his information.</p>
+<p>Client will choose in the menu the Login option.</p>
 </li>
 <li>
-<p>This information will be sent to the Pod.</p>
+<p>The client will be redirect to the Login page, where he has to press the Login Pod button and then, fill the gaps with his information.</p>
+</li>
+<li>
+<p>The client will be sent to the Pod&#8217;s supplier page.</p>
 </li>
 <li>
 <p>The Pod will accept or not the data provided.</p>
 </li>
 <li>
-<p>If the data is right the client will be redirect to the home page.</p>
+<p>If the data is right the client will be redirect to the login page.</p>
 </li>
 <li>
-<p>If the data is wrong the client will be sent again to the Login page.</p>
+<p>If the data is wrong the client will continue in the Pod&#8217;s supplier page.</p>
 </li>
 </ol>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Sequence%20diagram-Login.png" alt="Sequence diagram Login" width="289" height="343">
+<img src="./images/Sequence%20diagram-Login.png" alt="Sequence diagram Login" width="379" height="400">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sign_up">6.2. Sign up</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Client will choose Sign up in the home page.</p>
-</li>
-<li>
-<p>The client will be redirect to the Sign up page, where he has to fill the gaps with his information.</p>
-</li>
-<li>
-<p>This information will be sent to the DataBase.</p>
-</li>
-<li>
-<p>If the data of the client is already in the data base, the client will be redirect to the Sign up page.</p>
-</li>
-<li>
-<p>If there isn&#8217;t any client with the same data in the data base, it will be added and the client will be redirect to the home page.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/Sequence%20diagram-Sign%20up.png" alt="Sequence diagram Sign up" width="380" height="387">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_get_the_content_of_the_shopping_cart">6.3. Get the content of the shopping cart</h3>
+<h3 id="_get_the_content_of_the_shopping_cart">6.2. Get the content of the shopping cart</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1391,7 +1367,34 @@ The next schemes are some scenarios of our sport online shop.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Sequence%20diagram-Shopping%20cart.png" alt="Sequence diagram Shopping cart" width="522" height="343">
+<img src="./images/Sequence%20diagram-Shopping%20cart.png" alt="Sequence diagram Shopping cart" width="526" height="343">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_login_as_an_admin">6.3. Login as an admin</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Client will choose My Profile in the home page.</p>
+</li>
+<li>
+<p>Client will choose in the menu the Login option.</p>
+</li>
+<li>
+<p>The client will be redirect to the Login page, where he has to press the Login Admin button and then, fill the gaps with his information.</p>
+</li>
+<li>
+<p>If the information is right a success notification will appear.</p>
+</li>
+<li>
+<p>If the information is wrong a failure notification will appear.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Sequence%20diagram-Login%20admin.png" alt="Sequence diagram Login admin" width="344" height="382">
 </div>
 </div>
 <div style="page-break-after: always;"></div>
