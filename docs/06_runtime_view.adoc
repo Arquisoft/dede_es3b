@@ -87,7 +87,7 @@ Client --> "DeDeportes": access to his shopping cart
 4. If the information is right a success notification will appear.
 5. If the information is wrong a failure notification will appear.
 
-[plantuml,"Sequence diagram-Login",png]
+[plantuml,"Sequence diagram-Login admin",png]
 ----
 actor Client
 participant "Home"
