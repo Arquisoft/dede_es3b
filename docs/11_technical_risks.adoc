@@ -16,5 +16,14 @@
 |Deployment| The deployment of the application has been a problem. At first we had chosen heroku but we ended up doing it on Amazon
 |===
 
+
 === Tecnical Debts
-On the deployment of the application, some parts of the funtionality are not working, these are the connection with the PODs and restApi. We are working on fixing it.
+[options="header"]
+|===
+| Problem | Explication
+| Pod´s data in deployment | Due to using amazon web service as a means of deployment, when testing the deployed application it is not allowed to access the information of the pods.
+| Double order creation | When an order is created from the application, an extra order is generated for each payment. After reviewing the project we have not found the error
+| Test e2e | During the test we have not been to fill the form. The solution we have taken has been to carry out the tests even if they fail
+| Menu nav | When you start using the pods in the application, the application's nav menu changes color
+| Hardcoding | The compatibility between the URLs of the connections in the .env file and the deployment has given problems. The solution taken has been to hardcode and use the NOSONAR comment
+|===

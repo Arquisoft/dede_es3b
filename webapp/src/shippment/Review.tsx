@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';

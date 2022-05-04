@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';

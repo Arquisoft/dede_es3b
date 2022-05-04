@@ -38,11 +38,11 @@ const ProductCartItem: React.FC<Cart> = ({props, remove, aumentar, reducir}) => 
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small" onClick={()=>{aumentar(props)}}>+</Button>
+                        <Button size="small" data-testid="aumentar" onClick={()=>{aumentar(props)}}>+</Button>
                         <div>
                             <div>{props.quantity}</div>
                         </div>
-                        <Button size="small" onClick={()=>{reducir(props.id)}}>-</Button>
+                        <Button size="small" data-testid="reducir" onClick={()=>{reducir(props.id)}}>-</Button>
                         <Button component="button" data-testid="remove" size="small" onClick={()=>{remove(props.id)}}>Remove</Button>
                     </CardActions>
                 </Grid>

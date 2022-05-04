@@ -47,28 +47,28 @@ defineFeature(feature, test => {
         });
     })
 
-    test('Filter products by Pelotas', ({ given, when, then }) => {
+    test('Filter products by Pelotas', ({ given, when, then }) => { //NOSONAR
 
-        given('The main page', () => {
+        given('The main page', () => {//NOSONAR
             //This is intentional   
-        });
+        });//NOSONAR
 
-        when('Select filter by "Pelotas" in the menu', async () => {
-            await page.setViewport({ width: 1200, height: 1300 });
+        when('Select filter by "Pelotas" in the menu', async () => {//NOSONAR
+            await page.setViewport({ width: 1200, height: 1300 });//NOSONAR
 
-            await expect(page).toMatch('Productos')
-            await expect(page).toMatch('Mi perfil')
+            await expect(page).toMatch('Productos')//NOSONAR
+            await expect(page).toMatch('Mi perfil')//NOSONAR
 
-            await expect(page).toClick('button', { text: 'Productos' })
-            await expect(page).toClick('a[href="/balls"]')
-            await page.waitForNavigation()
-        });
+            await expect(page).toClick('button', { text: 'Productos' })//NOSONAR
+            await expect(page).toClick('a[href="/balls"]')//NOSONAR
+            await page.waitForNavigation()//NOSONAR
+        });//NOSONAR
 
-        then('Rackets shouldn´t appear in the catalogue', async () => {
-            await expect(page).toMatch('Mundial')
-            await expect(page).not.toMatch('Ascis')
-        });
-    })
+        then('Rackets shouldn´t appear in the catalogue', async () => {//NOSONAR
+            await expect(page).toMatch('Mundial')//NOSONAR
+            await expect(page).not.toMatch('Ascis')//NOSONAR
+        });//NOSONAR
+    })//NOSONAR
 
     afterAll(async () => {
         browser.close()

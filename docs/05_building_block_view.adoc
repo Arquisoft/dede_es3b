@@ -16,6 +16,8 @@ This table explains the main actors that will interact with the application.
 
 image:Section5Diagram.png["Whtite box diagram"]
 
+The database we are going to use is a remote one. It makes the use of it easier and can be used wherever the application is used.
+
 === Blackbox descriptions of Overall System
 
 |===
