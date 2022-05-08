@@ -35,14 +35,15 @@ The runtime view describes the possible interactions of the different actors wit
 This will help us understand how the elements of the application interact at runtime.
 The next schemes are some scenarios of our sport online shop.
 
-=== Login
+=== Login with POD
 
-1. Client will choose Login in the home page.
-2. The client will be redirect to the Login page, where he has to fill the gaps with his information.
-3. This information will be sent to the Pod.
-4. The Pod will accept or not the data provided.
-5. If the data is right the client will be redirect to the home page.
-6. If the data is wrong the client will be sent again to the Login page.
+1. Client will choose My Profile in the home page.
+2. Client will choose in the menu the Login option.
+3. The client will be redirect to the Login page, where he has to press the Login Pod button and then, fill the gaps with his information.
+4. The client will be sent to the Pod's supplier page.
+5. The Pod will accept or not the data provided.
+6. If the data is right the client will be redirect to the login page.
+7. If the data is wrong the client will continue in the Pod's supplier page.
 
 [plantuml,"Sequence diagram-Login",png]
 ----
@@ -51,35 +52,12 @@ participant "Home"
 participant "Login"
 database Pod
 Client --> "Home": Login
-"Home" --> "Login": insert data
+"Home" --> "Login": press Login POD
+"Login" --> "Login": insert data
 "Login" --> Pod : validate data
-Pod --> "Login": wrong data
-Pod --> "Home": right data
+Pod --> "Pod": wrong data
+Pod --> "Login": right data
 ----
-
-
-=== Sign up
-
-1. Client will choose Sign up in the home page.
-2. The client will be redirect to the Sign up page, where he has to fill the gaps with his information.
-3. This information will be sent to the DataBase.
-4. If the data of the client is already in the data base, the client will be redirect to the Sign up page.
-5. If there isn't any client with the same data in the data base, it will be added and the client will be redirect to the home page.
-
-[plantuml,"Sequence diagram-Sign up",png]
-----
-actor Client
-participant "Home"
-participant "Sign up"
-database DataBase
-Client --> "Home": Sign up
-"Home" --> "Sign up": insert data
-"Sign up" --> DataBase : validate data in DB
-DataBase --> "Sign up": client exists
-DataBase --> DataBase: add client
-DataBase --> "Home": right data, client added
-----
-
 
 === Get the content of the shopping cart
 
@@ -93,10 +71,30 @@ DataBase --> "Home": right data, client added
 ----
 actor Client
 participant "DeDeportes"
-database Database
+database LocalStore
 --> Client: login
 Client --> "DeDeportes": access to his shopping cart
-"DeDeportes" --> "Database": request the content of the shopping cart
-"Database" --> DeDeportes: returns the list of products
+"DeDeportes" --> "LocalStore": request the content of the shopping cart
+"LocalStore" --> DeDeportes: returns the list of products
 "DeDeportes"--> Client: show the cart content
+----
+
+=== Login as an admin 
+
+1. Client will choose My Profile in the home page.
+2. Client will choose in the menu the Login option.
+3. The client will be redirect to the Login page, where he has to press the Login Admin button and then, fill the gaps with his information.
+4. If the information is right a success notification will appear.
+5. If the information is wrong a failure notification will appear.
+
+[plantuml,"Sequence diagram-Login admin",png]
+----
+actor Client
+participant "Home"
+participant "Login"
+Client --> "Home": Login
+"Home" --> "Login": press Login Admin
+"Login" --> "Login": insert data
+"Login" --> "Login" : success notification
+"Login" --> "Login" : failure notification
 ----

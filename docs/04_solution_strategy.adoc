@@ -31,7 +31,7 @@ Refer to details in the following sections.
 * **MongoDB:** The type of data base that we will be using for the application
 * **MongoDB Atlas:** Is where the data base will be deployed
 * **Docker:** Will be used for the deployment of the application
-* **Heroku:** Will be used for the deployment of the application
+* **AWS:** Will be used for the deployment of the application
 
 ==== Front-end
 

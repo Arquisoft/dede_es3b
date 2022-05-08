@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import { findByEmail } from '../../api/api';
 
 type ReviewType = {
-    setLoggedAdmin: (admin:boolean) => void;
+    setLoggedAdmin: (admin: boolean) => void;
 }
 
 interface State {
@@ -64,7 +64,7 @@ const TextFiedldValidator: React.FC<ReviewType> = ({ setLoggedAdmin }) => {
             isAdmin = true;
             //toast.success("Eres admin");
         }
-        
+
         //checkIfIsAdmin();
         if (isAdmin) {
             toast.success("Eres admin");
@@ -84,19 +84,20 @@ const TextFiedldValidator: React.FC<ReviewType> = ({ setLoggedAdmin }) => {
         >
             <div>
                 <TextField
+                    id="email"
                     onChange={handleChange('email')}
                     value={values.email}
-                    id="outlined-error-helper-text"
                     label="Email"
                     required
                     error={emailError || (!start && !isAdmin)}
                 />
                 <TextField
+                    id="password"
                     type='password'
                     value={values.password}
                     onChange={handleChange('password')}
                     label="Password"
-                    id="outlined-error-helper-text"
+
                     required
                     error={passwordError || (!start && !isAdmin)}
                 />

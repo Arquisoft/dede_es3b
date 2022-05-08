@@ -26,8 +26,8 @@ defineFeature(feature, test => {
 
     test('Login as an admin', ({ given, when, then }) => {
 
-        let username = "admin@admin.com";
-        let password = "admin"; //NOSONAR
+        let username: string = "admin@admin.com";
+        let password: string = "admin"; //NOSONAR
 
         given('The main page', () => {
             //This is intentional
@@ -42,8 +42,8 @@ defineFeature(feature, test => {
             await page.waitForNavigation()
 
             await expect(page).toClick('button', { text: 'Login Admin' })
-            await expect(page).toFill("[label:'Email']", username)
-            await expect(page).toFill("[label:'Password']", password)
+            await expect(page).toFill('#email', username)
+            await expect(page).toFill('#password', password)
             await expect(page).toMatch('Login')
             await expect(page).toClick('button', { text: 'Login' })
 

@@ -76,4 +76,7 @@ together with a mapping table showing the relationships between channels and inp
 |POD| Where the application is going to take the user data, if he allows it. POD stores the user information.
 |TypeScript| Is the language used to generate the events of the store. It is a JavaScript versión with syntax control
 |React| Is an open-source library that helps the team to make the GUI with the help of TypeScript
+|React-Hot-Toast| Is an api that allows us to make floating notifications to the user
+|MUI| Is a library that help us on the view of the application
+|Cloudinary| Its the repository where we store the images of the products
 |===
