@@ -14,7 +14,7 @@ app.get('/*', function (req, res) {
 res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(port, ():void => {
+app.listen(process.env.PORT || port, ():void => {
     console.log('Webapp started on port '+ port);
 }).on("error",(error:Error)=>{
     console.error('Error occured: ' + error.message);

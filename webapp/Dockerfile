@@ -5,7 +5,7 @@ WORKDIR /app
 #Install the dependencies
 RUN npm install
 #ARG API_URI="http://localhost:5000/api"
-ARG API_URI="http://75.101.164.208:5000/api"
+ARG API_URI="https://dedeportes-backend.herokuapp.com/api/"
 ENV REACT_APP_API_URI=$API_URI
 
 #Create an optimized version of the webapp

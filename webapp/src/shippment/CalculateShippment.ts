@@ -15,7 +15,7 @@ async function calculateCoordinates(address: String) {
     let response = await fetch(
         "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
           address +
-          ".json?access_token=" + process.env.REACT_APP_MAPBOX_KEY
+          ".json?access_token=" + "pk.eyJ1IjoicGFzeHUiLCJhIjoiY2wxZHRodmN5MGwwajNpcDJtazE2a3pvNiJ9.6I7wykV317e6g4LdByPDyw"
       );
     //if (response.status===200)
     //  return response.json();
